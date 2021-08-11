@@ -7,7 +7,7 @@ export default {
       <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <filter id="a" x="-10%" y="-10%" width="120%" height="120%">
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend
               in="SourceGraphic"
               in2="BackgroundImageFix"
