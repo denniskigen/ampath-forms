@@ -1,0 +1,201 @@
+import Callout from 'nextra-theme-docs/callout'
+
+# Validating Fields
+
+AMPATH Forms enables you to add arbitrarily complex validation to your form inputs. Broadly, two approaches for validating inputs are possible:
+
+- Date-based validation
+- JavaScript expression-based validation
+
+## Date-based validation
+
+This type of validation enforces certain conditions for [date](/field-types-reference#date) inputs. You can use date-based validation to guarantee that a Date input only allows:
+
+- Past or present dates
+- Past, present or future dates
+
+Here's a question from the Reproductive History section of an HIV Adult Return visit form.
+
+```json
+{
+  "label": "LMP",
+  "id": "lmpDate1",
+  "questionOptions": {
+    "concept": "a89ff758-1350-11df-a1f1-0026b9348838",
+    "rendering": "date"
+  },
+  "type": "obs",
+  "validators": [
+    {
+      "type": "date"
+    },
+    {
+      "type": "js_expression",
+      "failsWhenExpression": "isEmpty(myValue) && !isEmpty(pattype1) && pattype1 === '375e6d4a-ba94-41ac-8ac3-5a56015c4d92'",
+      "message": "Patient is antenatal. Please provide LMP."
+    },
+    {
+      "type": "js_expression",
+      "failsWhenExpression": "isEmpty(myValue) && !isEmpty(menStatus) && menStatus === 'a8ad2b4e-1350-11df-a1f1-0026b9348838'",
+      "message": "Patient is menstruating. Please provide LMP."
+    }
+  ],
+  "hide": {
+    "hideWhenExpression": " sex !== 'F' || menStatus !== 'a8ad2b4e-1350-11df-a1f1-0026b9348838'"
+  }
+}
+```
+
+This question seeks to establish when the client last menstruated (LMP is short for `Last menstrual period`). Note that the first value of the validators array is a validator of type `date`. To properly understand what this date validator is doing, it might help to look at its source code:
+
+```javascript
+// Question validator factory
+if (question.validators) {
+  _.forEach(question.validators, (validator: ValidationModel) => {
+    switch (validator.type) {
+      case 'date':
+        list.push(this.dateValidator);
+        const allowFutureDates: boolean = (<DateValidationModel>validator)
+          .allowFutureDates;
+
+        if (!allowFutureDates) {
+          list.push(this.futureDateRestrictionValidator);
+        }
+        break;
+        // more code ...
+      }
+    }
+  }
+}
+```
+
+We see that the validator optionally has a property named `allowFutureDates` and that this property defaults to `false`. The date validator will, by default, not allow you to set a future date as the value of the field. If you do so, it will render a validation error:
+
+![Date based validation example](/screens/date-based-validation.gif)
+
+You can override this behaviour and permit future dates by setting `allowFutureDates` to true in your validator definition:
+
+```json
+{
+  "validators": [
+    {
+      "type": "date",
+      "allowFutureDates": "true"
+    }
+  ]
+}
+```
+
+## Validation based on JavaScript expressions
+
+When using expressions to validate form inputs, you must provide a JavaScript expression that resolves to a boolean value. Below is an expression-based example from a form used for collecting Cervical Cancer screening data:
+
+![Expression-based validation example](/screens/expression-based-validation.png)
+
+```json
+{
+  "type": "obs",
+  "label": "HIV Status",
+  "isExpanded": "true",
+  "questions": [
+    {
+      "label": "What is your current HIV status?",
+      "id": "hivStatus",
+      "type": "obs",
+      "required": "true",
+      "historicalExpression": "_.isEmpty(HD.getObject('prevEnc').getValue('9e4d6436-4040-46a3-a0ae-6dbc0acfe593')) ? undefined : HD.getObject('prevEnc').getValue('9e4d6436-4040-46a3-a0ae-6dbc0acfe593')",
+      "questionOptions": {
+        "rendering": "select",
+        "concept": "9e4d6436-4040-46a3-a0ae-6dbc0acfe593",
+        "answers": [
+          {
+            "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+            "label": "HIV positive"
+          },
+          {
+            "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+            "label": "HIV negative"
+          },
+          {
+            "concept": "a899b50a-1350-11df-a1f1-0026b9348838",
+            "label": "Unknown"
+          }
+        ]
+      },
+      "validators": []
+    },
+    {
+      "label": "Are you currently in HIV care or under ART?",
+      "id": "currentlyOnArt",
+      "type": "obs",
+      "questionOptions": {
+        "rendering": "select",
+        "concept": "a8afba58-1350-11df-a1f1-0026b9348838",
+        "answers": [
+          {
+            "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+            "label": "Yes"
+          },
+          {
+            "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+            "label": "No"
+          }
+        ]
+      },
+      "validators": [
+        {
+          "type": "js_expression",
+          "failsWhenExpression": "isEmpty(myValue) && hivStatus == 'a896f3a6-1350-11df-a1f1-0026b9348838'",
+          "message": "Please indicate whether the client is currently in HIV care or under ART"
+        }
+      ],
+      "hide": {
+        "hideWhenExpression": "isEmpty(hivStatus) || hivStatus != 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+      }
+    }
+  ]
+}
+```
+
+<Callout emoji="ℹ️">
+  This question assumes that only HIV Positive clients are expected to be
+  engaged in active HIV care.
+</Callout>
+
+A lot is going on in this example. Let us attempt to break it down step by step. The first question (id `hivStatus`) seeks to establish the client's HIV status. The next question (id `currentlyOnArt`) asks whether the client is actively receiving HIV care. Note that this second question has validation enabled.
+
+```json
+{
+  // ...
+  "validators": [
+    {
+      "type": "js_expression",
+      "failsWhenExpression": "isEmpty(myValue) && hivStatus == 'a896f3a6-1350-11df-a1f1-0026b9348838'",
+      "message": "Please indicate whether the client is currently in HIV care or under ART"
+    }
+  ]
+  // ...
+}
+```
+
+We see that the `type` of the validator is `js_expression`, which indicates that we're using JavaScript expression-based validation. The `failsWhenExpression` property takes a JavaScript expression as its value. The expression evaluates two conditions:
+
+1. That this question (id `currentlyOnArt`) gets answered. `isEmpty(myValue)` returns `true` if this question does not get answered, and `false` otherwise.
+2. That the previous question (id `hivStatus`) has the answer with the value `a896f3a6-1350-11df-a1f1-0026b9348838`. This value corresponds to the value labelled `HIV Positive`.
+
+When the current HIV status gets set to `HIV Positive` and the next question is left unanswered, the validation kicks in and displays the contents of the `message` property as a validation error.
+
+![Expression-based validation](/screens/js-expression-based-validation.gif)
+
+You might wonder, why not just mark the `Are you currently in HIV care or under ART?` question as required and avoid the whole ceremony? Well, what you'll notice is that this question also has a `hide` property:
+
+```json
+{
+  // ...
+  "hide": {
+    "hideWhenExpression": "isEmpty(hivStatus) || hivStatus != 'a896f3a6-1350-11df-a1f1-0026b9348838'"
+  }
+}
+```
+
+This hide logic ensures that this second question stays hidden until the answer to the preceding question gets set to `HIV Positive`. You can learn more about the hide property in the hiding form fields guide.

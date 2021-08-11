@@ -1,24 +1,29 @@
 {
-  "name": "nextra",
+  "name": "ampath-forms",
   "version": "1.0.0",
-  "description": "",
+  "description": "Documentation website for AMPATH Forms",
+  "author": "Dennis Kigen <dkigen@ampath.or.ke>",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "dev": "next",
     "start": "next start",
     "build": "next build"
   },
-  "author": "Shu Ding",
-  "license": "MIT",
   "dependencies": {
+    "@tailwindcss/typography": "^0.4.1",
     "next": "^11.0.1",
-    "nextra": "^1.0.0-beta.2",
-    "nextra-theme-docs": "^1.2.0-beta.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "nextra": "^1.1.0",
+    "nextra-theme-docs": "^1.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "prettier": "^2.0.5"
+    "all-contributors-cli": "^6.20.0",
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "prettier": "^2.0.5",
+    "tailwindcss": "^2.2.7"
   },
   "prettier": {
     "semi": false,

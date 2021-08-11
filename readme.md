@@ -1,22 +1,24 @@
-# [Nextra](https://nextra.vercel.app)
+![GitHub deployments](https://img.shields.io/github/deployments/denniskigen/ampath-forms/production?label=vercel&logo=vercel&logoColor=white)
 
-_Warning: this project is not production ready, API might change without notice._
+Documentation website for AMPATH Forms https://ampath-forms.vercel.app.
 
-[![](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra&c=1)
+## Contributors ✨
 
-**Nextra** is a [Next.js](https://nextjs.org) and [MDX](https://mdxjs.com) powered, no-code site generator.
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
-![](/public/demo.png)
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/denniskigen"><img src="https://avatars.githubusercontent.com/u/8509731?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dennis Kigen</b></sub></a><br /><a href="https://github.com/denniskigen/ampath-forms/commits?author=denniskigen" title="Code">💻</a> <a href="https://github.com/denniskigen/ampath-forms/commits?author=denniskigen" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/pseurey"><img src="https://avatars.githubusercontent.com/u/78152599?v=4?s=100" width="100px;" alt=""/><br /><sub><b>pseurey</b></sub></a><br /><a href="https://github.com/denniskigen/ampath-forms/commits?author=pseurey" title="Documentation">📖</a></td>
+  </tr>
+</table>
 
-## Development
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
-The code of Nextra is under the [`core`](https://github.com/shuding/nextra/tree/core) branch.
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
-## Themes
-
-- [nextra-theme-docs](https://github.com/vercel/swr-site) ([demo](https://swr.vercel.app))
-- [nextra-theme-blog](https://github.com/shuding/site) ([demo](https://shud.in))
-
----
-
-Created by [@shuding](https://github.com/shuding) and [@pacocoursey](https://github.com/pacocoursey) at [Vercel](https://vercel.com). Released under the MIT license.
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

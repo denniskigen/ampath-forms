@@ -1,7 +1,11 @@
 {
   "index": "Introduction",
-  "get-started": "Get Started",
+  "getting-started": "Getting Started",
   "features": "Features",
-  "themes": "Themes",
-  "advanced": "Advanced"
+  "core-concepts": "Core Concepts",
+  "editing-forms": "Editing Forms",
+  "referencing-forms": "Referencing Forms",
+  "validating-fields": "Validating Fields",
+  "field-types-reference": "Field Types Reference",
+  "expression-helper-functions-reference": "Expression Helper Functions Reference"
 }
