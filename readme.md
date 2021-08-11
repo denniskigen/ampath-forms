@@ -1,6 +1,8 @@
 ![GitHub deployments](https://img.shields.io/github/deployments/denniskigen/ampath-forms/production?label=vercel&logo=vercel&logoColor=white)
 
-Documentation website for AMPATH Forms https://ampath-forms.vercel.app.
+Documentation website for AMPATH Forms https://ampath-forms.vercel.app. 
+
+Built using [Nextra](https://github.com/shuding/nextra) and powered by [Next.js](https://github.com/vercel/next.js).
 
 ## Contributors ✨
 
