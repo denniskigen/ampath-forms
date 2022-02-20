@@ -11,19 +11,21 @@
     "build": "next build"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.4.1",
-    "next": "^11.0.1",
+    "@tailwindcss/typography": "^0.5.2",
+    "next": "^12.1.0",
     "nextra": "^1.1.0",
-    "nextra-theme-docs": "^1.2.1",
+    "nextra-theme-docs": "^1.2.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "all-contributors-cli": "^6.20.0",
-    "autoprefixer": "^10.3.1",
-    "postcss": "^8.3.6",
-    "prettier": "^2.0.5",
-    "tailwindcss": "^2.2.7"
+    "autoprefixer": "^10.4.2",
+    "eslint": "8.9.0",
+    "eslint-config-next": "12.1.0",
+    "postcss": "^8.4.6",
+    "prettier": "^2.5.1",
+    "tailwindcss": "^3.0.23"
   },
   "prettier": {
     "semi": false,

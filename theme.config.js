@@ -1,7 +1,9 @@
-export default {
+const themeConfig = {
   github: 'https://github.com/denniskigen/ampath-forms',
   docsRepositoryBase: 'https://github.com/denniskigen/ampath-forms/blob/main',
   titleSuffix: ' – AMPATH Forms',
+  search: true,
+  unstable_flexsearch: true,
   logo: (
     <>
       <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
@@ -46,12 +48,6 @@ export default {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="apple-mobile-web-app-title" content="AMPATH Forms" />
       <link
-        rel="stylesheet preload"
-        href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
-        as="style"
-        crossorigin="anonymous"
-      />
-      <link
         rel="stylesheet"
         href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"
       />
@@ -88,3 +84,5 @@ export default {
   footerEditLink: 'Edit this page on GitHub',
   footerText: <>{new Date().getFullYear()} © AMPATH</>,
 }
+
+export default themeConfig
