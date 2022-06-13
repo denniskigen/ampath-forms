@@ -8,12 +8,20 @@ Let's take you from zero to published in just a few minutes.
 
 ### Step 1. Log in
 
-Visit the [AMPATH form builder](https://formbuilder.o3.openmrs.org/) website. 
+Visit the [AMPATH form builder](https://formbuilder.o3.openmrs.org/) website and enter the following credentials:
+
 - OpenMRS Server URL: https://dev3.openmrs.org/openmrs
-- u: admin
-- p: Admin123
+- Username: admin
+- Password: Admin123
 
 ![Login page](/screens/login.png)
+
+<Callout emoji="ℹ️">
+  As the Form Builder frontend runs on a different server than the backend, we
+  rely on [CORS](https://geekflare.com/cors-basics/) to handle communication
+  between these two origins. You might need to install an extension in your
+  browser that enables CORS to use the Form Builder properly.
+</Callout>
 
 ### Step 2. Create a new Form
 
@@ -49,7 +57,7 @@ Add a question by clicking `Create new question`. This launches the **Question E
 
 ![Add a question to the form](/screens/add-question.png)
 
-Enter `PATIENT CONSENT PROVIDED` in the Concept field. This should launch the **Concept Search** modal. The Form Builder is linked to a Concept Dictionary. This Concept Search modal allows you to perform a concept search based on either a concept name, concept ID, or concept UUID. In this example, the Concept Dictionary in use is the AMPATH Concept Dictionary. The `PATIENT CONSENT PROVIDED` concept referenced here has the concept ID `7656`. Press **OK** to save. 
+Enter `PATIENT CONSENT PROVIDED` in the Concept field. This should launch the **Concept Search** modal. The Form Builder is linked to a Concept Dictionary. This Concept Search modal allows you to perform a concept search based on either a concept name, concept ID, or concept UUID. In this example, the Concept Dictionary in use is the AMPATH Concept Dictionary. The `PATIENT CONSENT PROVIDED` concept referenced here has the concept ID `7656`. Press **OK** to save.
 
 A modal should now appear asking you to pick your desired Answers from a list of available Answers. Click **Select All** to choose both `YES` and `NO`.
 
