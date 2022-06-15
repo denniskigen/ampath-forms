@@ -9,7 +9,7 @@ Below is a reference of the functions currently available.
 Computes a patient's BMI given a valid height and weight value.
 
 ```js
-calcBMI(height, weight);
+calcBMI(height, weight)
 ```
 
 #### Parameters
@@ -26,7 +26,7 @@ A **number** if height and weight values are provided. Otherwise, returns **null
 Computes a patient's BMI given a valid height and weight value.
 
 ```js
-calcBSA(height, weight);
+calcBSA(height, weight)
 ```
 
 #### Parameters
@@ -43,7 +43,7 @@ A **number** if height and weight values are provided. Otherwise, returns **null
 Computes a patient's age and sex standardised BMI (BMIz) score .
 
 ```js
-calcBMIForAgeZscore(bmiForAgeRef, height, weight);
+calcBMIForAgeZscore(bmiForAgeRef, height, weight)
 ```
 
 #### Parameters
@@ -53,7 +53,7 @@ calcBMIForAgeZscore(bmiForAgeRef, height, weight);
 ## calcWeightForHeightZscore
 
 ```js
-calcWeightForHeightZscore(weightForHeightRef, height, weight);
+calcWeightForHeightZscore(weightForHeightRef, height, weight)
 ```
 
 #### Parameters
@@ -63,7 +63,7 @@ calcWeightForHeightZscore(weightForHeightRef, height, weight);
 ## calcHeightForAgeZscore
 
 ```js
-calcHeightForAgeZscore(heightForAgeRef, height, weight);
+calcHeightForAgeZscore(heightForAgeRef, height, weight)
 ```
 
 #### Parameters
@@ -73,7 +73,7 @@ calcHeightForAgeZscore(heightForAgeRef, height, weight);
 ## isEmpty
 
 ```js
-isEmpty(val);
+isEmpty(val)
 ```
 
 #### Parameters
@@ -83,7 +83,7 @@ isEmpty(val);
 ## arrayContains
 
 ```js
-arrayContains(array, members);
+arrayContains(array, members)
 ```
 
 #### Parameters
@@ -95,10 +95,73 @@ arrayContains(array, members);
 
 A boolean. Returns **true** if `members` is an empty array. If `members` is not an array, it returns **true** if `members` is not contained in the array. If `members` is an array, this function returns **true** if all of the elements in `members` are contained in the source array as well - and if otherwise, returns **false**.
 
+#### Example
+
+Here's a set of questions from the Client Enrollment section of a VDot Enrollment form.
+
+```json
+{
+  "label": "Reason for referral",
+  "type": "obs",
+  "id": "referralReason",
+  "questionOptions": {
+    "concept": "1887AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "rendering": "multiCheckbox",
+    "answers": [
+      {
+        "concept": "164075AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "label": "Sub optimal adherence"
+      },
+      {
+        "concept": "64132ecd-3a0f-41b8-b743-78c26af2f4b9",
+        "label": "Newly initiating ART"
+      },
+      {
+        "concept": "5619AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "label": "Unstable Caregiver"
+      },
+      {
+        "concept": "989AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "label": "Age 0-4 years"
+      },
+      {
+        "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "label": "Other"
+      }
+    ]
+  }
+},
+{
+  "label": "Specify other reason",
+  "type": "obs",
+  "id": "otherReferralReason",
+  "questionOptions": {
+    "concept": "160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "rendering": "text"
+  },
+  "validators": []
+}
+```
+
+We want to validate the `Specify other reason` question so that it only gets displayed when `Other` is chosen amongst the answers to the preceding question.
+
+To achieve this, add the following `hide` expression to the `Specify other reason` question definition:
+
+```json
+"hide": {
+  "hideWhenExpression": "isEmpty(referralReason) || !arrayContains(referralReason,'5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+}
+```
+
+This expression essentially says:
+
+- Hide the `Specify other reason` question if the preceding question did not get answered. This is what the first part of the expression `isEmpty(referralReason)` does.
+- Hide the `Specify other reason` question if `Other` is not selected amongst the answers to the preceding question.
+
 ## arrayContainsAny
 
 ```js
-arrayContainsAny(array, members);
+arrayContainsAny(array, members)
 ```
 
 #### Parameters
@@ -108,7 +171,7 @@ arrayContainsAny(array, members);
 ## extractRepeatingGroupValues
 
 ```js
-extractRepeatingGroupValues(key, array);
+extractRepeatingGroupValues(key, array)
 ```
 
 #### Parameters
@@ -118,7 +181,7 @@ extractRepeatingGroupValues(key, array);
 ## formatDate
 
 ```js
-formatDate(value, format, offset);
+formatDate(value, format, offset)
 ```
 
 #### Parameters
