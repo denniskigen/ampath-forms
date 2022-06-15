@@ -78,7 +78,11 @@ isEmpty(val)
 
 #### Parameters
 
+- `val`: The `id` of the question being referenced.
+
 #### Return value
+
+A boolean. Returns **true** if the question being referenced has an answer and **false** otherwise.
 
 ## arrayContains
 
