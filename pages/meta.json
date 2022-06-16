@@ -1,11 +1,11 @@
 {
-  "index": "Introduction",
-  "getting-started": "Getting Started",
-  "features": "Features",
-  "core-concepts": "Core Concepts",
-  "editing-forms": "Editing Forms",
-  "referencing-forms": "Referencing Forms",
-  "validating-fields": "Validating Fields",
-  "field-types-reference": "Field Types Reference",
-  "expression-helper-functions-reference": "Expression Helper Functions Reference"
+  "index": {
+    "title": "Introduction",
+    "type": "page",
+    "hidden": true
+  },
+  "docs": {
+    "title": "Docs",
+    "type": "page"
+  }
 }

@@ -2,11 +2,10 @@ const themeConfig = {
   github: 'https://github.com/denniskigen/ampath-forms',
   docsRepositoryBase: 'https://github.com/denniskigen/ampath-forms/blob/main',
   titleSuffix: ' – AMPATH Forms',
-  search: true,
-  unstable_flexsearch: true,
   logo: (
     <>
       <svg
+        className="fill-current"
         height={36}
         width={36}
         viewBox="0 0 206 233"
@@ -16,6 +15,7 @@ const themeConfig = {
           clipRule: 'evenodd',
           strokeLinejoin: 'round',
           strokeMiterlimit: 2,
+          fill: 'currentColor',
         }}
       >
         <path
@@ -45,11 +45,11 @@ const themeConfig = {
       <meta httpEquiv="Content-Language" content="en" />
       <meta
         name="description"
-        content="AMPATH Forms: Build and test POC form schemas"
+        content="AMPATH Forms: Build and test OpenMRS forms schemas"
       />
       <meta
         name="og:description"
-        content="AMPATH Forms: Build and test POC form schemas"
+        content="AMPATH Forms: Build and test OpenMRS forms schemas"
       />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="apple-mobile-web-app-title" content="AMPATH Forms" />
@@ -79,7 +79,9 @@ const themeConfig = {
       <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
     </>
   ),
-  search: false,
+  search: true,
+  unstable_flexsearch: true,
+  projectLink: 'https://github.com/denniskigen/ampath-forms',
   prevLinks: true,
   nextLinks: true,
   footer: true,
