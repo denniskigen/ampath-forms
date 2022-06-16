@@ -45,11 +45,11 @@ const themeConfig = {
       <meta httpEquiv="Content-Language" content="en" />
       <meta
         name="description"
-        content="AMPATH Forms: Build and test OpenMRS forms schemas"
+        content="AMPATH Forms: Build and test OpenMRS form schemas"
       />
       <meta
         name="og:description"
-        content="AMPATH Forms: Build and test OpenMRS forms schemas"
+        content="AMPATH Forms: Build and test OpenMRS form schemas"
       />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="apple-mobile-web-app-title" content="AMPATH Forms" />
