@@ -1,10 +1,10 @@
 {
   "getting-started": "Getting Started",
   "features": "Features",
-  "editing-forms": "Editing Forms",
   "core-concepts": "Core Concepts",
+  "editing-forms": "Editing Forms",
   "referencing-forms": "Referencing Forms",
-  "validating-fields": "Validating Fields",
+  "validation": "Validation",
   "field-types-reference": "Field Types Reference",
-  "expression-helper-functions-reference": "Expression Helper Functions Reference"
+  "expression-helpers": "Expression Helpers"
 }

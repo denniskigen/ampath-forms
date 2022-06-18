@@ -1,4 +1,4 @@
-# Expression Helper Functions
+# Expression Helpers
 
 AMPATH Forms provide a swathe of expression helper functions that are useful for performing common domain-specific calculations in forms.
 

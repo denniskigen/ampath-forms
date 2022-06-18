@@ -2,16 +2,18 @@ import Callout from 'nextra-theme-docs/callout'
 
 # Referencing Forms
 
-This feature of the Form Builder allows you to build your forms by importing logic from [component forms](/core-concepts#components). Components are a mechanism for grouping together domain-specific form logic into disparate, reusable bits. You can mix and match components to create forms of arbitrary complexity. Imagine building a form for use in HIV Testing. This form might require the following sections:
+You can build your forms in the Form Builder by referencing [components](/core-concepts#components). Components group together reusable form logic. You can mix and match components to create forms of arbitrary complexity.
 
-- A pre-clinic review section
-- A vitals section
-- A lab order section
-- A lab results section
-- An HIV status section
-- A Tuberculosis treatment section
+Imagine building a form for use in HIV Testing. This form might require the following sections:
 
-It is possible to encapsulate each of the above pieces into a disparate reusable component. You would then have, say, a Pre-Clinic Review component that handles pre-clinic review concerns. This component would have sections such as:
+- A `Pre-clinic review` section
+- A `Lab order` section
+- A `Lab results` section
+- An `HIV status` section
+- A `Tuberculosis treatment` section
+- A `Vitals` section
+
+It is possible to encapsulate each of the above pieces into a component. You would then have, say, a `Pre-Clinic Review` component that handles pre-clinic review concerns. This component could have sections such as:
 
 - A patient's current HIV status
 - Whether a visit was scheduled or not
@@ -23,33 +25,339 @@ This component could look something like this:
 
 ![Pre-Clinic Review component](/screens/pre-clinic-review-component.png)
 
-So if, for example, you were constructing a new Cervical Cancer screening visit form, you might want to pick just the Pre-Clinic Review section from that component. Below if a guide for how you can achieve this:
+If you then wished to build a Cervical Cancer screening visit form, you could reference this component and pick from it the sections you need. Let's build an example form that references the Pre-Clinic Review section from our component.
 
-## Example: Referencing the Pre-Clinic Review component
+## Referencing the Pre-Clinic Review section from our component
 
-<Callout emoji="ℹ️">
-  For this guide, we will assume that we are working on a new form.
-</Callout>
-
-### Step 1. Launch form in Schema editor
+### Create a new Form
 
 Click the Create New button to launch the Schema editor.
 
-### Step 2. Reference the Component
+### Reference the Component
 
-Launch the Schema Builder by clicking the hamburger menu in the top-left corner of the page. Click Create a new page and enter `Preclinical Review` as the page label.
+Launch the Schema Builder by clicking the hamburger menu in the top-left corner of the page. Click `Create a new page` and enter `Preclinical Review` as the page label.
 
-Click Reference Section and enter `component_oncology-preclinic-review-v1.2` as the form name.
+Click `Reference Section` and enter `component_oncology-preclinic-review-v1.2` as the name of the component to reference.
 
 ![Referencing a section](/screens/referencing-a-section.png)
 
+Here's the component schema for reference:
+
+```json
+{
+  "name": "component_oncology-preclinic-review-v1.2",
+  "uuid": "xxxx",
+  "processor": "EncounterFormProcessor",
+  "pages": [
+    {
+      "label": "Pre-clinic Review",
+      "sections": [
+        {
+          "label": "Pre-Clinic Review",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Current visit",
+              "id": "visitType",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff9a6-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a89b6440-1350-11df-a1f1-0026b9348838",
+                    "label": "Scheduled visit"
+                  },
+                  {
+                    "concept": "a89ff816-1350-11df-a1f1-0026b9348838",
+                    "label": "Unscheduled visit early"
+                  },
+                  {
+                    "concept": "a89ff8de-1350-11df-a1f1-0026b9348838",
+                    "label": "Unscheduled visit late"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "If early or late unscheduled visit, what was the scheduled visit date?",
+              "id": "actualDate",
+              "type": "obs",
+              "required": {
+                "type": "conditionalRequired",
+                "referenceQuestionId": "visitType",
+                "referenceQuestionAnswers": [
+                  "a89ff816-1350-11df-a1f1-0026b9348838",
+                  "a89ff8de-1350-11df-a1f1-0026b9348838"
+                ]
+              },
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "dc1942b2-5e50-4adc-949d-ad6c905f054e"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "true"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "!isEmpty(visitType) && arrayContains(['a89ff816-1350-11df-a1f1-0026b9348838','a89ff8de-1350-11df-a1f1-0026b9348838'], visitType) && isEmpty(myValue)",
+                  "message": "Patient visit marked as unscheduled. Please provide the scheduled date."
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "!arrayContains(['a89ff816-1350-11df-a1f1-0026b9348838','a89ff8de-1350-11df-a1f1-0026b9348838'], visitType)"
+              }
+            },
+            {
+              "label": "Visit type",
+              "id": "typeOfVisit",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff5c8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
+                    "label": "Initial screening"
+                  },
+                  {
+                    "concept": "a89526f2-1350-11df-a1f1-0026b9348838",
+                    "label": "Routine screening"
+                  },
+                  {
+                    "concept": "19a7233b-2db1-4d7b-a2fb-4473e6b58f9d",
+                    "label": "Post-Treatment screening"
+                  },
+                  {
+                    "concept": "a89adc46-1350-11df-a1f1-0026b9348838",
+                    "label": "Treatment visit"
+                  },
+                  {
+                    "concept": "3a60fe6f-a116-41ce-9daf-1340085bc02d",
+                    "label": "Complications"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        },
+        {
+          "label": "Purpose of Visit",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "Reasons for current visit, detailed",
+              "id": "visitdetailed",
+              "questionOptions": {
+                "concept": "6e78c98e-554d-498e-b8da-b6bf5a6532bb",
+                "rendering": "group"
+              },
+              "questions": [
+                {
+                  "label": "Purpose of visit",
+                  "id": "purpvist",
+                  "questionOptions": {
+                    "rendering": "select",
+                    "concept": "a89ff5c8-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "5d0f859f-b08a-4bea-8ab3-4d108cb72d69",
+                        "label": "Annual screening"
+                      },
+                      {
+                        "concept": "a89ac184-1350-11df-a1f1-0026b9348838",
+                        "label": "New complaints"
+                      },
+                      {
+                        "concept": "a89b6440-1350-11df-a1f1-0026b9348838",
+                        "label": "Recall/scheduled visit"
+                      },
+                      {
+                        "concept": "a8a4812e-1350-11df-a1f1-0026b9348838",
+                        "label": "Follow up"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other"
+                      }
+                    ]
+                  },
+                  "type": "obs",
+                  "validators": []
+                },
+                {
+                  "label": "Please specify any other purpose of this visit that is not listed above",
+                  "type": "obs",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "purpvist !== 'a8aaf3e2-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "What complaints are you presenting with?",
+                  "id": "complaintsPresentingWith",
+                  "type": "obs",
+                  "questionOptions": {
+                    "rendering": "multiCheckbox",
+                    "concept": "a8a6ddb6-1350-11df-a1f1-0026b9348838",
+                    "answers": [
+                      {
+                        "concept": "5c5e5e89-8e4d-451d-9471-fbe359d40b00",
+                        "label": "Axillary swelling"
+                      },
+                      {
+                        "concept": "a8964726-1350-11df-a1f1-0026b9348838",
+                        "label": "Breast mass"
+                      },
+                      {
+                        "concept": "c7356bfe-e9a8-422b-9a6a-6e42490d308e",
+                        "label": "Breast pain"
+                      },
+                      {
+                        "concept": "a895776a-1350-11df-a1f1-0026b9348838",
+                        "label": "Breast rash"
+                      },
+                      {
+                        "concept": "4dd41494-15c7-4d93-88c1-1dab8c7bc2c7",
+                        "label": "Nipple discharge"
+                      },
+                      {
+                        "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                        "label": "Other (non-coded)"
+                      }
+                    ]
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "purpvist !== 'a89ac184-1350-11df-a1f1-0026b9348838'"
+                  }
+                },
+                {
+                  "label": "What other complaints are you presenting with that are not listed above?",
+                  "id": "otherComplaints",
+                  "type": "obs",
+                  "questionOptions": {
+                    "concept": "a8a06fc6-1350-11df-a1f1-0026b9348838",
+                    "rendering": "text"
+                  },
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "purpvist !== 'a89ac184-1350-11df-a1f1-0026b9348838' || isEmpty(complaintsPresentingWith) || !arrayContains(complaintsPresentingWith, 'a8aaf3e2-1350-11df-a1f1-0026b9348838')"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Reasons For Current Visit",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Purpose of visit:",
+              "id": "purpvists",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a89ff5c8-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "ab202fa8-ad2b-487d-83f8-991f8fa109a1",
+                    "label": "Initial visit"
+                  },
+                  {
+                    "concept": "9593a728-ff99-41ad-9d87-db3d083daa90",
+                    "label": "Second opinion"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "What insurance do you have?",
+              "id": "insuType",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a8b02524-1350-11df-a1f1-0026b9348838",
+                "answers": [
+                  {
+                    "concept": "a899e0ac-1350-11df-a1f1-0026b9348838",
+                    "label": "None"
+                  },
+                  {
+                    "concept": "8b715fed-97f6-4e38-8f6a-c167a42f8923",
+                    "label": "NHIF"
+                  },
+                  {
+                    "concept": "0bfb0150-949b-4625-98b8-b9d8275bcf44",
+                    "label": "Employer based insurance"
+                  },
+                  {
+                    "concept": "6fac74c3-fe25-4170-92a4-3ecb8859152e",
+                    "label": "Private insurance"
+                  },
+                  {
+                    "concept": "a8aaf3e2-1350-11df-a1f1-0026b9348838",
+                    "label": "Other"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            },
+            {
+              "label": "Do you have a family member or caregiver who assists you with taking care of your health needs?",
+              "id": "caregiver",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "25d3dc5a-5ea6-4361-8929-bf1b57826712",
+                "answers": [
+                  {
+                    "concept": "a899b35c-1350-11df-a1f1-0026b9348838",
+                    "label": "Yes"
+                  },
+                  {
+                    "concept": "a899b42e-1350-11df-a1f1-0026b9348838",
+                    "label": "No"
+                  }
+                ]
+              },
+              "type": "obs",
+              "validators": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
 A modal should appear asking you to choose the sections you want to reference. We will select two sections:
-`Pre-Clinic Review` and `Reasons for Current Visit`. Make sure to tick the boxes next to those labels.
+
+- `Pre-Clinic Review`
+- `Reasons for Current Visit`
+
+Make sure to tick the boxes next to those labels.
 
 Further, we want to limit which questions we want to show from those sections. Expand the `Reasons for Current Visit` question and remove the last two questions labelled:
 
-- What insurance do you have?
-- Do you have a family member or caregiver who assists you with taking care of your health needs?
+- `What insurance do you have?`
+- `Do you have a family member or caregiver who assists you with taking care of your health needs?`
 
 By this point, you should have the following options in your section reference configuration:
 
@@ -59,14 +367,12 @@ The Schema Builder panel should show the following layout:
 
 ![Section reference in the Schema Builder](/screens/section-reference-view.png)
 
-Exit the Schema Builder by clicking anywhere on the page. Click the blue Render button to compile the form. Once you see the `Schema updated` alert, click the `Form Viewer` tab to see the visual representation of our form.
+Exit the Schema Builder by clicking anywhere on the page. Click the `Render form` button to compile the form. Once you see the `Schema updated` alert, click the `Form Viewer` tab to see the visual representation of our form. You should see the following:
 
 ![Compiled form](/screens/compiled-form.png)
 
-You can follow this approach to reference as many component forms as you wish. Once done, click File > Save to Server to save your form.
+You can follow this approach to reference as many component forms as you wish.
+
+Once done, click `File` and then `Save to Server` to save your form.
 
 As you've observed, component forms provide a powerful mechanism for encapsulating shared form logic into reusable chunks.
-
-### Addendum
-
-TODO: Mention the `Reference Forms` button.
