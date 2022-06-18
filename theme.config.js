@@ -6,8 +6,8 @@ const themeConfig = {
     <>
       <svg
         className="fill-current"
-        height={36}
-        width={36}
+        height={24}
+        width={24}
         viewBox="0 0 206 233"
         xmlns="http://www.w3.org/2000/svg"
         styles={{
@@ -80,6 +80,7 @@ const themeConfig = {
     </>
   ),
   search: true,
+  floatTOC: true,
   unstable_flexsearch: true,
   projectLink: 'https://github.com/denniskigen/ampath-forms',
   prevLinks: true,
