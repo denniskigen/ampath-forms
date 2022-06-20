@@ -1,6 +1,8 @@
 # Questions
 
-A question is a field in the form. Below is an example of a question that seeks to establish the patient's `Current HIV status`:
+A question is a field in a Form. It consists of a label, an associated input, and a set of answers.
+
+Below is an example of a question that seeks to establish the patient's `Current HIV status`:
 
 ```json
 {
