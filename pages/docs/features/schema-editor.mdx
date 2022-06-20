@@ -1,0 +1,42 @@
+import Callout from 'nextra-theme-docs/callout'
+
+# The Schema editor
+
+The Schema editor is the area where you'll do most of your work.
+
+![Schema editor](/screens/editor-only.png)
+
+You can access the Schema editor in two ways:
+
+- Clicking **Create a new form** to create a new form or a Component.
+- Clicking the pen icon next to a form in the Forms List to edit an existing schema.
+
+### Features of the Schema editor
+
+- The interactive **Schema Builder**. Accessible by clicking the hamburger menu at the far left of the navigation bar.
+- The **File** menu. From it, you can either:
+
+  - **Save a form locally** by persisting the schema to your browse's LocalStorage.
+  - **Save a form to the server**.
+
+- The **View** menu. Allows you to toggle between **Tab View** and **Split View** modes.
+- The **Tasks** menu. Allows you to:
+
+  - Add Concept Mappings to your schema.
+  - Validate Concepts.
+
+- The **User info** menu. This menu shows information about the logged-in user.
+- The **Audit info** menu. This menu shows audit information for a form schema. This information includes form metadata such as the form name, UUID, version, description, and the associated Encounter Type. It also shows who created or modified a form and when.
+- The **Manage Referenced Forms** button. Clicking this button shows a list of components referenced by the active form. It also allows you to reference Components from a handy dropdown menu.
+
+<Callout emoji="ℹ️">
+  Components are reusable forms that encapsulate related logic. They can be
+  mixed and matched to create complex forms. Read more about components in the
+  [Referencing Forms](/docs/referencing-forms) guide.
+</Callout>
+
+- The **Publish form** button. Allows you to publish your form schema.
+- The **Schema editor tab** renders a JSON-based representation of your form schema in an embedded code editor.
+- The **Form Viewer** tab renders the visual representation of your form schema once it gets compiled by the form engine.
+- The **Render form** button. Clicking this button enables the form engine to compile your form schema. This step ensures that your form schema is valid and free of errors.
+- The **build timestamp** at the bottom right of the page shows information the current build version.
