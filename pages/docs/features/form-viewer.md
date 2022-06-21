@@ -1,4 +1,4 @@
-# The Form viewer
+# Form Viewer
 
 The Form viewer renders the compiled form schema. It provides an interactive visual representation of how the form would look in your frontend.
 

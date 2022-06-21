@@ -68,7 +68,7 @@ Here's a reference of the various properties you can specify in a question defin
     }
     ```
 
-  - `calculate`: An object where you can specify `calculateExpressions`. These are predefined expression helpers that take inputs and return numeric values. Read more about calculateExpressions in the [Expression helper functions](/docs/expression-helpers) reference.
+  - `calculate`: An object where you can specify `calculateExpressions`. These are predefined expression helpers that take inputs and return numeric values. Read more about calculateExpressions in the [Performing Calculations](/docs/performing-calculations) guide.
 
     ```json
     {
@@ -95,7 +95,7 @@ Here's a reference of the various properties you can specify in a question defin
 
   ![Historical expressions](/screens/historical-expressions.png)
 
-- `hide`: You can use this to define logic for hiding a question based on certain conditions. To do so, you provide a JavaScript expression that evaluates to a boolean value.
+- `hide`: You can use this to define logic for hiding a question based on certain conditions. To do so, you provide a JavaScript expression that evaluates to a boolean value. Read more about hiding fields in the [Hiding fields](/docs/conditional-rendering) guide.
 
   ```json
   {
