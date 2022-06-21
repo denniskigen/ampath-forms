@@ -87,7 +87,11 @@ const themeConfig = {
   nextLinks: true,
   footer: true,
   footerEditLink: 'Edit this page on GitHub',
-  footerText: <>{new Date().getFullYear()} © AMPATH</>,
+  footerText: (
+    <span className="text-xs">
+      © {new Date().getFullYear()} AMPATH. All rights reserved.
+    </span>
+  ),
 }
 
 export default themeConfig

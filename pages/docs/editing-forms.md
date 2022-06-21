@@ -2,7 +2,7 @@
 
 Let's see how we can edit existing forms using the Form Builder.
 
-## Find your form
+## Find your Form
 
 Begin by searching for the form you want to work on by typing the form name in the search input at the top right-hand section of the Forms list. Alternatively, you could navigate the Forms list using the pagination controls at the bottom to find the appropriate form.
 

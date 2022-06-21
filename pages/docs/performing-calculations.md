@@ -28,7 +28,7 @@ Here, the `calculateExpression` returns the value of invoking [calcBMI](/docs/ex
 
 ## More Examples
 
-#### 1. Using [moment](https://momentjs.com/) to find difference between two dates in years
+#### 1. Using [moment](https://momentjs.com/) to compute the difference between two dates in years
 
 ```json
 "calculate": {
