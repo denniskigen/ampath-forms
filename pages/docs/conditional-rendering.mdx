@@ -1,0 +1,23 @@
+import Callout from 'nextra-theme-docs/callout'
+
+# Rendering Fields Conditionally
+
+You can render Form fields conditionally by defining a `hideWhenExpression` inside the `hide` property of your question definitions.
+
+A `hideWhenExpression` is a JavaScript expression that returns a boolean value (`true` or `false`). [Logical operators](https://javascript.info/logical-operators) are used to construct these expressions. Additionally, you can incorporate injected data sources and expression helper functions into your expression definitions.
+
+```json
+{
+  "hide": {
+    "hideWhenExpression": "onArt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+  }
+}
+```
+
+In the example above, the logic provided instructs the Form Builder to hide (not render) the question with the `onArt` id if the value of its backing concept does not match the supplied value.
+
+<Callout emoji="ℹ️">
+  Note that at the moment it is only possible to render <b>questions</b>{' '}
+  conditionally. AMPATH Forms does not <em>explicitly</em> support hiding
+  sections or pages.
+</Callout>

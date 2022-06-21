@@ -5,6 +5,8 @@
   "editing-forms": "Editing Forms",
   "referencing-forms": "Referencing Forms",
   "validation": "Validation",
+  "conditional-rendering": "Hiding Fields",
+  "performing-calculations": "Performing Calculations",
   "field-types-reference": "Field Types Reference",
   "expression-helpers": "Expression Helpers",
   "advanced-topics": "Advanced Topics",
