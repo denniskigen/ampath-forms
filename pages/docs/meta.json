@@ -4,11 +4,12 @@
   "features": "Features",
   "editing-forms": "Editing Forms",
   "referencing-forms": "Referencing Forms",
-  "validation": "Validation",
   "conditional-rendering": "Hiding Fields",
   "performing-calculations": "Performing Calculations",
+  "historical-expressions": "Historical Expressions",
   "field-types-reference": "Field Types Reference",
   "expression-helpers": "Expression Helpers",
+  "validation": "Validation",
   "advanced-topics": "Advanced Topics",
   "developer-guide": "Developer Guide"
 }

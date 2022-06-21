@@ -1,4 +1,4 @@
-# Validating dates
+# Validating Dates
 
 This type of validation enforces certain conditions for [date](/docs/field-types-reference#date) inputs. You can use date validation to guarantee that a date input only allows:
 

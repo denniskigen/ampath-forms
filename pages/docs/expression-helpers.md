@@ -1,6 +1,6 @@
 # Expression Helpers
 
-AMPATH Forms provide expression helpers that are useful for computing common domain-specific calculation.
+AMPATH Forms provide expression helpers that are useful for computing common domain-specific calculations.
 
 Here's a link to the expression helpers [implementation](https://github.com/AMPATH/ngx-openmrs-formentry/blob/2763b0062c386906ae94e312df961508069cdfec/projects/ngx-formentry/src/form-entry/helpers/js-expression-helper.ts). You can add your own custom expression helpers to this file to make them available in the Form Builder.
 

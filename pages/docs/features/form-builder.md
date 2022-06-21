@@ -1,8 +1,8 @@
 # Form Builder
 
-When working with AMPATH Forms, the primary tool we'll be using is the Form Builder. The Form Builder provides an easy to use UI with which we can create forms of arbitrary complexity.
+The Form Builder provides an easy to use UI with which we can create forms of arbitrary complexity.
 
-When you first visit the Form Builder [website](https://openmrs-spa.org/formbuilder/#/login), you'll see a login screen.
+When you first visit the Form Builder [website](https://openmrs-spa.org/formbuilder/#/login), you'll see this login screen:
 
 ![Login page](/screens/login.png)
 
@@ -12,7 +12,7 @@ Once signed in, you should see this landing page.
 
 ![Landing page](/screens/landing.png)
 
-Features on this page include:
+## Features of the Form Builder
 
 - The `Create a new form` button. Clicking on this launches the Schema editor.
 - The `Forms List view` dropdown. You can use it to toggle between displaying Forms and Components.

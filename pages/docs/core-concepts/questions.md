@@ -35,7 +35,7 @@ Below is an example of a question that seeks to establish the patient's `Current
 }
 ```
 
-### Defining a `Question`
+## Defining a `Question`
 
 Here's a reference of the various properties you can specify in a question definition:
 
@@ -68,7 +68,7 @@ Here's a reference of the various properties you can specify in a question defin
     }
     ```
 
-  - `calculate`: An object where you can specify `calculateExpressions`. These are predefined expression helpers that take inputs and return numeric values. Read more about calculateExpressions in the [Performing Calculations](/docs/performing-calculations) guide.
+  - `calculate`: An object where you can specify `calculateExpressions`. These are predefined expression helpers that take inputs and return numeric values. Read more about `calculateExpressions` in the [Performing Calculations](/docs/performing-calculations) guide.
 
     ```json
     {
@@ -90,8 +90,8 @@ Here's a reference of the various properties you can specify in a question defin
     ```
 
 - `required`: If set to **true**, that form field is considered a required field. Defaults to **false**.
-- `validators`: An array in which you provide validation logic for the specific question. Read more about validation in the [Validation](/docs/validation) reference.
-- `historicalExpression`: This allows you to hook your input up to the `HistoricalEncounterDataService`. This service 'remembers' the last value entered in the input from the last encounter and offers the user the option to reuse that value.
+- `validators`: An array in which you provide validation logic for the specific question. Read more about validation in the [Validation](/docs/validation) guide.
+- `historicalExpression`: This allows you to hook your input up to the `HistoricalEncounterDataService`. This service 'remembers' the last value entered in the input from the last encounter and offers the user the option to reuse that value. Read more about `historicalExpressions` in the [Historical expressions](/docs/historical-expressions) guide.
 
   ![Historical expressions](/screens/historical-expressions.png)
 

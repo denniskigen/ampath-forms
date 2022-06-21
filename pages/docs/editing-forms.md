@@ -16,11 +16,11 @@ You should see the Form schema rendered in the Schema editor.
 
 ![Rendered form schema](/screens/rendered-schema.png)
 
-### Make changes to your Form
+### Amend the Form
 
 You can begin modifying to the form schema. Note that you can see a visual representation of your amended form at any time by clicking the `Render` button at the bottom of the page. Provided your form schema is valid, the form engine should render the Form and update its visual representation. You can then click on the `Form Viewer` tab at the top of the page to reveal the updated visual representation.
 
-### Save your Form
+### Save the Form
 
 When you're done making changes to your form, click `File` and select `Save to Server`.
 

@@ -1,6 +1,8 @@
 # Sections
 
-A section is an element of a form schema that groups together related questions. Sections will be rendered in "collapsed mode" by default. Set `isExpanded` to `true` in the section definition if you want section rendered in "expanded mode".
+A section is an element of a form schema that groups together related questions.
+
+It consists of a label, an `isExpanded` boolean property, and a set of questions. Sections get rendered in 'collapsed mode' by default. Set `isExpanded` to `true` in the section definition if you want section rendered in 'expanded mode'.
 
 Below is an example of an `Encounter Details` page with a section labelled `Encounter Info`.
 
@@ -55,6 +57,8 @@ Below is an example of an `Encounter Details` page with a section labelled `Enco
   ]
 }
 ```
+
+## Referencing Sections from Components
 
 Sections can also be constructed by referencing other sections from components _imported in_ using the [Reference forms](/docs/referencing-forms) feature.
 
