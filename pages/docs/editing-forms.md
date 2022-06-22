@@ -8,7 +8,7 @@ Begin by searching for the form you want to work on by typing the form name in t
 
 ![Forms list](/screens/form-list-edit.png)
 
-### Launch the Form in Edit mode
+## Launch the Form in Edit mode
 
 Click the `Edit` button to launch the form.
 
@@ -16,11 +16,11 @@ You should see the Form schema rendered in the Schema editor.
 
 ![Rendered form schema](/screens/rendered-schema.png)
 
-### Amend the Form
+## Amend the Form
 
 You can begin modifying to the form schema. Note that you can see a visual representation of your amended form at any time by clicking the `Render` button at the bottom of the page. Provided your form schema is valid, the form engine should render the Form and update its visual representation. You can then click on the `Form Viewer` tab at the top of the page to reveal the updated visual representation.
 
-### Save the Form
+## Save the Form
 
 When you're done making changes to your form, click `File` and select `Save to Server`.
 
