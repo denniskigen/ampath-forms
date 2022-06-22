@@ -79,9 +79,9 @@ const themeConfig = {
       <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
     </>
   ),
-  search: true,
+  search: false,
   floatTOC: true,
-  unstable_flexsearch: true,
+  unstable_flexsearch: false,
   projectLink: 'https://github.com/denniskigen/ampath-forms',
   prevLinks: true,
   nextLinks: true,
