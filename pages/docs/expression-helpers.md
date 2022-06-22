@@ -8,7 +8,7 @@ Below is a reference of the functions currently available.
 
 ## calcBMI
 
-Computes a patient's BMI given a valid height and weight value.
+Computes body mass index (BMI) given a valid height and weight value.
 
 ```js
 calcBMI(height, weight)
@@ -25,7 +25,7 @@ A **number** if height and weight values are provided. Otherwise, returns **null
 
 ## calcBSA
 
-Computes a patient's BMI given a valid height and weight value.
+Computes a total body surface area (BSA) given a valid height and weight value.
 
 ```js
 calcBSA(height, weight)
