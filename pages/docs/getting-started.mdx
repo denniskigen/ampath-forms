@@ -15,7 +15,7 @@ Visit the Form Builder [website](https://formbuilder.o3.openmrs.org/) and sign i
 
 ![Login page](/screens/login.png)
 
-<Callout emoji="ℹ️">
+<Callout emoji="⚠️">
   If you experience problems logging in, it could be due to CORS. As the Form
   Builder frontend runs on a different server than the backend, we rely on
   [CORS](https://geekflare.com/cors-basics/) to handle communication between
@@ -25,9 +25,9 @@ Visit the Form Builder [website](https://formbuilder.o3.openmrs.org/) and sign i
 
 ![Login CORS error](/screens/cors-error.png)
 
-### Create a New Form
+## Create a New Form
 
-Click the button named `Create a new form` in the navigation bar.
+Click the button labelled `Create a new form` in the navigation bar.
 
 ![Landing page](/screens/landing.png)
 
@@ -45,19 +45,19 @@ Next, you'll need to provide a name for the new form. You could type in the name
   Test form** is not.
 </Callout>
 
-#### Add a Page
+### Add a Page
 
 Add a page by clicking `Create new page`. This should launch a modal where you can provide a page label. Let's add a page labelled `Consent Elicitation`.
 
 ![Add a page to the form](/screens/add-page.png)
 
-#### Add a Section
+### Add a Section
 
 Add a section by clicking `Create new section`. We'll add a section to the form labelled `Consent`. Sections are rendered in collapsed mode by default. Set `isExpanded` to `true` so the section gets rendered in expanded mode.
 
 ![Add a section to the form](/screens/add-section.png)
 
-#### Add a Question
+### Add a Question
 
 Add a question by clicking `Create new question`. This launches the **Question Editor** panel.
 
@@ -91,7 +91,7 @@ Click **OK** to save your form schema at this point. You should see an alert sho
 
 Your schema should now look like this:
 
-```json
+```json filename="Test POC Patient Consent Form v1.0.json"
 {
   "name": "Test POC Patient Consent Form v1.0",
   "processor": "EncounterFormProcessor",
@@ -158,7 +158,7 @@ Your schema should now look like this:
 }
 ```
 
-### Render your Form
+## Render your Form
 
 <Callout emoji="ℹ️">
   You can test your form at any point during the development process by clicking
@@ -173,7 +173,7 @@ The schema we've created gets rendered as:
 
 It's looking like we're ready to ship our form. Let's do that.
 
-### Save your Form
+## Save your Form
 
 To commit your form to the server, click **File** in the navigation menu and then click **Save to Server**. This will launch a modal asking you to provide the following information about the form:
 
