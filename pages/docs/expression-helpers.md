@@ -103,8 +103,6 @@ A boolean. Returns **true** if `members` is/are in `array`, and **false** otherw
 
 ## calcBSA
 
-### Return value
-
 Computes a total body surface area (BSA) given a valid height and weight value.
 
 ```js
@@ -120,8 +118,6 @@ calcBSA(height, weight)
 
 A **number** if height and weight values are provided. Otherwise, returns **null**.
 
-A **number** if height and weight values are provided. Otherwise, returns **null**.
-
 ## calcBMI
 
 Computes body mass index (BMI) given a valid height and weight value.
@@ -134,6 +130,10 @@ calcBMI(height, weight)
 
 - `height`: number
 - `weight`: number
+
+### Return value
+
+A **number** if height and weight values are provided. Otherwise, returns **null**.
 
 ## calcBMIForAgeZscore
 
