@@ -14,12 +14,12 @@ Computes body mass index (BMI) given a valid height and weight value.
 calcBMI(height, weight)
 ```
 
-#### Parameters
+### Parameters
 
 - `height`: number
 - `weight`: number
 
-#### Return value
+### Return value
 
 A **number** if height and weight values are provided. Otherwise, returns **null**.
 
@@ -31,12 +31,12 @@ Computes a total body surface area (BSA) given a valid height and weight value.
 calcBSA(height, weight)
 ```
 
-#### Parameters
+### Parameters
 
 - `height`: number
 - `weight`: number
 
-#### Return value
+### Return value
 
 A **number** if height and weight values are provided. Otherwise, returns **null**.
 
@@ -48,9 +48,15 @@ Computes a patient's age and sex standardised BMI (BMIz) score .
 calcBMIForAgeZscore(bmiForAgeRef, height, weight)
 ```
 
-#### Parameters
+### Parameters
 
-#### Return value
+- `bmiForAgeRef`
+- `height`: number
+- `weight`: number
+
+### Return value
+
+A **string** if the `height` and `weight` values are valid and a valid `bmiForAgeRef` is provided. Otherwise, returns **null**.
 
 ## calcWeightForHeightZscore
 
@@ -58,9 +64,15 @@ calcBMIForAgeZscore(bmiForAgeRef, height, weight)
 calcWeightForHeightZscore(weightForHeightRef, height, weight)
 ```
 
-#### Parameters
+### Parameters
 
-#### Return value
+- `weightForHeightRef`
+- `height`: number
+- `weight`: number
+
+### Return value
+
+A **string** if the `height` and `weight` values are valid and a valid `weightForHeightRef` is provided. Otherwise, returns **null**.
 
 ## calcHeightForAgeZscore
 
@@ -68,9 +80,15 @@ calcWeightForHeightZscore(weightForHeightRef, height, weight)
 calcHeightForAgeZscore(heightForAgeRef, height, weight)
 ```
 
-#### Parameters
+### Parameters
 
-#### Return value
+- `heightForAgeRef`
+- `height`: number
+- `weight`: number
+
+### Return value
+
+A **string** if the `height` and `weight` values are valid and a valid `heightForAgeRef` is provided. Otherwise, returns **null**.
 
 ## isEmpty
 
@@ -78,11 +96,11 @@ calcHeightForAgeZscore(heightForAgeRef, height, weight)
 isEmpty(val)
 ```
 
-#### Parameters
+### Parameters
 
 - `val`: The `id` of the question being referenced.
 
-#### Return value
+### Return value
 
 A boolean. Returns **true** if the question being referenced has an answer and **false** otherwise.
 
@@ -92,16 +110,16 @@ A boolean. Returns **true** if the question being referenced has an answer and *
 arrayContains(array, members)
 ```
 
-#### Parameters
+### Parameters
 
 - `array`: An array of values, typically concept UUIDs.
 - `members`: A value for which you want to assert its presence in the source array.
 
-#### Return value
+### Return value
 
-A boolean. Returns **true** if `members` is an empty array. If `members` is not an array, it returns **true** if `members` is not contained in the array. If `members` is an array, this function returns **true** if all of the elements in `members` are contained in the source array as well - and if otherwise, returns **false**.
+A **boolean**. Returns **true** if `members` is an empty array. If `members` is not an array, it returns **true** if `members` is not contained in the array. If `members` is an array, this function returns **true** if all of the elements in `members` are contained in the source array as well - and if otherwise, returns **false**.
 
-#### Example
+### Example
 
 Here's a set of questions from the Client Enrollment section of a VDot Enrollment form.
 
@@ -166,13 +184,20 @@ This expression essentially says:
 
 ## arrayContainsAny
 
+Tests whether the source array contains `members` (or the values contained in `members` if it is an `Array`). Returns true if `members` is/are in `array`, and false otherwise.
+
 ```js
 arrayContainsAny(array, members)
 ```
 
-#### Parameters
+### Parameters
 
-#### Return value
+- `array`: array
+- `members`: an array or any value
+
+### Return value
+
+A boolean. Returns **true** if `members` is/are in `array`, and **false** otherwise.
 
 ## extractRepeatingGroupValues
 
@@ -180,9 +205,12 @@ arrayContainsAny(array, members)
 extractRepeatingGroupValues(key, array)
 ```
 
-#### Parameters
+### Parameters
 
-#### Return value
+- `key`: any
+- `array`: Array
+
+### Return value
 
 ## formatDate
 
@@ -190,6 +218,12 @@ extractRepeatingGroupValues(key, array)
 formatDate(value, format, offset)
 ```
 
-#### Parameters
+### Parameters
 
-#### Return value
+- `value`: Date or any
+- `format`: string
+- `offset`: string
+
+### Return value
+
+A **Date** object. If `value` is not a valid Date, returns a new Date from invoking `new Date(value)`. If `value` is `null` or `undefined`, it throws an exception.
