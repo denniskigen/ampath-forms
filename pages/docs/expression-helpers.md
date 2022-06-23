@@ -6,104 +6,6 @@ Here's a link to the expression helpers [implementation](https://github.com/AMPA
 
 Below is a reference of the functions currently available.
 
-## calcBMI
-
-Computes body mass index (BMI) given a valid height and weight value.
-
-```js
-calcBMI(height, weight)
-```
-
-### Parameters
-
-- `height`: number
-- `weight`: number
-
-### Return value
-
-A **number** if height and weight values are provided. Otherwise, returns **null**.
-
-## calcBSA
-
-Computes a total body surface area (BSA) given a valid height and weight value.
-
-```js
-calcBSA(height, weight)
-```
-
-### Parameters
-
-- `height`: number
-- `weight`: number
-
-### Return value
-
-A **number** if height and weight values are provided. Otherwise, returns **null**.
-
-## calcBMIForAgeZscore
-
-Computes a patient's age and sex standardised BMI (BMIz) score .
-
-```js
-calcBMIForAgeZscore(bmiForAgeRef, height, weight)
-```
-
-### Parameters
-
-- `bmiForAgeRef`
-- `height`: number
-- `weight`: number
-
-### Return value
-
-A **string** if the `height` and `weight` values are valid and a valid `bmiForAgeRef` is provided. Otherwise, returns **null**.
-
-## calcWeightForHeightZscore
-
-```js
-calcWeightForHeightZscore(weightForHeightRef, height, weight)
-```
-
-### Parameters
-
-- `weightForHeightRef`
-- `height`: number
-- `weight`: number
-
-### Return value
-
-A **string** if the `height` and `weight` values are valid and a valid `weightForHeightRef` is provided. Otherwise, returns **null**.
-
-## calcHeightForAgeZscore
-
-```js
-calcHeightForAgeZscore(heightForAgeRef, height, weight)
-```
-
-### Parameters
-
-- `heightForAgeRef`
-- `height`: number
-- `weight`: number
-
-### Return value
-
-A **string** if the `height` and `weight` values are valid and a valid `heightForAgeRef` is provided. Otherwise, returns **null**.
-
-## isEmpty
-
-```js
-isEmpty(val)
-```
-
-### Parameters
-
-- `val`: The `id` of the question being referenced.
-
-### Return value
-
-A boolean. Returns **true** if the question being referenced has an answer and **false** otherwise.
-
 ## arrayContains
 
 ```js
@@ -199,6 +101,90 @@ arrayContainsAny(array, members)
 
 A boolean. Returns **true** if `members` is/are in `array`, and **false** otherwise.
 
+## calcBSA
+
+### Return value
+
+Computes a total body surface area (BSA) given a valid height and weight value.
+
+```js
+calcBSA(height, weight)
+```
+
+### Parameters
+
+- `height`: number
+- `weight`: number
+
+### Return value
+
+A **number** if height and weight values are provided. Otherwise, returns **null**.
+
+A **number** if height and weight values are provided. Otherwise, returns **null**.
+
+## calcBMI
+
+Computes body mass index (BMI) given a valid height and weight value.
+
+```js
+calcBMI(height, weight)
+```
+
+### Parameters
+
+- `height`: number
+- `weight`: number
+
+## calcBMIForAgeZscore
+
+Computes a patient's age and sex standardised BMI (BMIz) score .
+
+```js
+calcBMIForAgeZscore(bmiForAgeRef, height, weight)
+```
+
+### Parameters
+
+- `bmiForAgeRef`
+- `height`: number
+- `weight`: number
+
+### Return value
+
+A **string** if the `height` and `weight` values are valid and a valid `bmiForAgeRef` is provided. Otherwise, returns **null**.
+
+## calcHeightForAgeZscore
+
+```js
+calcHeightForAgeZscore(heightForAgeRef, height, weight)
+```
+
+### Parameters
+
+- `heightForAgeRef`
+- `height`: number
+- `weight`: number
+
+### Return value
+
+A **string** if the `height` and `weight` values are valid and a valid `heightForAgeRef` is provided. Otherwise, returns **null**.
+
+## calcWeightForHeightZscore
+
+```js
+calcWeightForHeightZscore(weightForHeightRef, height, weight)
+```
+
+### Parameters
+
+- `weightForHeightRef`
+- `height`: number
+- `weight`: number
+
+### Return value
+
+A **string** if the `height` and `weight` values are valid and a valid `weightForHeightRef` is provided. Otherwise, returns **null**.
+
 ## extractRepeatingGroupValues
 
 ```js
@@ -227,3 +213,17 @@ formatDate(value, format, offset)
 ### Return value
 
 A **Date** object. If `value` is not a valid Date, returns a new Date from invoking `new Date(value)`. If `value` is `null` or `undefined`, it throws an exception.
+
+## isEmpty
+
+```js
+isEmpty(val)
+```
+
+### Parameters
+
+- `val`: The `id` of the question being referenced.
+
+### Return value
+
+A boolean. Returns **true** if the question being referenced has an answer and **false** otherwise.
