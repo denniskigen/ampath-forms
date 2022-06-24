@@ -61,4 +61,4 @@ Here's a sample schema obtained from an `Adult HIV Status` component:
 }
 ```
 
-Read more about referencing components in the [Referencing forms](/docs/referencing-forms) guide.
+Read more about referencing components in the [Referencing components](/docs/referencing-components) guide.
