@@ -60,7 +60,7 @@ Below is an example of an `Encounter Details` page with a section labelled `Enco
 
 ## Referencing Sections from Components
 
-Sections can also be constructed by referencing other sections from components _imported in_ using the [Reference forms](/docs/referencing-forms) feature.
+Sections can also be constructed by referencing other sections from components _imported in_ using the [Reference components](/docs/referencing-components) feature.
 
 ```json
 {
