@@ -26,14 +26,14 @@ And so forth. To do so, You'd need to run the library locally against a hosted f
   npm run build:lib
   ```
 
-  Note the path to the `dist` folder created in this step. It will be needed further ahead.
+  Note the full path to the `dist/ngx-formentry` directory created in this step. It will be needed further ahead.
 
-- Next, open your local `openmrs-esm-patient-chart` clone. We'll add the `dist` folder to our `node_modules` folder. To do so, run:
+- Next, open your local `openmrs-esm-patient-chart` clone. We'll install the `dist/ngx-formentry` directory in our patient chart. To do so, run:
 
   ```sh
   yarn add ...
 
-  # where ... is the path to your dist/ngx-formentry directory from the previous step.
+  # where ... is the path to your dist/ngx-formentry directory from the previous step. It could look like: /Users/johndoe/code/ampath/ngx-openmrs-formentry/dist/ngx-formentry
   ```
 
   It is very important that this step works correctly to establish the link between the formentry library and the frontend.
