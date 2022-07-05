@@ -2,8 +2,6 @@
 title: AMPATH Forms - Build and test OpenMRS form schemas
 ---
 
-import Callout from 'nextra-theme-docs/callout'
-
 {
 // wrapped with {} to mark it as javascript so mdx will not put it under a p tag
 }

@@ -1,3 +1,5 @@
+import Callout from 'nextra-theme-docs/callout'
+
 # Running Formentry locally
 
 You might want to extend the formentry library in the following ways:
@@ -28,13 +30,18 @@ And so forth. To do so, You'd need to run the library locally against a hosted f
 
   Note the full path to the `dist/ngx-formentry` directory created in this step. It will be needed further ahead.
 
-- Next, open your local `openmrs-esm-patient-chart` clone. We'll install the `dist/ngx-formentry` directory in our patient chart. To do so, run:
+- Next, open your local `openmrs-esm-patient-chart` clone. We'll install the `dist/ngx-formentry` directory inside of `packages/esm-form-entry-app`. To do so, run:
 
   ```sh
+  cd packages/esm-form-entry-app
   yarn add ...
 
-  # where ... is the path to your dist/ngx-formentry directory from the previous step. It could look like: /Users/johndoe/code/ampath/ngx-openmrs-formentry/dist/ngx-formentry
+  # where ... is the path to your dist/ngx-formentry directory from the previous step. It could look like: /Users/johndoe/code/ampath/ngx-openmrs-formentry/dist/ngx-formentry.
   ```
+
+  <Callout emoji="ℹ️">
+    If you're using Windows, you might need to wrap your path in double quotes.
+  </Callout>
 
   It is very important that this step works correctly to establish the link between the formentry library and the frontend.
 
