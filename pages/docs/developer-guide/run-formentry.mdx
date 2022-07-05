@@ -1,0 +1,77 @@
+# Running Formentry locally
+
+You might want to extend the formentry library in the following ways:
+
+- Adding custom expression helpers
+- Adding custom validators
+- Changing how labels get rendered
+
+And so forth. To do so, You'd need to run the library locally against a hosted frontend server.
+
+Follow the steps outlined below to run the library locally:
+
+- Fork and clone the [AMPATH formentry](https://github.com/ampath/ngx-openmrs-formentry) repository.
+- Open the file locally and checkout the `3.0.0-carbonize` branch.
+- Install dependencies by running:
+
+  ```sh
+  npm install
+  ```
+
+- Create a production build of the library by running:
+
+  ```sh
+  npm run build:lib
+  ```
+
+  Note the path to the `dist` folder created in this step. It will be needed further ahead.
+
+- Next, open your local `openmrs-esm-patient-chart` clone. We'll add the `dist` folder to our `node_modules` folder. To do so, run:
+
+  ```sh
+  yarn add ...
+
+  # where ... is the path to your dist/ngx-formentry directory from the previous step.
+  ```
+
+  It is very important that this step works correctly to establish the link between the formentry library and the frontend.
+
+- Next, `cd` into the form-entry package in your local patient chart copy:
+
+  ```sh
+    cd packages/esm-form-entry-app
+  ```
+
+  And then spin up our local copy of formentry by running:
+
+  ```sh
+    yarn serve
+  ```
+
+  This command should fire up a dev server on port 4200.
+
+- Next, log into your 3.x frontend (could be `AMPATH 3.x`, `KenyaEMR 3.x`, or a community server like `dev3`) in your browser.
+
+- Make sure that import-map overrides are enabled. If they are, you should see a small grey box at the bottom right hand corner of your screen. If you don't see the overrides icon:
+
+  - Open your browser devtools console and run:
+
+    ```sh
+    localStorage.setItem('openmrs:devtools', true);
+    ```
+
+  - Reload your browser window for the changes to take effect.
+
+- Next, click the box icon to launch the devtools overrides panel. From the search box, find the import map entry for `@openmrs/form-entry`. Click on the item in the list - this should launch a modal where you can type in your override URL. Type in:
+
+  ```
+  http://localhost:4200/openmrs-esm-form-entry-app.js
+  ```
+
+  Reload your browser window for the changes to take effect.
+
+- Congratulations! You should now be running the local version of formentry in your application.
+
+- To test, search for a patient and open their chart. Find the forms widget and launch a clinical form in the workspace. Any changes made to the formentry app should propagate into the form displayed in the workspace.
+
+- Profit!

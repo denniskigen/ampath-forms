@@ -1,4 +1,5 @@
 {
   "contributing-guide": "Contributing Guide",
-  "deploy-form-builder": "Deploy the Form Builder on your server"
+  "deploy-form-builder": "Deploy the Form Builder on your server",
+  "run-formentry": "Running the Formentry library locally"
 }
