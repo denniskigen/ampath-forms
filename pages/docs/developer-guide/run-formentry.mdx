@@ -8,7 +8,7 @@ You might want to extend the formentry library in the following ways:
 
 And so forth. To do so, You'd need to run the library locally against a hosted frontend server.
 
-Follow the steps outlined below to run the library locally:
+## Steps
 
 - Fork and clone the [AMPATH formentry](https://github.com/ampath/ngx-openmrs-formentry) repository.
 - Open the file locally and checkout the `3.0.0-carbonize` branch.
@@ -73,5 +73,7 @@ Follow the steps outlined below to run the library locally:
 - Congratulations! You should now be running the local version of formentry in your application. To test your changes anew, rebuild the library again by running `npm run build:lib` in your local formentry clone. The frontend should pick up the changes automatically.
 
 - To test, search for a patient and open their chart. Find the forms widget and launch a clinical form in the workspace. Any changes made to the formentry app should propagate into the form displayed in the workspace.
+
+- To propagate your changes to your server, you'd need to test them and once satisfied that they're working as they should, package them in a pull request and get them merged to the formentry repository. You'd then need to deploy those changes to your server.
 
 - Profit!
