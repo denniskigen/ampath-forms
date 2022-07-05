@@ -83,7 +83,7 @@ The following question computes `weeklyCondomRequirements` using the value provi
 }
 ```
 
-#### 5. Computing `Estimated Delivery Date` using `moment`
+#### 5. Computing `Estimated Delivery Date` using [moment](https://momentjs.com/)
 
 ```json
 "calculate": {
