@@ -28,7 +28,38 @@ Here, the `calculateExpression` returns the value of invoking [calcBMI](/docs/ex
 
 ## More Examples
 
-#### 1. Using [moment](https://momentjs.com/) to compute the difference between two dates in years
+#### 1. Performing a basic calculation
+
+```json
+{
+  "label": "Average number of sex acts per week",
+  "type": "obs",
+  "id": "weeklyCondomRequirements",
+  "questionOptions": {
+    "concept": "25852ebc-9fc6-40fa-b502-1ce90bc2bcc8",
+    "rendering": "number"
+  }
+}
+```
+
+The following question computes `weeklyCondomRequirements` using the value provided in the previous question.
+
+```json
+{
+  "label": "Condom requirements per month",
+  "type": "obs",
+  "id": "condomRequirementsMonth",
+  "questionOptions": {
+    "concept": "7b3f4d87-17ca-4660-b909-4c53c60cdcf1",
+    "rendering": "number",
+    "calculate": {
+      "calculateExpression": "weeklyCondomRequirements * 4"
+    }
+  }
+}
+```
+
+#### 2. Using [moment](https://momentjs.com/) to compute the difference between two dates in years
 
 ```json
 "calculate": {
@@ -36,7 +67,7 @@ Here, the `calculateExpression` returns the value of invoking [calcBMI](/docs/ex
 }
 ```
 
-#### 2. Computing `Morisky 4 Total Score` from decimal values
+#### 3. Computing `Morisky 4 Total Score` from decimal values
 
 ```json
 "calculate": {
@@ -44,7 +75,7 @@ Here, the `calculateExpression` returns the value of invoking [calcBMI](/docs/ex
 }
 ```
 
-#### 3. Computing `BmiForAgeZscore` using the `calcBMIForAgeZscore` and `isEmpty` expression helpers
+#### 4. Computing `BmiForAgeZscore` using the `calcBMIForAgeZscore` and `isEmpty` expression helpers
 
 ```json
 "calculate": {
@@ -52,7 +83,7 @@ Here, the `calculateExpression` returns the value of invoking [calcBMI](/docs/ex
 }
 ```
 
-#### 4. Computing `Estimated Delivery Date` using `moment`
+#### 5. Computing `Estimated Delivery Date` using `moment`
 
 ```json
 "calculate": {
