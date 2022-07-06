@@ -105,16 +105,31 @@ Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs
 
 ## Troubleshooting
 
+### I get an `Invalid webpack configuration` error when I run `yarn serve`
+
+- If you're using Windows, you may see the following error when you run `yarn serve` in the `esm-form-entry` directory:
+
+  ```
+  An unhandled exception occurred: Invalid configuration object. Webpack has been initialised using a configuration object that does not match the API schema.
+
+  configuration.entry['main'] should not contain the item 'C:\Workspace\example\project-example\node_modules\webpack-dev-server\client\index.js?http://0.0.0.0:0&sockPath=/sockjs-node' twice.
+  -> A non-empty array of non-empty strings
+  ```
+
+  This is a known issue with [single-spa-angular](https://github.com/single-spa/single-spa-angular/issues/328). To work around this, you can modify the `yarn serve` script entry in the `package.json` file in the `esm-form-entry` package as follows:
+
+  ```json
+  "serve": "ng serve --port 4200 --live-reload false",
+  ```
+
 ### I don't see my changes propagated in my SPA environment
 
-Make sure you have saved your changes in the formentry library and run:
+- Make sure you have saved your changes in the formentry library and run:
 
-```sh
+  ```sh
   npm run build:lib
-```
+  ```
 
-To ensure you have the very latest changes in the patient chart, make sure to rerun `yarn add {path-to-dist/ngx-formentry}` in your `esm-form-entry` package directory.
+  To ensure you have the very latest changes in the patient chart, make sure to rerun `yarn add {path-to-dist/ngx-formentry}` in your `esm-form-entry` package directory.
 
-If you still don't see your changes, make sure you're overriding the `esm-form-entry-app` in the import map overrides panel.
-
-### My changes
+- If you still don't see your changes, make sure you're overriding the `esm-form-entry-app` in the import map overrides panel.
