@@ -12,7 +12,7 @@ To write a `hideWhenExpression`, include a code block like this within the `ques
 ```json
 {
   "hide": {
-    "hideWhenExpression": "onArt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
+    "hideWhenExpression": "isEmpty(onArt) || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
   }
 }
 ```
@@ -24,3 +24,42 @@ In the example above, the logic provided instructs the Form Builder to hide (not
   conditionally. AMPATH Forms does not <em>explicitly</em> support hiding
   sections or pages.
 </Callout>
+
+## More examples
+
+#### 1. Using the `isEmpty` helper
+
+```json
+{
+  "hide": {
+    "hideWhenExpression": "isEmpty(screenedForHepatitisB) || screenedForHepatitisB == '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+  }
+}
+```
+
+In this example, the question being validated gets hidden if the question with the id `screenedForHepatitisB` is empty or if its value is the answer backed by the concept ID `1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`. Most often, if your `hideWhenExpression` is not working, it's likely because you did not use the [isEmpty](/docs/expression-helpers#isempty) helper as shown above.
+
+#### 2. Using the `sex` model from a `patient` data source
+
+```json
+{
+  "hide": {
+    "hideWhenExpression": "sex !== 'F'"
+  }
+}
+```
+
+In this example, the question being validated gets hidden if the patient's sex is `F`. For this expression to work, you would need to plug in a patient object that exposes a gender property mapped to either `F` (for female) or `M` (for male).
+Read more about this in the [data sources](/docs/advanced-topics/injecting-data-sources/) guide.
+
+#### 3. Using the `age` model from a `patient` data source
+
+```json
+{
+  "hide": {
+    "hideWhenExpression": "age >= 'F'"
+  }
+}
+```
+
+In this example, the question being validated gets hidden if the patient's age is greater than or equal to 18. For this expression to work, you would need to plug in a patient object that exposes an age value. Read more about this in the [data sources](/docs/advanced-topics/injecting-data-sources/) guide.
