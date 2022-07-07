@@ -6,6 +6,9 @@ You can render Form fields conditionally by defining a `hideWhenExpression` insi
 
 A `hideWhenExpression` is a JavaScript expression that returns a boolean value (`true` or `false`). [Logical operators](https://javascript.info/logical-operators) are used to construct these expressions. Additionally, you can incorporate injected data sources and expression helper functions into your expression definitions.
 
+To write a `hideWhenExpression`, include a code block like this within the `questions` array of your
+[question](/docs/core-concepts/questions) definition:
+
 ```json
 {
   "hide": {
