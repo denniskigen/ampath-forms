@@ -1,14 +1,10 @@
 import Callout from 'nextra-theme-docs/callout'
 
-# Running Formentry locally
+# Running the Form Engine against an OpenMRS 3.x frontend
 
-You might want to extend the formentry library in the following ways:
+Presently, OpenMRS 3.x ships with a custom version of the Form Engine. Most notably this version is styled using the Carbon Design System so its look and feel closely mimics that of the 3.x environment.
 
-- Adding custom expression helpers
-- Adding custom validators
-- Changing how labels, sections and pages get rendered
-
-And so forth. To do so, You'd need to run the library locally against a hosted frontend server.
+If you wish to modify the Form Engine and test it in a 3.x context, you'll need to follow the steps outlined below:
 
 ## Prerequisites
 

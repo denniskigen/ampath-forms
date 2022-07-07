@@ -1,5 +1,6 @@
 {
   "contributing-guide": "Contributing Guide",
   "deploy-form-builder": "Deploy the Form Builder on your server",
-  "run-formentry": "Running the Formentry library locally"
+  "extending-the-form-engine": "Extending the Form Engine",
+  "run-form-engine-in-openmrs3": "Running the Form Engine against an OpenMRS 3.x frontend"
 }
