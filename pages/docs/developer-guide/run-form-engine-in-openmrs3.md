@@ -4,7 +4,7 @@ import Callout from 'nextra-theme-docs/callout'
 
 Presently, OpenMRS 3.x ships with a custom version of the Form Engine. Most notably this version is styled using the Carbon Design System so its look and feel closely mimics that of the 3.x environment.
 
-If you wish to modify the Form Engine and test it in a 3.x context, you'll need to follow the steps outlined below:
+If you wish to modify the Form Engine and test it within a 3.x context, you'll need to follow the steps outlined below:
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs
 ## Steps
 
 - Fork and clone the [AMPATH formentry](https://github.com/ampath/ngx-openmrs-formentry) repository.
-- Open the file locally and checkout the `3.0.0-carbonize` branch.
+- `cd` into your clone and checkout the `3.0.0-carbonize` branch.
 - Install dependencies by running:
 
   ```sh
