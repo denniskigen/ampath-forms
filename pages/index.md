@@ -12,7 +12,7 @@ title: AMPATH Forms - Build and test OpenMRS form schemas
   </div>
 </h1>
 
-AMPATH Forms is a tool that helps you build and render OpenMRS form schemas. It consists of a form builder and a form engine. The form builder enables users to build form schemas of arbitrary complexity. These schemas can be built interactively or by writing JSON code inside the Schema editor. Once built, the form engine processes and renders these schemas. Users can test their forms within the form builder as well as saving them either locally or to a server. Once published, these forms can be made available to a frontend for data entry.
+AMPATH Forms is a tool that helps you build and render OpenMRS form schemas. Conceptually, AMPATH Forms refers to a combination of two things - a [form builder](https://github.com/ampath/ngx-openmrs-formbuilder) and a [form engine](https://github.com/ampath/ngx-openmrs-formentry). The form builder enables users to build form schemas of arbitrary complexity. These schemas can be built interactively or by writing JSON code inside an embedded code editor. These schemas then get built and compiled by the form engine. The output of this process is a visual representation of the schema that users can interact with to enter data, test validations and more. These visual representations are an accurate mapping of how the related forms would appear in your frontend. Users can then save their forms to a server, making them available for use in a frontend for data entry.
 
 <div className="py-20">![App screenshot](/screens/screen.png)</div>
 
