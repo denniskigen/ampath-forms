@@ -8,7 +8,7 @@ title: AMPATH Forms - Build and test OpenMRS form schemas
 
 <h1 className="text-center font-extrabold md:text-4xl mt-8 py-16">
   <div className="flex justify-center">
-    <img src="logo.svg" alt="AMPATH logo" height={20} width={400} />
+    ![AMPATH logo](logo.svg)
   </div>
 </h1>
 
