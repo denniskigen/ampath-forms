@@ -95,6 +95,14 @@ Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs
 
 - To test, search for a patient and open their chart. Find the forms widget and launch a clinical form in the workspace. Any changes made to the formentry app should propagate into the form displayed in the workspace.
 
+  <Callout emoji="ℹ️">
+    Note that OpenMRS 3.x caches the forms you've opened in your browser's
+    `localStorage`. If you're not seeing the latest changes when you load your
+    form in the workspace, it could be because you're viewing a cached version.
+    Make sure to find and delete the `localStorage` entry for your form and then
+    reload to fetch it anew.
+  </Callout>
+
 - To propagate your changes to your server, you'd need to test them and once satisfied that they're working as they should, package them in a pull request and get them merged to the formentry repository. You'd then need to deploy those changes to your server.
 
 - Profit!
