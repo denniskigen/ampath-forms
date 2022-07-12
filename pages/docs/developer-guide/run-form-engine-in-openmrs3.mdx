@@ -42,7 +42,13 @@ Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs
 
   Note the full path to the `dist/ngx-formentry` directory created in this step. It will be needed further ahead.
 
-- Next, open your local `openmrs-esm-patient-chart` clone. We'll install the `dist/ngx-formentry` directory inside of `packages/esm-form-entry-app`. To do so, run:
+- Next, open your local `openmrs-esm-patient-chart` clone. Install dependencies using:
+
+  ```sh
+  npx lerna bootstrap
+  ```
+
+- We'll then install the `dist/ngx-formentry` directory from the previous step inside of `packages/esm-form-entry-app`. To do so, run:
 
   ```sh
   cd packages/esm-form-entry-app
