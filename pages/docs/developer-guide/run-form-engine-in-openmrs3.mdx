@@ -2,9 +2,18 @@ import Callout from 'nextra-theme-docs/callout'
 
 # Running the Form Engine against an OpenMRS 3.x frontend
 
-Presently, OpenMRS 3.x ships with a custom version of the Form Engine. Most notably this version is styled using the Carbon Design System so its look and feel closely mimics that of the 3.x environment.
+Presently, [OpenMRS 3.x](https://dev3.openmrs.org/openmrs) (O3) ships with a [custom version](https://github.com/ampath/ngx-openmrs-formentry) of the Form Engine.
 
-If you wish to modify the Form Engine and test it within a 3.x context, you'll need to follow the steps outlined below:
+This version leverages the [Carbon design system](https://carbondesignsystem.com/) to get its look and feel to match that of O3.
+
+<Callout emoji="ℹ️">
+  You can track the progress of _carbonizing_ the Form Engine via the
+  [3.0.0.carbonize](https://github.com/ampath/ngx-openmrs-formentry/tree/3.0.0-carbonize)
+  branch. Alternatively, you could follow the O3
+  [fork](https://github.com/openmrs/openmrs-ngx-formentry) of the Form Engine.
+</Callout>
+
+If you wish to modify the Form Engine and test it within O3 (or any other O3-based frontends), you'll need to follow the steps outlined below:
 
 ## Prerequisites
 
@@ -102,7 +111,7 @@ Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs
 - To test, search for a patient and open their chart. Find the forms widget and launch a clinical form in the workspace. Any changes made to the formentry app should propagate into the form displayed in the workspace.
 
   <Callout emoji="ℹ️">
-    Note that OpenMRS 3.x caches the forms you've opened in your browser's
+    Note that O3 caches the forms you've opened in your browser's
     `localStorage`. If you're not seeing the latest changes when you load your
     form in the workspace, it could be because you're viewing a cached version.
     Make sure to find and delete the `localStorage` entry for your form and then
