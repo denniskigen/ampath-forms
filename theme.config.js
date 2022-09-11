@@ -88,9 +88,22 @@ const themeConfig = {
   footer: true,
   footerEditLink: 'Edit this page on GitHub',
   footerText: (
-    <span className="text-xs">
-      © {new Date().getFullYear()} AMPATH. All rights reserved.
-    </span>
+    <>
+      <div className="text-xs flex justify-between">
+        <span>© {new Date().getFullYear()} AMPATH.</span>
+        <span className="mx-1">
+          Crafted by{' '}
+          <a
+            href="https://denniskigen.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Dennis
+          </a>
+          .
+        </span>
+      </div>
+    </>
   ),
 }
 
