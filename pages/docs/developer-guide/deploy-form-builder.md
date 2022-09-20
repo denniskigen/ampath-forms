@@ -29,7 +29,7 @@ export OPENMRS_SECURE = false
 
 <Callout emoji="ℹ️">
   http://172.17.0.1 is the OpenMRS host served by Docker on Linux. This could be
-  different on Mac or Windows.
+  different on Mac OS or Windows.
 </Callout>
 
 Create a Dockerized build by running:
@@ -50,3 +50,22 @@ docker compose up
 ```
 
 This will fire up a local server on `http://localhost:4200`.
+
+## Troubleshooting
+
+### I get an `unknown openmrs_host_url variable` error
+
+- You may run into the following error:
+
+  ```sh
+  [emerg] 1#1: unknown "openmrs_host_url" variable
+  nginx: [emerg] unknown "openmrs_host_url" variable
+  ```
+
+  To fix it, use lowercase for the environment variables in the set up step:
+
+  ```sh
+  export openmrs_host_url = http://172.17.0.1
+
+  export openmrs_secure = false
+  ```
