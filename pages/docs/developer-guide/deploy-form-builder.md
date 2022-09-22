@@ -4,7 +4,7 @@ import Callout from 'nextra-theme-docs/callout'
 
 <Callout emoji="ℹ️">
   You will need to have [Docker](https://docs.docker.com/desktop/) installed and
-  running on your system.
+  running on your system. We recommend using the latest version of Docker Desktop.
 </Callout>
 
 Clone the [Form builder](https://github.com/AMPATH/ngx-openmrs-formbuilder) repository:
@@ -19,12 +19,18 @@ Navigate to the `ngx-openmrs-formbuilder` directory and install dependencies usi
 npm install
 ```
 
+Create a Dockerized build by running:
+
+```sh
+docker build -t ng2-openmrs-formbuilder .
+```
+
 Setup environment variables as follows:
 
 ```sh
-export OPENMRS_HOST_URL = http://172.17.0.1
+export OPENMRS_HOST_URL=http://172.17.0.1
 
-export OPENMRS_SECURE = false
+export OPENMRS_SECURE=false
 ```
 
 <Callout emoji="ℹ️">
@@ -32,14 +38,8 @@ export OPENMRS_SECURE = false
   different on Mac OS or Windows.
 </Callout>
 
-Create a Dockerized build by running:
-
-```sh
-docker build -t ng2-openmrs-formbuilder .
-```
-
 <Callout emoji="ℹ️">
-  You could optionally tag your build if you wish to push it to Docker Hub e.g.
+  You could optionally [tag](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t) your build if you wish to push it to Docker Hub e.g.
   `docker build -t ng2-openmrs-formbuilder:bug-fixes`
 </Callout>
 
