@@ -17,7 +17,7 @@ AMPATH Forms is a tool that helps you build and render OpenMRS form schemas. Con
 <div className="py-20 lg:-mx-16 xl:-mx-48">![App screenshot](/screens/screen.png)</div>
 
 <div className="mt-16 mb-20 text-center">
-  [Get Started](/docs/getting-started) · [Form builder on
+  [Start Building](/docs/quickstart) · [Form builder on
   GitHub](https://github.com/ampath/ngx-openmrs-formbuilder) · [Form engine on GitHub](https://github.com/ampath/ngx-openmrs-formentry)
 
 </div>

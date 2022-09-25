@@ -105,6 +105,9 @@ const themeConfig = {
       </div>
     </>
   ),
+  nextThemes: {
+    defaultTheme: 'dark',
+  },
 }
 
 export default themeConfig
