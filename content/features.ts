@@ -10,7 +10,7 @@ import {
   LightningBoltIcon,
   RefreshIcon,
 } from '@heroicons/react/outline'
-import { IconType } from '../components/Icons'
+import { IconType } from '../components/icons'
 
 export type Feature = {
   name: string

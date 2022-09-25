@@ -5,7 +5,7 @@ import {
   ServerIcon,
   SparklesIcon,
 } from '@heroicons/react/outline'
-import { DetailedFeatureLink } from './Feature'
+import { DetailedFeatureLink } from './feature'
 
 export const QuickStartArea = () => {
   return (
