@@ -520,7 +520,7 @@ Renders a dropdown list that is hooked up to a Drug `DataSource`. This field wil
 
 ## file
 
-Renders a file uploader widget from which one can upload image and PDF files from their devices, as well as capturing live images from a webcam.
+Renders a file uploader widget which can be used to upload image and PDF files from local storage, as well as capturing live images from a webcam.
 
 ![File field](/screens/fields-reference/file.gif)
 
