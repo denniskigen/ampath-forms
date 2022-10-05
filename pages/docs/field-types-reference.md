@@ -524,10 +524,6 @@ Renders a file uploader widget which can be used to upload image and PDF files f
 
 ![File field](/screens/fields-reference/file.gif)
 
-## field-set
-
-TODO
-
 ## problem
 
 Renders a dropdown list that is hooked up to a Problem `DataSource`. This field will include answers that have the `Diagnosis`, `Problem` or `Symptom` class.
