@@ -6,7 +6,6 @@ const themeConfig = {
   },
   github: 'https://github.com/denniskigen/ampath-forms',
   docsRepositoryBase: 'https://github.com/denniskigen/ampath-forms/blob/main',
-  titleSuffix: '%s – AMPATH Forms',
   logo: (
     <>
       <svg

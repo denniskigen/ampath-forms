@@ -11,7 +11,7 @@
     "build": "next build"
   },
   "dependencies": {
-    "@heroicons/react": "v1",
+    "@heroicons/react": "^2.0.13",
     "@tailwindcss/typography": "^0.5.9",
     "next": "^13.1.2",
     "react": "18.2.0",
