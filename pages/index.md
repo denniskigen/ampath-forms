@@ -13,7 +13,7 @@ import Image from 'next/image'
 AMPATH Forms is a tool that helps you build and render OpenMRS form schemas. Conceptually, AMPATH Forms refers to a combination of two things - a [form builder](https://github.com/ampath/ngx-openmrs-formbuilder) and a [form engine](https://github.com/ampath/ngx-openmrs-formentry). The form builder enables users to build form schemas of arbitrary complexity. These schemas can be built interactively or by writing JSON code inside the embedded code editor. These schemas then get built and compiled by the form engine. The output of this process is a visual representation of the schema that users can interact with to enter data, test validations and more. These visual representations are an accurate mapping of how the related forms would appear in your frontend. Users can then save their forms to a server, making them available for use in a frontend for data entry.
 
 <div className="py-20 lg:-mx-16 xl:-mx-48">
-  <Image src="/screens/screen.png" alt="App screenshot" height="1136" width="3360"/>
+  <Image src="/screens/screen.webp" alt="App screenshot" height="1071" width="2016"/>
 </div>
 
 <div className="mt-16 mb-20 text-center">

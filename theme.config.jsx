@@ -87,8 +87,6 @@ const themeConfig = {
   project: {
     link: 'https://github.com/denniskigen/ampath-forms',
   },
-  // prevLinks: true,
-  // nextLinks: true,
   footer: {
     text: (
       <div className="text-xs flex justify-between">
