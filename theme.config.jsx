@@ -1,7 +1,12 @@
 const themeConfig = {
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s – AMPATH Forms',
+    }
+  },
   github: 'https://github.com/denniskigen/ampath-forms',
   docsRepositoryBase: 'https://github.com/denniskigen/ampath-forms/blob/main',
-  titleSuffix: ' – AMPATH Forms',
+  titleSuffix: '%s – AMPATH Forms',
   logo: (
     <>
       <svg
@@ -79,16 +84,13 @@ const themeConfig = {
       <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
     </>
   ),
-  search: true,
-  floatTOC: true,
-  unstable_flexsearch: true,
-  projectLink: 'https://github.com/denniskigen/ampath-forms',
-  prevLinks: true,
-  nextLinks: true,
-  footer: true,
-  footerEditLink: 'Edit this page on GitHub',
-  footerText: (
-    <>
+  project: {
+    link: 'https://github.com/denniskigen/ampath-forms',
+  },
+  // prevLinks: true,
+  // nextLinks: true,
+  footer: {
+    text: (
       <div className="text-xs flex justify-between">
         <span>© {new Date().getFullYear()} AMPATH.</span>
         <span className="mx-1">
@@ -103,8 +105,8 @@ const themeConfig = {
           .
         </span>
       </div>
-    </>
-  ),
+    ),
+  },
   nextThemes: {
     defaultTheme: 'dark',
   },

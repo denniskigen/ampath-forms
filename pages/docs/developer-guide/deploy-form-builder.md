@@ -1,8 +1,8 @@
-import Callout from 'nextra-theme-docs/callout'
+import { Callout } from 'nextra-theme-docs'
 
 # Setting up the Form builder on your server
 
-<Callout emoji="ℹ️">
+<Callout emoji="ℹ️" type="info">
   You will need to have [Docker](https://docs.docker.com/desktop/) installed and
   running on your system. We recommend using the latest version of Docker Desktop.
 </Callout>
@@ -33,12 +33,12 @@ export OPENMRS_HOST_URL=http://172.17.0.1
 export OPENMRS_SECURE=false
 ```
 
-<Callout emoji="ℹ️">
+<Callout emoji="ℹ️" type="info">
   http://172.17.0.1 is the OpenMRS host served by Docker on Linux. This could be
   different on Mac OS or Windows.
 </Callout>
 
-<Callout emoji="ℹ️">
+<Callout emoji="ℹ️" type="info">
   You could optionally [tag](https://docs.docker.com/engine/reference/commandline/build/#tag-an-image--t) your build if you wish to push it to Docker Hub e.g.
   `docker build -t ng2-openmrs-formbuilder:bug-fixes`
 </Callout>

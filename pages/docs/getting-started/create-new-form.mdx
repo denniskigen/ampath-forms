@@ -1,4 +1,4 @@
-import Callout from 'nextra-theme-docs/callout'
+import { Callout } from 'nextra-theme-docs'
 import Link from 'next/link'
 
 # Creating a new form
@@ -15,7 +15,7 @@ Visit the Form Builder [website](https://formbuilder.o3.openmrs.org/) and sign i
 
 ![Login page](/screens/login.png)
 
-<Callout emoji="⚠️">
+<Callout type="warning" emoji="⚠️">
   If you experience problems logging in, it could be due to CORS. As the Form
   Builder frontend runs on a different server than the backend, we rely on
   [CORS](https://geekflare.com/cors-basics/) to handle communication between
@@ -39,7 +39,7 @@ Next, you'll need to provide a name for the new form. You could type in the name
 
 ![Specify the name of the form](/screens/add-form-name.png)
 
-<Callout emoji="ℹ️">
+<Callout emoji="ℹ️" type="info">
   Presently, your form name must to contain the word **POC** for it to be deemed
   valid. For example, **Test POC form** is a valid form name while **Yet Another
   Test form** is not.
@@ -61,7 +61,7 @@ Add a section by clicking `Create new section`. We'll add a section to the form 
 
 Add a question by clicking `Create new question`. This launches the **Question Editor** panel.
 
-<Callout emoji="ℹ️">
+<Callout emoji="ℹ️" type="info">
   The question editor panel provides concept lookup functionality via your
   concept dictionary. This functionality is contingent on your having set up the
   relevant concepts ahead of time in your dictionary. This guidance makes the
@@ -91,7 +91,7 @@ Click **OK** to save your form schema at this point. You should see an alert sho
 
 Your schema should now look like this:
 
-```json filename="Test POC Patient Consent Form v1.0.json"
+```json copy filename="Test POC Patient Consent Form v1.0.json"
 {
   "name": "Test POC Patient Consent Form v1.0",
   "processor": "EncounterFormProcessor",
@@ -160,7 +160,7 @@ Your schema should now look like this:
 
 ## Render your Form
 
-<Callout emoji="ℹ️">
+<Callout emoji="ℹ️" type="info">
   You can test your form at any point during the development process by clicking
   the `Render form` button in the Schema editor.
 </Callout>
@@ -188,7 +188,7 @@ Once done, click **OK** to save your form, and then click **Exit** to leave the 
 
 You should now be able to see your new form in the Forms List.
 
-<Callout emoji="ℹ️">
+<Callout emoji="ℹ️" type="info">
   You could choose to publish your form by clicking `Publish form` when in the
   Schema editor.
 </Callout>

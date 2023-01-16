@@ -1,4 +1,4 @@
-import Callout from 'nextra-theme-docs/callout'
+import { Callout } from 'nextra-theme-docs'
 
 # Rendering Fields Conditionally
 
@@ -9,7 +9,7 @@ A `hideWhenExpression` is a JavaScript expression that returns a boolean value (
 To write a `hideWhenExpression`, include a code block like this within the `questions` array of your
 [question](/docs/core-concepts/questions) definition:
 
-```json
+```json copy
 {
   "hide": {
     "hideWhenExpression": "isEmpty(onArt) || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
@@ -19,7 +19,7 @@ To write a `hideWhenExpression`, include a code block like this within the `ques
 
 In the example above, the logic provided instructs the Form Builder to hide (not render) the question with the `onArt` id if the value of its backing concept does not match the supplied value.
 
-<Callout emoji="ℹ️">
+<Callout emoji="ℹ️" type="info">
   Note that at the moment it is only possible to render <b>questions</b>{' '}
   conditionally. AMPATH Forms does not <em>explicitly</em> support hiding
   sections or pages.
@@ -29,7 +29,7 @@ In the example above, the logic provided instructs the Form Builder to hide (not
 
 #### 1. Using the `isEmpty` helper
 
-```json
+```json copy
 {
   "hide": {
     "hideWhenExpression": "isEmpty(screenedForHepatitisB) || screenedForHepatitisB == '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
@@ -41,7 +41,7 @@ In this example, the question being validated gets hidden if the question with t
 
 #### 2. Using the `sex` model from a `patient` data source
 
-```json
+```json copy
 {
   "hide": {
     "hideWhenExpression": "sex !== 'F'"
@@ -54,7 +54,7 @@ Read more about this in the [data sources](/docs/advanced-topics/injecting-data-
 
 #### 3. Using the `age` model from a `patient` data source
 
-```json
+```json copy
 {
   "hide": {
     "hideWhenExpression": "age >= 18"

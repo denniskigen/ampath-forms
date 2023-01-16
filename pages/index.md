@@ -1,6 +1,4 @@
----
-title: AMPATH Forms - Build and test OpenMRS form schemas
----
+import Image from 'next/image'
 
 {
 // wrapped with {} to mark it as javascript so mdx will not put it under a p tag
@@ -8,7 +6,7 @@ title: AMPATH Forms - Build and test OpenMRS form schemas
 
 <h1 className="text-center font-extrabold md:text-4xl mt-8 py-16">
   <div className="flex justify-center">
-    ![AMPATH logo](logo.svg)
+    <Image src="logo.svg" alt="AMPATH Forms logo" height="100" width="300"/>
   </div>
 </h1>
 

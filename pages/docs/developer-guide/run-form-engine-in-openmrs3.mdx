@@ -1,4 +1,4 @@
-import Callout from 'nextra-theme-docs/callout'
+import { Callout } from 'nextra-theme-docs'
 
 # Running the Form Engine against an OpenMRS 3.x frontend
 
@@ -6,7 +6,7 @@ Presently, [OpenMRS 3.x](https://dev3.openmrs.org/openmrs) (O3) ships with a [cu
 
 This version leverages the [Carbon design system](https://carbondesignsystem.com/) to get its look and feel to match that of O3.
 
-<Callout emoji="ℹ️">
+<Callout emoji="ℹ️" type="info">
   You can track the progress of _carbonizing_ the Form Engine via the
   [3.0.0.carbonize](https://github.com/ampath/ngx-openmrs-formentry/tree/3.0.0-carbonize)
   branch. Alternatively, you could follow the OpenMRS
@@ -66,7 +66,7 @@ Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs
   # where ... is the path to your dist/ngx-formentry directory from the previous step. It could look like: /Users/johndoe/code/ampath/ngx-openmrs-formentry/dist/ngx-formentry.
   ```
 
-  <Callout emoji="ℹ️">
+  <Callout emoji="ℹ️" type="info">
     If you're using Windows, you might need to wrap your path in double quotes.
   </Callout>
 
@@ -110,7 +110,7 @@ Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs
 
 - To test, search for a patient and open their chart. Find the forms widget and launch a clinical form in the workspace. Any changes made to the formentry app should propagate into the form displayed in the workspace.
 
-  <Callout emoji="ℹ️">
+  <Callout emoji="ℹ️" type="info">
     Note that O3 caches the forms you've opened in your browser's
     `localStorage`. If you're not seeing the latest changes when you load your
     form in the workspace, it could be because you're viewing a cached version.
@@ -137,7 +137,7 @@ Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs
 
   This is a known issue with [single-spa-angular](https://github.com/single-spa/single-spa-angular/issues/328). To work around this, you can modify the `yarn serve` script entry in the `package.json` file in the `esm-form-entry` package as follows:
 
-  ```json
+  ```json copy
   "serve": "ng serve --port 4200 --live-reload false",
   ```
 

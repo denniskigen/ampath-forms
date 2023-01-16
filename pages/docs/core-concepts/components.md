@@ -18,7 +18,7 @@ You can view a list of all the components available in the system by toggling be
 
 Here's a sample schema obtained from an `Adult HIV Status` component:
 
-```json filename="component_adult-hiv-status.json"
+```json copy filename="component_adult-hiv-status.json"
 {
   "name": "component_adult-hiv-status",
   "uuid": "xxxx",

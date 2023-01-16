@@ -6,7 +6,7 @@ It consists of a label, an `isExpanded` boolean property, and a set of questions
 
 Below is an example of an `Encounter Details` page with a section labelled `Encounter Info`.
 
-```json
+```json copy
 {
   "pages": [
     {
@@ -62,7 +62,7 @@ Below is an example of an `Encounter Details` page with a section labelled `Enco
 
 Sections can also be constructed by referencing other sections from components _imported in_ using the [Reference components](/docs/referencing-components) feature.
 
-```json
+```json copy
 {
   // reference forms
   "referencedForms": [

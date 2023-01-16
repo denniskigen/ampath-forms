@@ -4,7 +4,7 @@ AMPATH Forms support multiple field types. The most commonly used fields include
 
 Field types are defined in the `questionOptions` definition of a question using the following syntax:
 
-```json
+```json copy
 {
   "questionOptions": {
     "rendering": "" // field type goes here
@@ -22,7 +22,7 @@ Below is an example showing a text input. This input is shown when `Other treatm
 
 The code for this is as follows:
 
-```json
+```json copy
 {
   "label": "Other treatment methods not listed above",
   "type": "obs",
@@ -48,7 +48,7 @@ Below is an example showing a couple of number inputs used to establish the numb
 
 The code for this is as follows:
 
-```json
+```json copy
 {
   "label": "Reproductive History",
   "isExpanded": "true",
@@ -98,7 +98,7 @@ Below is an example of a select field from a Cervical Cancer screening visit for
 
 The code for this is as follows:
 
-```json
+```json copy
 {
   "questions": [
     {
@@ -159,7 +159,7 @@ Below is an example of a date field where you can specify the patient's return t
 
 The code for this is as follows:
 
-```json
+```json copy
 {
   "label": "Next Appointment",
   "sections": [
@@ -204,7 +204,7 @@ Below is an example of a multiple-choice field showing three Cervical cancer scr
 
 The code for this is as follows:
 
-```json
+```json copy
 {
   "label": "Routine Screening",
   "isExpanded": "true",
@@ -247,7 +247,7 @@ Renders a textarea input. By default, the textarea will be 18 rows tall. You can
 
 The code for this is as follows:
 
-```json
+```json copy
 {
   "label": "Assessment",
   "sections": [
@@ -282,7 +282,7 @@ Below is an example of a radio input for a field labelled `Type of Care`:
 
 The code for this is as follows:
 
-```json
+```json copy
 {
   "label": "Type of care:",
   "type": "obs",
@@ -326,7 +326,7 @@ Below is an example of a ui-select-extended field hooked up to a resource that p
 
 The code for this is as follows:
 
-```json
+```json copy
 {
   "label": "At which AMPATH facility are you receiving HIV care?",
   "id": "careLocation",
@@ -350,7 +350,7 @@ The code for this is as follows:
 
 ## group
 
-```json
+```json copy
 {
   "label": "Transfer Out",
   "questions": [
@@ -425,7 +425,7 @@ Renders a repeating group field.
 
 ![Repeating group field](/screens/fields-reference/repeating-group.gif)
 
-```json
+```json copy
 {
   "label": "Test orders",
   "sections": [
@@ -491,7 +491,7 @@ Renders a dropdown list that is hooked up to a Drug `DataSource`. This field wil
 
 ![Drug field](/screens/fields-reference/drug.gif)
 
-```json
+```json copy
 {
   "label": "Additional Medication Orders",
   "questions": [

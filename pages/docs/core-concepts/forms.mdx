@@ -1,10 +1,10 @@
-import Callout from 'nextra-theme-docs/callout'
+import { Callout } from 'nextra-theme-docs'
 
 # Forms
 
 A form represents a collection of pages, sections and questions. Forms are described using schemas written in JSON. The most basic valid form schema looks as follows:
 
-```json
+```json copy
 {
   "name": "",
   "pages": [],
@@ -22,7 +22,7 @@ A form definition has the following properties:
 
 - `name`: The name of the form.
 
-  <Callout emoji="ℹ️">
+  <Callout emoji="ℹ️" type="info">
     Presently, form names must contain the word **POC** to be considered valid.
     For example, **Test POC form** is a valid form name while **Yet Another Test
     form** is not.

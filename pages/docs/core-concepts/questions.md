@@ -4,7 +4,7 @@ A question is a field in a Form. It consists of a label, an associated input, an
 
 Below is an example of a question that seeks to establish the patient's `Current HIV status`:
 
-```json
+```json copy
 {
   "questions": [
     {
@@ -49,7 +49,7 @@ Here's a reference of the various properties you can specify in a question defin
   - `concept`: The concept UUID of the backing concept for this field. You can get this concept UUID from searching in the Concept Dictionary.
   - `answers`: An array of answers scoped to a question. An answer definition consists of a concept UUID and label pair. Below is an example of answers to a `Current HIV status` question:
 
-    ```json
+    ```json copy
     {
       "answers": [
         {
@@ -70,7 +70,7 @@ Here's a reference of the various properties you can specify in a question defin
 
   - `calculate`: An object where you can specify `calculateExpressions`. These are predefined expression helpers that take inputs and return numeric values. Read more about `calculateExpressions` in the [Performing Calculations](/docs/performing-calculations) guide.
 
-    ```json
+    ```json copy
     {
       "label": "BMI (Kg/M2):",
       "questionInfo": "",
@@ -97,7 +97,7 @@ Here's a reference of the various properties you can specify in a question defin
 
 - `hide`: You can use this to define logic for hiding a question based on certain conditions. To do so, you provide a JavaScript expression that evaluates to a boolean value. Read more about hiding fields in the [Hiding fields](/docs/conditional-rendering) guide.
 
-  ```json
+  ```json copy
   {
     "hide": {
       "hideWhenExpression": "onArt!== 'a899b35c-1350-11df-a1f1-0026b9348838'"
@@ -114,7 +114,7 @@ Here's a reference of the various properties you can specify in a question defin
 
   The code for this is as follows:
 
-  ```json
+  ```json copy
   {
     "label": "Person Collecting Medication",
     "questions": [

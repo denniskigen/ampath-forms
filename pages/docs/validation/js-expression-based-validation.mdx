@@ -1,4 +1,4 @@
-import Callout from 'nextra-theme-docs/callout'
+import { Callout } from 'nextra-theme-docs'
 
 # Expression-based Validation
 
@@ -8,7 +8,7 @@ When using expressions to validate form inputs, you must provide a [JavaScript e
 
 The basic structure of an expression-based validator looks as follows:
 
-```json {3-5}
+```json copy {3-5}
 "validators": [
   {
     "type": "js_expression",
@@ -32,7 +32,7 @@ Below is an example of expression-based validation taken from a Cervical Cancer 
 
 The following is a snippet taken from its schema:
 
-```json {52-54}
+```json copy {52-54}
 {
   "type": "obs",
   "label": "HIV Status",
@@ -97,14 +97,14 @@ The following is a snippet taken from its schema:
 }
 ```
 
-<Callout emoji="ℹ️">
+<Callout emoji="ℹ️" type="info">
   This question assumes that only HIV Positive clients are expected to be
   engaged in active HIV care.
 </Callout>
 
 A lot is going on in this example. Let us attempt to break it down step by step. The first question (id `hivStatus`) seeks to establish the client's HIV status. The next question (id `currentlyOnArt`) asks whether the client is actively receiving HIV care. Note that this second question also has validation enabled.
 
-```json
+```json copy
 {
   "validators": [
     {
@@ -131,7 +131,7 @@ When the current HIV status gets set to `HIV Positive` and the next question is 
 
 #### 1. Using [moment](https://momentjs.com/) to validate encounter dates
 
-```json
+```json copy
 "validators": [
   {
     "type": "js_expression",
@@ -143,7 +143,7 @@ When the current HIV status gets set to `HIV Positive` and the next question is 
 
 #### 2. Using [arrayContains](/docs/expression-helpers#arraycontains) and [isEmpty](/docs/expression-helpers#isempty) helpers
 
-```json
+```json copy
 "validators": [
   {
     "type": "js_expression",
@@ -155,7 +155,7 @@ When the current HIV status gets set to `HIV Positive` and the next question is 
 
 #### 3. Using multiple logical operators (`||` and `&&`)
 
-```json
+```json copy
 "validators": [
   {
     "type": "js_expression",
@@ -167,12 +167,12 @@ When the current HIV status gets set to `HIV Positive` and the next question is 
 
 #### 4. Leveraging values from an injected data source
 
-<Callout emoji="ℹ️">
+<Callout emoji="ℹ️" type="info">
   In this example, the `sex` value is obtained from a Patient [data
   source](/docs/advanced-topics/injecting-data-sources).
 </Callout>
 
-```json
+```json copy
 "validators": [
   {
     "type": "js_expression",

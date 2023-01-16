@@ -25,7 +25,7 @@ A **boolean**. Returns **true** if `members` is an empty array. If `members` is 
 
 Here's a set of questions from the Client Enrollment section of a VDot Enrollment form.
 
-```json
+```json copy
 {
   "label": "Reason for referral",
   "type": "obs",
@@ -73,7 +73,7 @@ We want to validate the `Specify other reason` question so that it only gets dis
 
 To achieve this, add the following `hide` expression to the `Specify other reason` question definition:
 
-```json
+```json copy
 "hide": {
   "hideWhenExpression": "isEmpty(referralReason) || !arrayContains(referralReason,'5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
 }
