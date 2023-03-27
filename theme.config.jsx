@@ -4,7 +4,6 @@ const themeConfig = {
       titleTemplate: '%s – AMPATH Forms',
     }
   },
-  github: 'https://github.com/denniskigen/ampath-forms',
   docsRepositoryBase: 'https://github.com/denniskigen/ampath-forms/blob/main',
   logo: (
     <>
@@ -90,9 +89,10 @@ const themeConfig = {
     text: (
       <div className="text-xs flex justify-between">
         <span>© {new Date().getFullYear()} AMPATH.</span>
-        <span className="mx-1">
+        <span style={{ marginLeft: '0.5rem' }}>
           Crafted by{' '}
           <a
+            style={{ color: '#006be6' }}
             href="https://denniskigen.com"
             target="_blank"
             rel="noopener noreferrer"
