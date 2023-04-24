@@ -105,7 +105,7 @@ const themeConfig = {
     ),
   },
   nextThemes: {
-    defaultTheme: 'dark',
+    defaultTheme: 'light',
   },
 }
 
