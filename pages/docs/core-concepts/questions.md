@@ -93,7 +93,7 @@ Here's a reference of the various properties you can specify in a question defin
 - `validators`: An array in which you provide validation logic for the specific question. Read more about validation in the [Validation](/docs/validation) guide.
 - `historicalExpression`: This allows you to hook your input up to the `HistoricalEncounterDataService`. This service 'remembers' the last value entered in the input from the last encounter and offers the user the option to reuse that value. Read more about `historicalExpressions` in the [Historical expressions](/docs/historical-expressions) guide.
 
-  ![Historical expressions](/screens/historical-expressions.png)
+  ![Historical expressions](/screens/historical-expressions.webp)
 
 - `hide`: You can use this to define logic for hiding a question based on certain conditions. To do so, you provide a JavaScript expression that evaluates to a boolean value. Read more about hiding fields in the [Hiding fields](/docs/conditional-rendering) guide.
 
@@ -110,7 +110,7 @@ Here's a reference of the various properties you can specify in a question defin
 
 - `questionInfo`: You can specify helper text for the question here. When specified, a question mark icon gets displayed to the right of the question label. When you hover over it, the information you entered gets displayed as a tooltip.
 
-  ![Question info tooltip](/screens/question-info-tooltip.png)
+  ![Question info tooltip](/screens/question-info-tooltip.webp)
 
   The code for this is as follows:
 

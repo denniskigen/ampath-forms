@@ -13,7 +13,7 @@ Visit the Form Builder [website](https://formbuilder.o3.openmrs.org/) and sign i
 - Username: `admin`
 - Password: `Admin123`
 
-![Login page](/screens/login.png)
+![Login page](/screens/login.webp)
 
 <Callout type="warning" emoji="⚠️">
   If you experience problems logging in, it could be due to CORS. As the Form
@@ -23,21 +23,21 @@ Visit the Form Builder [website](https://formbuilder.o3.openmrs.org/) and sign i
   extension in your browser that bypasses CORS checks to log in successfully.
 </Callout>
 
-![Login CORS error](/screens/cors-error.png)
+![Login CORS error](/screens/cors-error.webp)
 
 ## Create a New Form
 
 Click the button labelled `Create a new form` in the navigation bar.
 
-![Landing page](/screens/landing.png)
+![Landing page](/screens/landing.webp)
 
 You will be directed to the Schema editor. You could toggle between a `Tab view` and `Split view` from the `View` option in the navigation menu. By default, the editor will have a basic schema scaffold open.
 
-![Schema editor](/screens/schema-editor.png)
+![Schema editor](/screens/schema-editor.webp)
 
 Next, you'll need to provide a name for the new form. You could type in the name directly into the `name` field of the schema. Alternatively, you could use the interactive schema builder. Click the hamburger menu in the navbar to launch the builder. Type in `Test POC Patient Consent Form v1.0` as the name of your form. Click the green tick to the left when done to update the schema.
 
-![Specify the name of the form](/screens/add-form-name.png)
+![Specify the name of the form](/screens/add-form-name.webp)
 
 <Callout emoji="ℹ️" type="info">
   Presently, your form name must to contain the word **POC** for it to be deemed
@@ -49,13 +49,13 @@ Next, you'll need to provide a name for the new form. You could type in the name
 
 Add a page by clicking `Create new page`. This should launch a modal where you can provide a page label. Let's add a page labelled `Consent Elicitation`.
 
-![Add a page to the form](/screens/add-page.png)
+![Add a page to the form](/screens/add-page.webp)
 
 ### Add a Section
 
 Add a section by clicking `Create new section`. We'll add a section to the form labelled `Consent`. Sections are rendered in collapsed mode by default. Set `isExpanded` to `true` so the section gets rendered in expanded mode.
 
-![Add a section to the form](/screens/add-section.png)
+![Add a section to the form](/screens/add-section.webp)
 
 ### Add a Question
 
@@ -69,7 +69,7 @@ Add a question by clicking `Create new question`. This launches the **Question E
   the ID `7656` configured.
 </Callout>
 
-![Add a question to the form](/screens/consent-question.png)
+![Add a question to the form](/screens/consent-question.webp)
 
 - Enter `Do you consent to having your information recorded` as the label.
 - Set the `Type` of the question to `obs`.
@@ -77,15 +77,15 @@ Add a question by clicking `Create new question`. This launches the **Question E
 - Set the `ID` of the question to `consentStatus`.
 - Enter `PATIENT CONSENT PROVIDED` in the `Concept` field and click the search icon. This will launch a modal where you can conduct a concept search lookup. You could search based on the concept name, concept ID, or concept UUID. In this example, this concept search is conducted from the AMPATH concept dictionary. The `PATIENT CONSENT PROVIDED` concept referenced here has the concept ID `7656`. Press **OK** to save.
 
-![Concept lookup](/screens/concept-lookup.png)
+![Concept lookup](/screens/concept-lookup.webp)
 
 A modal should now appear asking you to pick your desired Answers from a list of available Answers. Click **Select All** to choose both `YES` and `NO`.
 
-![Select answers from concept lookup modal](/screens/concept-lookup-select-answers-modal.png)
+![Select answers from concept lookup modal](/screens/concept-lookup-select-answers-modal.webp)
 
 Click **OK** to save. You should now see the associated Concept Mappings and the Answers you chose displayed in the Question Editor.
 
-![Question editor showing selected concept mappings and answers](/screens/concept-mappings-and-answers.png)
+![Question editor showing selected concept mappings and answers](/screens/concept-mappings-and-answers.webp)
 
 Click **OK** to save your form schema at this point. You should see an alert showing that the schema was updated successfully.
 
@@ -169,7 +169,7 @@ Click `Render form` to test out your form. If your JSON schema is invalid, you w
 
 The schema we've created gets rendered as:
 
-![Schema editor with Render Form button](/screens/rendered-schema.png)
+![Schema editor with Render Form button](/screens/rendered-schema.webp)
 
 It's looking like we're ready to ship our form. Let's do that.
 
@@ -182,7 +182,7 @@ To commit your form to the server, click **File** in the navigation menu and the
 - The `Encounter type` linked to the form.
 - A short `description` of the form.
 
-![Save modal](/screens/save-modal.png)
+![Save modal](/screens/save-modal.webp)
 
 Once done, click **OK** to save your form, and then click **Exit** to leave the Schema editor.
 

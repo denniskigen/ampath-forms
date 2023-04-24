@@ -18,7 +18,7 @@ Renders a text input.
 
 Below is an example showing a text input. This input is shown when `Other treatment methods e.g. Hysterectomy, Cone biopsy` is selected as the answer to the `Treatment method` question. This input allows the user to specify the treatment method chosen for that visit by typing text into the text field.
 
-![Text field](/screens/fields-reference/text.png)
+![Text field](/screens/fields-reference/text.webp)
 
 The code for this is as follows:
 
@@ -44,7 +44,7 @@ Renders a number input. You can specify optional `min` and `max` values in the `
 
 Below is an example showing a couple of number inputs used to establish the number of pregnancies a patient has had (gravida), as well as the number of pregnancies that have been brought to term (parity).
 
-![Number field](/screens/fields-reference/number.png)
+![Number field](/screens/fields-reference/number.webp)
 
 The code for this is as follows:
 
@@ -94,7 +94,7 @@ Renders a dropdown list.
 
 Below is an example of a select field from a Cervical Cancer screening visit form. Clicking inside the field reveals a dropdown with a list of options. You can only select one option from a select field. If you wish to be able to select more than one option, use a [multiCheckbox](/docs/field-types-reference#multicheckbox) field instead.
 
-![Select field](/screens/fields-reference/select.png)
+![Select field](/screens/fields-reference/select.webp)
 
 The code for this is as follows:
 
@@ -155,7 +155,7 @@ Renders a date input. When clicked, the input reveals a date picker with the cur
 
 Below is an example of a date field where you can specify the patient's return to clinic date.
 
-![Date field](/screens/fields-reference/date.png)
+![Date field](/screens/fields-reference/date.webp)
 
 The code for this is as follows:
 
@@ -200,7 +200,7 @@ Renders a multiple-choice select field. This kind of field differs from a select
 
 Below is an example of a multiple-choice field showing three Cervical cancer screening methods as options: VIA or VIA/VILI, HPV, and Pap smear. In the screenshot below, `VIA or VIA/VILI` and `Pap smear` have been selected.
 
-![Multi-Select field](/screens/fields-reference/multi-select.png)
+![Multi-Select field](/screens/fields-reference/multi-select.webp)
 
 The code for this is as follows:
 
@@ -243,7 +243,7 @@ The code for this is as follows:
 
 Renders a textarea input. By default, the textarea will be 18 rows tall. You can configure the number of visible text lines for the input by providing a number to the rows property in your questionOptions definition.
 
-![Textarea field](/screens/fields-reference/textarea.png)
+![Textarea field](/screens/fields-reference/textarea.webp)
 
 The code for this is as follows:
 
@@ -278,7 +278,7 @@ Renders a radio input. A radio input allows users to select an option from a lis
 
 Below is an example of a radio input for a field labelled `Type of Care`:
 
-![Radio field](/screens/fields-reference/radio.png)
+![Radio field](/screens/fields-reference/radio.webp)
 
 The code for this is as follows:
 

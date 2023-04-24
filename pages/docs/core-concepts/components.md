@@ -14,7 +14,7 @@ As mentioned before, components and forms are functionally similar. The key diff
 
 You can view a list of all the components available in the system by toggling betwen `POC Forms` and `Components` in the Forms List table as shown below:
 
-![Toggling between components and forms in the Forms List](/screens/toggle-components-forms.png)
+![Toggling between components and forms in the Forms List](/screens/toggle-components-forms.webp)
 
 Here's a sample schema obtained from an `Adult HIV Status` component:
 

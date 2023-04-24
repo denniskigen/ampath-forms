@@ -6,7 +6,7 @@ Let's see how we can edit existing forms using the Form Builder.
 
 Begin by searching for the form you want to work on by typing the form name in the search input at the top right-hand section of the Forms list. Alternatively, you could navigate the Forms list using the pagination controls at the bottom to find the appropriate form.
 
-![Forms list](/screens/form-list-edit.png)
+![Forms list](/screens/form-list-edit.webp)
 
 ## Launch the Form in Edit mode
 
@@ -14,7 +14,7 @@ Click the `Edit` button to launch the form.
 
 You should see the Form schema rendered in the Schema editor.
 
-![Rendered form schema](/screens/rendered-schema.png)
+![Rendered form schema](/screens/rendered-schema.webp)
 
 ## Amend the Form
 
@@ -24,10 +24,10 @@ You can begin modifying to the form schema. Note that you can see a visual repre
 
 When you're done making changes to your form, click `File` and select `Save to Server`.
 
-![Dialog prompt asking to save the form](/screens/save-form-dialog.png)
+![Dialog prompt asking to save the form](/screens/save-form-dialog.webp)
 
 If you want to overwrite the existing form schema, select `Update current version`. Otherwise, if you wish to save the schema as a new version, select `Save as new version`.
 
-![Update current form version dialog](/screens/update-form-dialog.png)
+![Update current form version dialog](/screens/update-form-dialog.webp)
 
 Press `OK` to Save. You should see an alert notifying that the schema was saved successfully.

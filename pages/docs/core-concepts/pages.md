@@ -43,10 +43,10 @@ Below is an example of a page definition for a page capturing information relate
 
 Here's how this page definition gets rendered in the Form Viewer.
 
-![Sample page](/screens/page.png)
+![Sample page](/screens/page.webp)
 
 In practice, your form will likely have more than one page. As mentioned before, each page gets rendered as a tab in the form viewer. You can cycle through the pages by clicking the forward and back buttons at the bottom of the page. You can also click on a specific tab header to open that page.
 
 Here's how a form with multiple pages looks like:
 
-![Page with sections](/screens/page-with-sections.png)
+![Page with sections](/screens/page-with-sections.webp)

@@ -4,13 +4,13 @@ The Form Builder provides an easy to use UI with which we can create forms of ar
 
 When you first visit the Form Builder [website](https://openmrs-spa.org/formbuilder/#/login), you'll see this login screen:
 
-![Login page](/screens/login.png)
+![Login page](/screens/login.webp)
 
 Choose `https://dev3.openmrs.org/openmrs` in the **OpenMRS Server URL** field and then enter your login credentials to sign in.
 
 Once signed in, you should see this landing page.
 
-![Landing page](/screens/landing.png)
+![Landing page](/screens/landing.webp)
 
 ## Features of the Form Builder
 

@@ -2,7 +2,7 @@
 
 The Form viewer renders the compiled form schema. It provides an interactive visual representation of how the form would look in your frontend.
 
-![Schema editor](/screens/form-viewer.png)
+![Schema editor](/screens/form-viewer.webp)
 
 You can update the form viewer at any time by clicking `Render form`. From the screenshot above, we can glean the following information:
 
