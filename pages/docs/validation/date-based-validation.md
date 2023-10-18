@@ -7,7 +7,7 @@ This type of validation enforces certain conditions for [date](/docs/field-types
 
 Here's a question from the `Reproductive History` section of an `HIV Adult Return visit` form:
 
-```json copy
+```json
 {
   "label": "LMP",
   "id": "lmpDate1",
@@ -53,7 +53,7 @@ We see that the validator optionally has a property named `allowFutureDates` and
 
 You can override this behaviour and permit setting dates in the future by setting `allowFutureDates` to true in your validator definition:
 
-```json copy
+```json
 {
   "validators": [
     {

@@ -9,7 +9,7 @@ A `hideWhenExpression` is a JavaScript expression that returns a boolean value (
 To write a `hideWhenExpression`, include a code block like this within the `questions` array of your
 [question](/docs/core-concepts/questions) definition:
 
-```json copy
+```json
 {
   "hide": {
     "hideWhenExpression": "isEmpty(onArt) || onArt !== 'a899b35c-1350-11df-a1f1-0026b9348838'"
@@ -29,7 +29,7 @@ In the example above, the logic provided instructs the Form Builder to hide (not
 
 #### 1. Using the `isEmpty` helper
 
-```json copy
+```json
 {
   "hide": {
     "hideWhenExpression": "isEmpty(screenedForHepatitisB) || screenedForHepatitisB == '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
@@ -41,7 +41,7 @@ In this example, the question being validated gets hidden if the question with t
 
 #### 2. Using the `sex` model from a `patient` data source
 
-```json copy
+```json
 {
   "hide": {
     "hideWhenExpression": "sex !== 'F'"
@@ -54,7 +54,7 @@ Read more about this in the [data sources](/docs/advanced-topics/injecting-data-
 
 #### 3. Using the `age` model from a `patient` data source
 
-```json copy
+```json
 {
   "hide": {
     "hideWhenExpression": "age >= 18"

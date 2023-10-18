@@ -37,7 +37,7 @@ const themeConfig = {
           transform="matrix(.96533 0 0 1 -26.125 -14.65)"
         />
       </svg>
-      <span className="ml-2 font-semibold hidden md:inline">AMPATH Forms</span>
+      <span className="hidden ml-2 font-semibold md:inline">AMPATH Forms</span>
     </>
   ),
   head: (
@@ -87,7 +87,7 @@ const themeConfig = {
   },
   footer: {
     text: (
-      <div className="text-xs flex justify-between">
+      <div className="flex justify-between text-xs">
         <span>© {new Date().getFullYear()} AMPATH.</span>
         <span style={{ marginLeft: '0.5rem' }}>
           Crafted by{' '}

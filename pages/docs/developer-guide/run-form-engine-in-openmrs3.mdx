@@ -87,7 +87,7 @@ Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs
     cd packages/esm-form-entry-app
   ```
 
-  And then spin up our local copy of formentry by running:
+  And then spin up our local of formentry by running:
 
   ```sh
     yarn serve
@@ -146,7 +146,7 @@ Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs
 
   This is a known issue with [single-spa-angular](https://github.com/single-spa/single-spa-angular/issues/328). To work around this, you can modify the `yarn serve` script entry in the `package.json` file in the `esm-form-entry` package as follows:
 
-  ```json copy
+  ```json
   "serve": "ng serve --port 4200 --live-reload false",
   ```
 

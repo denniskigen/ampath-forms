@@ -4,7 +4,7 @@ Each page in your form schema gets rendered in a separate tab in the form viewer
 
 Below is an example of a page definition for a page capturing information related to an encounter. This page definition consists of a page `label` and a `sections` array. It has one section labelled `Encounter Info`. That section, in turn, has two questions labelled `Provider` and `Facility Name`, respectively.
 
-```json copy
+```json
 {
   "pages": [
     {

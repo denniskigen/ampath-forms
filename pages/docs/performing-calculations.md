@@ -4,7 +4,7 @@ You can obtain derived numerical values in your form inputs through the use of `
 
 The following is an example of a `calculateExpression`:
 
-```json copy {8-10}
+```json {8-10}
 {
   "label": "BMI:Kg/M2",
   "questionOptions": {
@@ -30,7 +30,7 @@ Here, the `calculateExpression` returns the value of invoking [calcBMI](/docs/ex
 
 #### 1. Performing a basic calculation
 
-```json copy
+```json
 {
   "label": "Average number of sex acts per week",
   "type": "obs",
@@ -44,7 +44,7 @@ Here, the `calculateExpression` returns the value of invoking [calcBMI](/docs/ex
 
 The following question computes `weeklyCondomRequirements` using the value provided in the previous question.
 
-```json copy
+```json
 {
   "label": "Condom requirements per month",
   "type": "obs",
@@ -61,7 +61,7 @@ The following question computes `weeklyCondomRequirements` using the value provi
 
 #### 2. Using [moment](https://momentjs.com/) to compute the difference between two dates in years
 
-```json copy
+```json
 "calculate": {
   "calculateExpression": "(moment().endOf('year')).diff(moment(dateOfBirth), 'years')"
 }
@@ -69,7 +69,7 @@ The following question computes `weeklyCondomRequirements` using the value provi
 
 #### 3. Computing `Morisky 4 Total Score` from decimal values
 
-```json copy
+```json
 "calculate": {
   "calculateExpression": "isNaN(parseFloat(feelsBetter) + parseFloat(feelsWorse) + parseFloat(notKeen) + parseFloat(forget)) ? undefined : (parseFloat(feelsBetter) + parseFloat(feelsWorse) + parseFloat(notKeen) + parseFloat(forget))"
 }
@@ -77,7 +77,7 @@ The following question computes `weeklyCondomRequirements` using the value provi
 
 #### 4. Computing `BmiForAgeZscore` using the `calcBMIForAgeZscore` and `isEmpty` expression helpers
 
-```json copy
+```json
 "calculate": {
   "calculateExpression": "!isEmpty(height) && !isEmpty(weight) ? calcBMIForAgeZscore(bmiForAgeRef,height,weight): ''"
 }
@@ -85,7 +85,7 @@ The following question computes `weeklyCondomRequirements` using the value provi
 
 #### 5. Computing `Estimated Delivery Date` using [moment](https://momentjs.com/)
 
-```json copy
+```json
 "calculate": {
   "calculateExpression": "moment(lastMenstrualPeriodDate).isValid() ? moment(lastMenstrualPeriodDate).add(280, 'days').toDate() : ''"
 }
