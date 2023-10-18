@@ -1,12 +1,29 @@
 # Historical Expressions
 
-Historical expressions are a mechanism used to evaluate form fields based on historical encounter and observation data.
+A historical expression is a JavaScript expression that can be evaluated to determine the value of a form field. The expression can reference historical encounter and observation data, as well as additional scope values. Historical expressions are optionally available for all form fields. They are useful for helping to determine the value of a form field based on historical data from a past encounter. If a historical value is available, a button gets shown next to the form labelled `Use value`. Clicking this button sets the value of the form field to the historical value.
 
-A historical expression is a string that represents a JavaScript expression that can be evaluated to determine the value of a form field. The expression can reference historical encounter and observation data, as well as additional scope values.
+Historical expressions are defined in the form schema as part of a [question definition](/docs/core-concepts/questions#defining-a-question) object.
+
+```json filename="snippet.json"
+{
+  "label": "Height (cm)",
+  "questionInfo": "",
+  "id": "height",
+  "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
+  "questionOptions": {
+    "rendering": "number",
+    "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+    "max": "350",
+    "min": "0"
+  },
+  "type": "obs",
+  "validators": []
+},
+```
+
+Defining a historical expression for a question is optional. If a question does not have a historical expression, it will be evaluated as normal. If it does have a historical expression, the expression will be evaluated and the result will be made available to use as the value of the question (see the GIF below for an example of this in practice).
 
 Historical expressions are evaluated using the [HistoricalHelperService](https://github.com/openmrs/openmrs-ngx-formentry/blob/9dbbf324fcc6ec6fa49fe4f954801f173a00c764/projects/ngx-formentry/src/form-entry/helpers/historical-expression-helper-service.ts#L12) class, which provides a convenient way to evaluate expressions that depend on historical encounter and observation data.
-
-Historical expressions are defined in the form schema as part of a [question definition](/docs/core-concepts/questions#defining-a-question) object. Defining a historical expression for a question is optional. If a question does not have a historical expression, it will be evaluated as normal. If it does have a historical expression, the expression will be evaluated and the result will be made available to use as the value of the question (see the GIF below for an example of this in practice).
 
 ## Syntax
 
@@ -77,4 +94,4 @@ private async wireDataSources(createFormParams: CreateFormParams, formSchema: Fo
 }
 ```
 
-We're grabbing the previous encounters and registering them with the [HistoricalEncounterDataService's](https://github.com/openmrs/openmrs-ngx-formentry/blob/9dbbf324fcc6ec6fa49fe4f954801f173a00c764/projects/ngx-formentry/src/form-entry/services/historical-encounter-data.service.ts#L9) encounter store and making it accessible via a key called `rawPrevEnc`. This is what allows us to access the previous encounter data in the form schema. We're then registering observations from the previous encounter under the `rawPrevObs` key. This is what allows us to access the previous encounter observations in the form schema.
+We're grabbing the previous encounter and registering it with the [HistoricalEncounterDataService's](https://github.com/openmrs/openmrs-ngx-formentry/blob/9dbbf324fcc6ec6fa49fe4f954801f173a00c764/projects/ngx-formentry/src/form-entry/services/historical-encounter-data.service.ts#L9) encounter store and making it accessible via a key called `rawPrevEnc`. This is what allows us to access the previous encounter data in the form schema. We're then registering observations from the previous encounter under the `rawPrevObs` key. This is what allows us to access the previous encounter observations in the form schema.
