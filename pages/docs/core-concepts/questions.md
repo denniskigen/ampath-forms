@@ -89,7 +89,28 @@ Here's a reference of the various properties you can specify in a question defin
     }
     ```
 
-- `required`: If set to **true**, that form field is considered a required field. Defaults to **false**.
+- `required`: Can take either a boolean value or an object. If a boolean value is provided, `true` marks the question as required whereas `false` marks the question as optional. In this case, the required property defaults to false, meaning all fields start out as optional by default. If set to **true**, that form field is considered a required field. Defaults to `false`. If the value provided is an object, it will have the following properties:
+
+  - `type` - defaults to `conditionalRequired`.
+  - `message` - a string that gets displayed when as an error message below the field if a condition is not met.
+  - `referenceQuestionId` - The ID of a question in the schema that relates to this particular question. When type is set to  `conditionalRequired`, the question referenced by this ID is used to evaluate a condition that involves the answers set in the `referenceQuestionAnswers` array below.
+  - `referenceQuestionAnswers` - an array of concept UUIDs that reference answers linked to the question referenced by `referenceQuestionId`. If the linked question gets answered with any of the answers in the array and the question with the `conditionalRequired` validation does not get answered, validation fails and the error message in `message` above gets displayed below the field.
+    
+
+  ```json
+  {
+    "required": {
+      "errorMessage": "Please enter a value for this field",
+      "conditionalRequired": [
+        {
+          "questionId": "onArt",
+          "response": "a899b35c-1350-11df-a1f1-0026b9348838",
+          "errorMessage": "Please enter a value for this field"
+        }
+      ]
+    }
+  }
+  ``` 
 - `validators`: An array in which you provide validation logic for the specific question. Read more about validation in the [Validation](/docs/validation) guide.
 - `historicalExpression`: This allows you to hook your input up to the `HistoricalEncounterDataService`. This service 'remembers' the last value entered in the input from the last encounter and offers the user the option to reuse that value. Read more about `historicalExpressions` in the [Historical expressions](/docs/historical-expressions) guide.
 
