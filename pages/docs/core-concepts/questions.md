@@ -73,7 +73,6 @@ Here's a reference of the various properties you can specify in a question defin
     ```json
     {
       "label": "BMI (Kg/M2):",
-      "questionInfo": "",
       "id": "bmi",
       "questionOptions": {
         "rendering": "number",
@@ -95,7 +94,6 @@ Here's a reference of the various properties you can specify in a question defin
   - `message` - a string that gets displayed when as an error message below the field if a condition is not met.
   - `referenceQuestionId` - The ID of a question in the schema that relates to this particular question. When type is set to  `conditionalRequired`, the question referenced by this ID is used to evaluate a condition that involves the answers set in the `referenceQuestionAnswers` array below.
   - `referenceQuestionAnswers` - an array of concept UUIDs that reference answers linked to the question referenced by `referenceQuestionId`. If the linked question gets answered with any of the answers in the array and the question with the `conditionalRequired` validation does not get answered, validation fails and the error message in `message` above gets displayed below the field.
-    
 
   ```json
   {
@@ -110,7 +108,8 @@ Here's a reference of the various properties you can specify in a question defin
       ]
     }
   }
-  ``` 
+  ```
+
 - `validators`: An array in which you provide validation logic for the specific question. Read more about validation in the [Validation](/docs/validation) guide.
 - `historicalExpression`: This allows you to hook your input up to the `HistoricalEncounterDataService`. This service 'remembers' the last value entered in the input from the last encounter and offers the user the option to reuse that value. Read more about `historicalExpressions` in the [Historical expressions](/docs/historical-expressions) guide.
 
@@ -129,7 +128,7 @@ Here's a reference of the various properties you can specify in a question defin
   }
   ```
 
-- `questionInfo`: You can specify helper text for the question here. When specified, a question mark icon gets displayed to the right of the question label. When you hover over it, the information you entered gets displayed as a tooltip.
+- `questionInfo`: You can specify helper text for the question here. When specified, a question mark icon gets displayed to the right of the question label. When you hover over it, the information you entered gets displayed as a tooltip. This is useful for providing additional context to the user about a question.
 
   ![Question info tooltip](/screens/question-info-tooltip.webp)
 
