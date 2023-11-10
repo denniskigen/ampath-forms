@@ -88,7 +88,32 @@ Here's a reference of the various properties you can specify in a question defin
     }
     ```
 
-- `required`: Can take either a boolean value or an object. If a boolean value is provided, `true` marks the question as required whereas `false` marks the question as optional. In this case, the required property defaults to false, meaning all fields start out as optional by default. If set to **true**, that form field is considered a required field. Defaults to `false`. If the value provided is an object, it will have the following properties:
+- `shownDateOptions` - A property that determines whether a date field should be shown or hidden based on the value of another date field. This property receives an object with the following properties:
+
+  ```json
+  {
+    "questionOptions": {
+      // ... rest omitted for brevity
+      "shownDateOptions": {
+        "validators": [
+          {
+            "type": "date"
+          },
+          {
+            "type": "js_expression",
+            "failsWhenExpression": "!isEmpty(ast_test) && isEmpty(myValue)",
+            "message": "Date of result is required"
+          }
+        ],
+        "hide": {
+          "hideWhenExpression": "isEmpty(ast_test)"
+        }
+      }
+    }
+  }
+  ```
+
+- `required` - A property that determines whether a field is required or optional. Required fields must be filled before the form can be submitted. This property receives either a boolean value or an object. If a boolean value is provided, `true` marks the question as required whereas `false` marks the question as optional. In this case, the required property defaults to false, meaning all fields start out as optional by default. If set to **true**, that form field is considered a required field. Defaults to `false`. If the value provided is an object, it will have the following properties:
 
   - `type` - defaults to `conditionalRequired`.
   - `message` - a string that gets displayed when as an error message below the field if a condition is not met.
