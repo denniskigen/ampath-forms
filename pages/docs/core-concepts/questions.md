@@ -217,6 +217,7 @@ Here's an example of a `control` field:
     "hideWhenExpression": "isEmpty(moriskyScore4) || moriskyScore4 <3"
   }
 }
+```
 
 ### encounterDatetime
 
