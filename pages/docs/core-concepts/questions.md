@@ -200,7 +200,7 @@ The following are the question types supported by the form engine:
 
 Here's an example of a `control` field:
 
-````json
+```json
 {
   "label": "Morisky score rating:",
   "id": "scoreMo",
@@ -241,7 +241,7 @@ Here's an example of an `encounterDatetime` field:
     }
   ]
 }
-````
+```
 
 ### encounterLocation
 
@@ -512,4 +512,8 @@ Here's an example of a `patientIdentifier` field:
     "hideWhenExpression": "isEmpty(finalResult) || finalResult === '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || isEmpty(recencyScreening) || recencyScreening === '1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' "
   }
 }
+```
+
+```
+
 ```
