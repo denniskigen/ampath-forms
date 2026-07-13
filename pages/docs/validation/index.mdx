@@ -1,0 +1,14 @@
+# Validation
+
+The Form Engine validates answers as users fill a form and blocks submission until every violation is resolved. Validation rules live in the schema, either as entries in a question's `validators` array or as properties of `questionOptions`.
+
+The engine supports the following kinds of validation:
+
+- **[Date-based validation](/docs/validation/date-based-validation)** — constrain date questions, including disallowing future dates.
+- **[Expression-based validation](/docs/validation/js-expression-based-validation)** — arbitrary JavaScript expressions over the form's values, with access to the [expression helpers](/docs/expression-helpers). The most flexible mechanism, used for cross-field rules.
+- **[Other validation types](/docs/validation/other-validation-types)** — `conditionalAnswered` for answers that only make sense given another question's answer, and the numeric constraints (`min`/`max`, length, `disallowDecimals`) derived from `questionOptions`.
+
+Two validation behaviors come from the question definition itself rather than the `validators` array:
+
+- Marking a question with `"required": "true"` registers a required validator. A conditionally required question uses the `required` object form described in the [questions guide](/docs/core-concepts/questions).
+- `number` and `decimal` questions derive numeric validators directly from their `questionOptions`.

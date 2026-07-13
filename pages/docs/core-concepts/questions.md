@@ -131,7 +131,7 @@ Here's a reference of the various properties you can specify in a question defin
   }
   ```
 
-- `validators`: An array in which you provide validation logic for the specific question. Read more about validation in the [Validation](/docs/validation/js-expression-based-validation) guide.
+- `validators`: An array in which you provide validation logic for the specific question. Read more about validation in the [Validation](/docs/validation) guide.
 - `historicalExpression`: This allows you to hook your input up to the `HistoricalEncounterDataService`. This service 'remembers' the last value entered in the input from the last encounter and offers the user the option to reuse that value. Read more about `historicalExpressions` in the [Historical expressions](/docs/historical-expressions) guide.
 
   ![Historical expressions](/screens/historical-expressions.webp)
