@@ -34,28 +34,6 @@ The example below is from a form where a hospitalization diagnosis should only b
 }
 ```
 
-## decimal
-
-Use a `decimal` validator to require a specific number of decimal places. The validator takes a `decimalPlace` property and fails when a non-empty value does not have exactly that many decimal places. The error message is generated automatically ("The value should have N decimal places").
-
-```json
-{
-  "label": "Weight (kg)",
-  "type": "obs",
-  "id": "weight",
-  "questionOptions": {
-    "concept": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "rendering": "number"
-  },
-  "validators": [
-    {
-      "type": "decimal",
-      "decimalPlace": 1
-    }
-  ]
-}
-```
-
 ## Numeric constraints via questionOptions
 
 For `number` and `decimal` renderings, the engine also derives validators from `questionOptions` — no `validators` array needed:

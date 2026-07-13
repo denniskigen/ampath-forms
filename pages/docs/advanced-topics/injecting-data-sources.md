@@ -4,10 +4,10 @@ Data sources are a way to inject data into your application. This is useful for 
 
 ## Registering a data source
 
-To register a data source, you first need to import the `DataSource` service into your component. Then, you can use the `registerDataSource` method to register a data source. The `registerDataSource` method takes two arguments: the unique name of the data source (the `key` parameter), the `unWrap` boolean property, and the data source object itself.
+To register a data source, you first need to import the `DataSources` service into your component. Then, you can use the `registerDataSource` method to register a data source. The `registerDataSource` method takes three arguments: the unique name of the data source (the `key` parameter), the data source object itself, and an optional `unWrap` boolean (defaults to `false`).
 
 ```ts
-import { DataSources } from 'path/to/data-sources.service';
+import { DataSources } from '@openmrs/ngx-formentry';
 
 constructor(private dataSources: DataSources) {}
 
@@ -29,10 +29,10 @@ const myDataSource = this.dataSources.dataSources['myDataSource']
 
 ## Removing a Data Source
 
-To remove a registered data source, you can use the `removeDataSource` method with the key you used to register the data source.
+To remove a registered data source, you can use the `clearDataSource` method with the key you used to register the data source.
 
 ```ts
-this.dataSources.removeDataSource('myDataSource')
+this.dataSources.clearDataSource('myDataSource')
 ```
 
 ## Example: Setting up a Location data source

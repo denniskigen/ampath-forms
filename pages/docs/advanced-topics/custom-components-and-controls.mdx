@@ -68,10 +68,12 @@ A question opts into a custom control by setting `customControl` in its `questio
 
 The loaded element receives these properties:
 
-- `question`: the question model, including the original schema question under `question.extras`.
+- `question`: the question model, including the original schema question under `question.extras`. Read your control's configuration from `question.extras.customControlConfig`.
 - `value`: the control's current value.
 - `disabled`: the control's disabled state.
-- `config`: the control's configuration.
+- `config`: currently always an empty object — the engine's wrapper does not pass `customControlConfig` through this property, so use `question.extras.customControlConfig` instead.
+
+Note that the engine always loads the script as an ES module regardless of the `module` entry in the configuration.
 
 To report a new value, the element dispatches an `on-change` `CustomEvent` whose `detail.data` carries the value:
 

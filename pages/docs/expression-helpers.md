@@ -19,7 +19,7 @@ arrayContains(array, members)
 
 ### Return value
 
-A **boolean**. Returns **true** if `members` is an empty array. If `members` is not an array, it returns **true** if `members` is not contained in the array. If `members` is an array, this function returns **true** if all of the elements in `members` are contained in the source array as well - and if otherwise, returns **false**.
+A **boolean**. Returns **true** if `members` is an empty array. If `members` is not an array, it returns **true** if the `members` value is contained in the source array. If `members` is an array, this function returns **true** if all of the elements in `members` are contained in the source array as well - and if otherwise, returns **false**.
 
 ### Example
 
@@ -118,6 +118,8 @@ calcBSA(height, weight)
 
 A **number** if height and weight values are provided. Otherwise, returns **null**.
 
+Note: `calcBSA` and `formatDate` are exposed to schema expressions in engine builds after `20.0.0` (currently available on the `next` npm tag). In `20.0.0` and earlier they exist in the engine but cannot be called from schema expressions.
+
 ## calcBMI
 
 Computes body mass index (BMI) given a valid height and weight value.
@@ -212,7 +214,9 @@ formatDate(value, format, offset)
 
 ### Return value
 
-A **Date** object. If `value` is not a valid Date, returns a new Date from invoking `new Date(value)`. If `value` is `null` or `undefined`, it throws an exception.
+A **string** — the date formatted according to `format` (defaults to `yyyy-MM-dd`), with the given UTC `offset` (defaults to `+0300`) applied. Throws an exception if `value` is empty or not a valid date.
+
+Note: `formatDate` and `calcBSA` are exposed to schema expressions in engine builds after `20.0.0` (currently available on the `next` npm tag). In `20.0.0` and earlier they exist in the engine but cannot be called from schema expressions.
 
 ## isEmpty
 

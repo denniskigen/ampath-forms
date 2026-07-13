@@ -67,12 +67,14 @@ You can also use each adapter on its own when you only need part of the payload:
 | `EncounterAdapter`         | The complete encounter payload, delegating to the obs, orders, and diagnoses adapters             |
 | `ObsValueAdapter`          | The `obs` array, including obs groups and voiding for cleared values                              |
 | `OrderValueAdapter`        | The `orders` array                                                                                |
-| `DiagnosisValueAdapter`    | The `diagnoses` array assembled from `type: "diagnosis"` questions. Not part of the package's public exports — use it via `EncounterAdapter` or inject it through Angular's DI |
+| `DiagnosisValueAdapter`    | The `diagnoses` array assembled from `type: "diagnosis"` questions. Not part of the package's public exports, so use it via `EncounterAdapter`, which includes its output in the encounter payload |
 | `PersonAttributeAdapter`   | Person attribute values from `personAttribute` questions                                          |
 | `PatientIdentifierAdapter` | Patient identifiers — takes the location UUID as a second argument: `generateFormPayload(form, locationUuid)` |
 
 <Callout emoji="ℹ️" type="info">
   The Form Engine's [demo app](https://github.com/openmrs/openmrs-ngx-formentry/blob/main/src/app/app.component.ts)
-  shows the full round trip: populating from a mock encounter on load and
-  generating a payload in its submit handler.
+  shows populating a form from a mock encounter on load. For executable
+  payload-generation examples, see the
+  [EncounterAdapter spec](https://github.com/openmrs/openmrs-ngx-formentry/blob/main/projects/ngx-formentry/src/form-entry/value-adapters/encounter.adapter.spec.ts),
+  which exercises `generateFormPayload` end to end.
 </Callout>

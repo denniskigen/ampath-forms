@@ -558,11 +558,11 @@ Renders each answer as a checkbox, allowing the user to select multiple answers.
 
 ## single-select and multi-select
 
-Aliases that the engine currently renders with the same dropdown control as [select](#select).
+Related dropdown variants that share the [select](#select) question model but render differently: while `select` uses the engine's Carbon-styled dropdown, `single-select` and `multi-select` render an [ng-select](https://github.com/ng-select/ng-select) control with clear-all support, and `multi-select` allows choosing multiple answers.
 
 ## numeric and decimal
 
-Variants of the [number](#number) input. `numeric` behaves identically to `number`. `decimal` renders a number input that accepts decimal values; pair it with the `decimal` or `disallowDecimals` [validators](/docs/validation/other-validation-types) to constrain precision. All three support a `placeholder` in `questionOptions`.
+Variants of the [number](#number) input. `numeric` behaves identically to `number`. `decimal` renders a number input that accepts decimal values; use the `disallowDecimals` [constraint](/docs/validation/other-validation-types) on `number` questions when decimals should be rejected. All three support a `placeholder` in `questionOptions`.
 
 ## select-concept-answers
 

@@ -2,17 +2,17 @@ import { Callout } from 'nextra-theme-docs'
 
 # Running the Form Engine against an OpenMRS 3.x frontend
 
-[OpenMRS 3.x](https://dev3.openmrs.org/openmrs/spa) (O3) ships with the Angular Form Engine from the [openmrs-ngx-formentry](https://github.com/openmrs/openmrs-ngx-formentry) repository, published to npm as [`@openmrs/ngx-formentry`](https://www.npmjs.com/package/@openmrs/ngx-formentry). It leverages the [Carbon design system](https://carbondesignsystem.com/) to match the look and feel of O3.
+The Angular Form Engine lives in the [openmrs-ngx-formentry](https://github.com/openmrs/openmrs-ngx-formentry) repository and is published to npm as [`@openmrs/ngx-formentry`](https://www.npmjs.com/package/@openmrs/ngx-formentry). It leverages the [Carbon design system](https://carbondesignsystem.com/) to match the look and feel of [OpenMRS 3.x](https://dev3.openmrs.org/openmrs/spa) (O3). O3 frontends consume it through the [esm-form-entry-app](https://github.com/openmrs/openmrs-esm-patient-chart/tree/main/packages/esm-form-entry-app) package in the Patient Chart.
 
 <Callout emoji="ℹ️" type="info">
-  O3 has two form engines: this Angular-based engine, consumed via the
-  [esm-form-entry-app](https://github.com/openmrs/openmrs-esm-patient-chart/tree/main/packages/esm-form-entry-app)
-  package in the Patient Chart, and the
-  [React Form Engine](https://github.com/openmrs/openmrs-form-engine-lib).
-  This guide covers the Angular engine.
+  O3 has two form engines. The current Reference Application ships the
+  [React Form Engine](https://github.com/openmrs/openmrs-form-engine-lib)
+  (`@openmrs/esm-form-engine-app`) by default; this Angular engine is used by
+  distributions that explicitly include the `esm-form-entry-app` frontend
+  module. This guide covers the Angular engine.
 </Callout>
 
-If you wish to modify the Form Engine and test it within O3, follow the steps outlined below.
+If you wish to modify the Form Engine and test it within an O3 frontend that uses it, follow the steps outlined below.
 
 ## Prerequisites
 
