@@ -1,0 +1,70 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Translating Forms
+
+The Form Engine offers two complementary mechanisms for localizing what users see: **ngx-translate** for translating schema labels, and the **`labelMap`** input for resolving labels that the schema doesn't define at all.
+
+## Translating labels with ngx-translate
+
+The engine pipes rendered text through [ngx-translate](https://github.com/ngx-translate/core): question labels, checkbox, radio and select option labels, and helper and validation text. The translation keys are the label strings from the schema itself, and keys with no translation render unchanged — so a form with no translations configured simply shows its schema labels.
+
+`FormEntryModule` imports and re-exports `TranslateModule`, but configuring it is the consumer's job. In your application module:
+
+```ts
+import { TranslateModule } from '@ngx-translate/core';
+
+@NgModule({
+  imports: [TranslateModule.forRoot(), FormEntryModule]
+})
+export class AppModule {}
+```
+
+Then supply translations for the current language — from a loader, or programmatically:
+
+```ts
+import { TranslateService } from '@ngx-translate/core';
+
+constructor(private translate: TranslateService) {}
+
+ngOnInit() {
+  this.translate.currentLang = 'fr';
+  this.translate.setTranslation('fr', {
+    'Encounter Details': 'Détails de la rencontre',
+    'Visit date': 'Date de visite',
+    Provider: 'Fournisseur'
+  });
+}
+```
+
+<Callout emoji="ℹ️" type="info">
+  In O3, form translations are stored on the form resource itself and the
+  form entry app loads them into ngx-translate for you. The programmatic
+  approach above is what the Form Engine's
+  [demo app](https://github.com/openmrs/openmrs-ngx-formentry/blob/main/src/app/app.component.ts)
+  does with mock translation data.
+</Callout>
+
+## Resolving missing labels with labelMap
+
+Schemas don't have to define a `label` for every question or answer. For questions and answers that only specify a concept, the renderer can look the display text up in the `labelMap` object you bind to it:
+
+```html
+<form [formGroup]="form.rootNode.control">
+  <ofe-form-renderer
+    [node]="form.rootNode"
+    [labelMap]="labelMap"
+  ></ofe-form-renderer>
+</form>
+```
+
+`labelMap` is keyed by **concept UUIDs** (for question labels) and **answer values** (for answer labels):
+
+```ts
+labelMap = {
+  'a8ae88a4-1350-11df-a1f1-0026b9348838': 'WHO stage criteria',
+  'a899b35c-1350-11df-a1f1-0026b9348838': 'Yes',
+  'a899b42e-1350-11df-a1f1-0026b9348838': 'No'
+};
+```
+
+The renderer only consults `labelMap` for labels the schema leaves empty; labels defined in the schema always win. A typical implementation traverses the form for unlabeled concepts and fetches their display names from the concept dictionary — the demo app's `traverseForUnlabeledConcepts` shows the pattern.
