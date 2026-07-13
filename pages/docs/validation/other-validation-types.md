@@ -4,7 +4,7 @@ Beyond [date-based validation](/docs/validation/date-based-validation) and [expr
 
 ## conditionalAnswered
 
-Use a `conditionalAnswered` validator when a question should only be answered if another question was answered with one of a specific set of values. If the question has a value while the referenced question is unanswered, or was answered with a value outside the allowed set, validation fails with the provided message.
+Use a `conditionalAnswered` validator when a question should only be answered if another question was answered with one of a specific set of values. If the question has a value while the referenced question is unanswered, or was answered with a value outside the allowed set, validation fails with the provided message. Note that the comparison only works for single-valued referenced questions — when the referenced question holds an array (a checkbox or `multi-select` question), the validator cannot match it against `referenceQuestionAnswers` and fails whenever this question is answered.
 
 The validator takes:
 
@@ -40,7 +40,7 @@ For `number` and `decimal` renderings, the engine also derives validators from `
 
 - `min` and `max`: bounds for the value. The engine registers these validators only when **both** are present.
 - `minLength` and `maxLength`: bounds on the length of the entered value.
-- `disallowDecimals`: when `true`, fails any value containing a decimal point with the message "Decimal values are not allowed".
+- `disallowDecimals`: when `true`, accepts unsigned whole digits only — any other character fails validation, including a decimal point but also a minus sign on a negative integer. The error message is the `disallowDecimals` translation key, so provide a translation for it or users see the raw key.
 
 ```json
 {

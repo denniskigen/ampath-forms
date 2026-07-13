@@ -24,7 +24,7 @@ The following is an example of a `calculateExpression`:
 }
 ```
 
-Here, the `calculateExpression` returns the value of invoking [calcBMI](/docs/expression-helpers#calc-bmi) with the given `height` and `weight` values.
+Here, the `calculateExpression` returns the value of invoking [calcBMI](/docs/expression-helpers#calcbmi) with the given `height` and `weight` values.
 
 ## More Examples
 

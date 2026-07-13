@@ -562,7 +562,7 @@ Related dropdown variants that share the [select](#select) question model but re
 
 ## numeric and decimal
 
-Variants of the [number](#number) input. `numeric` behaves identically to `number`. `decimal` renders a number input that accepts decimal values; use the `disallowDecimals` [constraint](/docs/validation/other-validation-types) on `number` questions when decimals should be rejected. All three support a `placeholder` in `questionOptions`.
+Variants of the [number](#number) input. All three render through the same number input and support a `placeholder` in `questionOptions`, but they are not fully interchangeable: the engine derives the `min`/`max`, length, and `disallowDecimals` [constraints](/docs/validation/other-validation-types) from `questionOptions` only for the `number` and `decimal` renderings — a question using `numeric` does not get those validators. Use the `disallowDecimals` constraint when decimals should be rejected.
 
 ## select-concept-answers
 
@@ -630,7 +630,7 @@ Renders a button that launches an O3 workspace — for example, the drug order w
 - `workspaceName`: the name of the workspace to launch.
 - `buttonLabel`: the button's text.
 - `buttonType`: the Carbon button variant (for example, `ghost`).
-- `workspaceProps` (or `additionalProps`): an object passed to the workspace when it launches.
+- `additionalProps`: an object passed to the workspace when it launches. (The engine's question factory also recognizes a `workspaceProps` alias, but the renderer currently only passes `additionalProps` through to the launcher, so use `additionalProps`.)
 
 ```json
 {

@@ -302,4 +302,4 @@ Resolves a value from a form control, falling back to an observation in a raw en
 
 ### Return value
 
-The `targetControl` value when it is truthy. Otherwise, the matching observation's value — for coded values, the answer concept's UUID; for simple values, the value itself. Returns **null** when nothing is found.
+The `targetControl` value when it is truthy. Otherwise, the matching observation's value — for coded values, the answer concept's UUID; for simple values, the value itself. Returns **null** when nothing is found. Note that the truthiness checks mean valid falsy values are not distinguishable from missing ones: a falsy `targetControl` (such as `0` or `false`) falls through to the encounter lookup, and a falsy observation value is returned as **null**.
