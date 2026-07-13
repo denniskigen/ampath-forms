@@ -12,25 +12,27 @@ You might want to customize the Form Engine in various ways. For example, you mi
 
 ## Running the Form Engine locally
 
-- Fork and clone the [AMPATH Form Engine](https://github.com/ampath/ngx-openmrs-formentry) repository.
+- Fork and clone the [Form Engine](https://github.com/openmrs/openmrs-ngx-formentry) repository.
 - Install dependencies by running:
 
   ```sh
-  npm install
-  ```
-
-- Create a production build of the Form Engine by running:
-
-  ```sh
-  npm run build:lib
+  yarn install --immutable
   ```
 
 - Launch a live development server on port `4200` using:
 
   ```sh
-  npm run start
+  yarn start
   ```
 
-  Visit `https://localhost:4200` in your browser. You should see a [sample form](https://github.com/AMPATH/ngx-openmrs-formentry/blob/master/src/app/adult-1.4.json) rendered in the default `Encounter Viewer` view. Here, you're able to interact with the various form fields and even submit the form.
+  Visit `http://localhost:4200` in your browser. You should see the [sample form](https://github.com/openmrs/openmrs-ngx-formentry/blob/main/src/app/adult-1.6.json) rendered by the demo app in `src/app`. Here, you're able to interact with the various form fields and even submit the form.
 
 - Modify the Form Engine. Changes made to the Form Engine will be reflected automatically in the live development server.
+
+- To build the distributable library, run:
+
+  ```sh
+  yarn build:lib
+  ```
+
+See the [repository README](https://github.com/openmrs/openmrs-ngx-formentry#development) for prerequisites, testing commands, and how to link a local build into an O3 frontend.

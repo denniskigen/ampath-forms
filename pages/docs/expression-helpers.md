@@ -226,4 +226,76 @@ isEmpty(val)
 
 ### Return value
 
-A boolean. Returns **true** if the question being referenced has an answer and **false** otherwise.
+A boolean. Returns **true** if the referenced value is empty — that is, `undefined`, `null`, an empty string, the strings `'null'` or `'undefined'`, or an empty array. Returns **false** otherwise.
+
+## calcGravida
+
+```js
+calcGravida(parityTerm, parityAbortion)
+```
+
+Calculates gravida (the number of pregnancies) from parity values.
+
+### Parameters
+
+- `parityTerm`: number — the number of term births. Must be an integer to be counted.
+- `parityAbortion`: number — the number of abortions or miscarriages. Must be an integer to be counted.
+
+### Return value
+
+A **number**. When both parameters are integers, returns `parityTerm + parityAbortion + 1`. When only one is an integer, returns that value plus one. Returns **0** when neither parameter is an integer.
+
+## calcSouthEastAsiaNonLabCVDRisk
+
+```js
+calcSouthEastAsiaNonLabCVDRisk(sex, smoker, age, sbp, bmi)
+```
+
+Estimates the 10-year cardiovascular disease risk using the WHO non-laboratory-based risk chart for the South-East Asia region.
+
+### Parameters
+
+- `sex`: string — `'M'` or `'F'`.
+- `smoker`: boolean — whether the patient is a current smoker.
+- `age`: number — the patient's age in years. Values are clamped to the 40–74 range the chart covers.
+- `sbp`: number — systolic blood pressure in mmHg.
+- `bmi`: number — body mass index.
+
+### Return value
+
+A **number** representing the 10-year CVD risk percentage from the WHO chart. Returns **null** if any parameter is missing or has the wrong type.
+
+## doesNotMatchExpression
+
+```js
+doesNotMatchExpression(regexString, val)
+```
+
+Tests a value against a regular expression. Useful in `js_expression` validators for rejecting malformed input.
+
+### Parameters
+
+- `regexString`: string — the regular expression pattern to test against.
+- `val`: string — the value to test.
+
+### Return value
+
+A **boolean**. Returns **true** if the value is empty (`null`, `undefined`, an empty string, or the strings `'null'` or `'undefined'`) or does not match the pattern. Returns **false** when the value matches the pattern.
+
+## getObsFromControlOrEncounter
+
+```js
+getObsFromControlOrEncounter(targetControl, rawEncounter, uuid)
+```
+
+Resolves a value from a form control, falling back to an observation in a raw encounter. This is useful when a form needs to read a value that may either have been entered in the current session or recorded in a previous encounter (for example, via the `rawPrevEnc` data source).
+
+### Parameters
+
+- `targetControl`: any — the current control value. Returned as-is when truthy.
+- `rawEncounter`: object — a REST-representation encounter whose `obs` array (including nested `groupMembers`) will be searched.
+- `uuid`: string — the concept UUID of the observation to look for.
+
+### Return value
+
+The `targetControl` value when it is truthy. Otherwise, the matching observation's value — for coded values, the answer concept's UUID; for simple values, the value itself. Returns **null** when nothing is found.

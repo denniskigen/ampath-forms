@@ -1,0 +1,92 @@
+import { Callout } from 'nextra-theme-docs'
+
+# Custom Components and Controls
+
+The Form Engine can lazy-load standard web components into a form. This lets you extend a form with widgets the engine doesn't ship, without forking the engine itself. There are two mechanisms:
+
+- **Custom components** are display widgets declared via a `componentConfigs` array in the schema.
+- **Custom controls** replace a question's native input and participate in the form's value handling.
+
+In both cases, the schema entry names a custom element `tag` and the `url` of a script that registers it. The engine loads the script as an ES module the first time an element from that URL is needed, then instantiates the element.
+
+## Custom components
+
+Attach a `componentConfigs` array to a page, a section, or an individual question:
+
+```json
+{
+  "label": "Encounter Details",
+  "componentConfigs": [
+    {
+      "tag": "my-info-banner",
+      "url": "https://example.com/my-components.js",
+      "module": "true",
+      "detail": "This text is passed to the component"
+    }
+  ],
+  "sections": []
+}
+```
+
+The loaded element receives:
+
+- `config`: the `componentConfigs` entry itself, including any custom payload such as `detail`.
+- `dark`: a boolean the element should use to match the engine's theme.
+
+<Callout emoji="⚠️" type="warning">
+  The schema accepts `componentConfigs` on pages, sections, and questions, but
+  the renderer currently honors only page-level entries (shown at the top of
+  the page) and question-level entries (rendered as part of the question's
+  control block). Section-level entries are parsed but not rendered.
+</Callout>
+
+## Custom controls
+
+A question opts into a custom control by setting `customControl` in its `questionOptions` and declaring a `customControlConfig`:
+
+```json
+{
+  "type": "obs",
+  "label": "Visit satisfaction:",
+  "id": "visitSatisfaction",
+  "questionOptions": {
+    "rendering": "select",
+    "customControl": true,
+    "concept": "a89c3f1e-1350-11df-a1f1-0026b9348838",
+    "answers": [
+      { "concept": "a899b35c-1350-11df-a1f1-0026b9348838", "label": "Yes" },
+      { "concept": "a899b42e-1350-11df-a1f1-0026b9348838", "label": "No" }
+    ]
+  },
+  "customControlConfig": {
+    "tag": "my-content-switcher",
+    "url": "https://example.com/my-components.js",
+    "module": "true"
+  }
+}
+```
+
+The loaded element receives these properties:
+
+- `question`: the question model, including the original schema question under `question.extras`.
+- `value`: the control's current value.
+- `disabled`: the control's disabled state.
+- `config`: the control's configuration.
+
+To report a new value, the element dispatches an `on-change` `CustomEvent` whose `detail.data` carries the value:
+
+```js
+this.dispatchEvent(new CustomEvent('on-change', { detail: { data: newValue } }));
+```
+
+The engine wires this into Angular's form model through a `ControlValueAccessor`, so validation, skip logic, and payload generation treat the custom control like any native one.
+
+## Reference implementation
+
+The Form Engine's demo app exercises both mechanisms using the bundle in [`src/assets/web-components.bundled.js`](https://github.com/openmrs/openmrs-ngx-formentry/blob/main/src/assets/web-components.bundled.js), which doubles as a reference implementation of the contract: it registers an `afe-content-display` display component and an `afe-content-switcher` control, complete with accessible toggle-button semantics.
+
+<Callout emoji="ℹ️" type="info">
+  Those bundled elements are demo fixtures, not production components. Real
+  deployments should build and host their own component bundles at a URL the
+  frontend can reach.
+</Callout>

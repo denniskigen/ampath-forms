@@ -529,3 +529,122 @@ Renders a file uploader widget which can be used to upload image and PDF files f
 Renders a dropdown list that is hooked up to a Problem `DataSource`. This field will include answers that have the `Diagnosis`, `Problem` or `Symptom` class.
 
 ![Problem field](/screens/fields-reference/problem.gif)
+
+## checkbox
+
+Renders each answer as a checkbox, allowing the user to select multiple answers. Individual answers can carry their own `disableWhenExpression`, which disables just that option. You can control the layout via an `orientation` property in `questionOptions`.
+
+```json
+{
+  "label": "Civil status:",
+  "type": "obs",
+  "questionOptions": {
+    "rendering": "checkbox",
+    "concept": "a899a9f2-1350-11df-a1f1-0026b9348838",
+    "answers": [
+      {
+        "concept": "a899af10-1350-11df-a1f1-0026b9348838",
+        "label": "Cohabitating",
+        "disableWhenExpression": "myValue === 'a899ae34-1350-11df-a1f1-0026b9348838'"
+      },
+      {
+        "concept": "a899ad58-1350-11df-a1f1-0026b9348838",
+        "label": "Divorced"
+      }
+    ]
+  }
+}
+```
+
+## single-select and multi-select
+
+Aliases that the engine currently renders with the same dropdown control as [select](#select).
+
+## numeric and decimal
+
+Variants of the [number](#number) input. `numeric` behaves identically to `number`. `decimal` renders a number input that accepts decimal values; pair it with the `decimal` or `disallowDecimals` [validators](/docs/validation/other-validation-types) to constrain precision. All three support a `placeholder` in `questionOptions`.
+
+## select-concept-answers
+
+Renders a dropdown whose options are fetched at runtime from a data source (named `conceptAnswers` by default, or the data source named in `questionOptions.dataSource`). The data source receives the concept specified in `questionOptions.concept` and returns that concept's answers. Use this instead of `select` when you don't want to hardcode the answer list in the schema.
+
+```json
+{
+  "label": "Select criteria for new WHO stage:",
+  "type": "obs",
+  "questionOptions": {
+    "concept": "a8ae88a4-1350-11df-a1f1-0026b9348838",
+    "rendering": "select-concept-answers"
+  }
+}
+```
+
+## remote-select
+
+Renders a searchable dropdown backed by a named data source registered by the consuming application. The data source is named either via `questionOptions.dataSource` (with options in `questionOptions.dataSourceOptions`) or via the O3-style `questionOptions.datasource` object with `name` and `config` properties. See [data source names the engine expects](/docs/advanced-topics/injecting-data-sources#data-source-names-the-engine-expects).
+
+```json
+{
+  "id": "admitToLocation",
+  "type": "obs",
+  "label": "Admit to location",
+  "questionOptions": {
+    "rendering": "remote-select",
+    "concept": "CIEL:169403",
+    "datasource": {
+      "name": "location_datasource",
+      "config": {
+        "tag": "Admission Location"
+      }
+    }
+  }
+}
+```
+
+## personAttribute
+
+Renders a searchable dropdown bound to the `personAttribute` data source, for questions whose answer is stored as a person attribute (a location, for example).
+
+## diagnosis
+
+Renders a searchable diagnosis input backed by the `diagnoses` data source (or the data source named in `questionOptions.dataSource`). Diagnosis questions use `"type": "diagnosis"` together with a `questionOptions.diagnosisType` (`diagnosis`, `certainty`, or `rank`) so the engine's diagnosis adapter can assemble complete diagnosis payloads. A `rank` can also be set directly in `questionOptions` — see the diagnosis sections of the [reference form](https://github.com/openmrs/openmrs-ngx-formentry/blob/main/src/app/adult-1.6.json) for complete examples combining diagnosis, certainty, and rank questions.
+
+```json
+{
+  "label": "Diagnosis",
+  "id": "primaryDiagnosisId",
+  "type": "diagnosis",
+  "questionOptions": {
+    "rendering": "diagnosis",
+    "diagnosisType": "diagnosis"
+  }
+}
+```
+
+## workspace-launcher
+
+Renders a button that launches an O3 workspace — for example, the drug order workspace. This field type only works when the form runs inside the O3 Patient Chart, where `@openmrs/esm-framework` and its `launchWorkspace` function are available; elsewhere, the engine logs an error and the button does nothing.
+
+`questionOptions` properties:
+
+- `workspaceName`: the name of the workspace to launch.
+- `buttonLabel`: the button's text.
+- `buttonType`: the Carbon button variant (for example, `ghost`).
+- `workspaceProps` (or `additionalProps`): an object passed to the workspace when it launches.
+
+```json
+{
+  "id": "orderDrugs",
+  "label": "Order for Drugs here:",
+  "questionOptions": {
+    "rendering": "workspace-launcher",
+    "workspaceName": "add-drug-order",
+    "buttonType": "ghost",
+    "buttonLabel": "Add +"
+  }
+}
+```
+
+## field-set
+
+Behaves like [group](#group), but renders its child questions inside a lightweight bordered container instead of a section-style group.

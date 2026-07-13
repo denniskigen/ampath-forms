@@ -121,3 +121,28 @@ public findLocation(searchText): Observable<Location[]> {
 - `findLocation(searchText)` searches the data source for locations matching the given search string, transforms the search results into an array of location objects with `label` and `value` properties, and returns an observable that emits this array. The observable is initially empty but will emit the array once the search results have been retrieved. If an error occurs, the observable emits an error.
 
 Overall, these methods provide a way to retrieve and search for location data from the data source in a reactive and asynchronous manner, using RxJS observables. Read this [file](https://github.com/AMPATH/ng2-amrs/blob/084b33460856ed816d43852fc2eb37db3671a9da/src/app/patient-dashboard/common/formentry/form-data-source.service.ts#L1) to learn more about how data sources work in AMPATH POC.
+
+## Data source names the engine expects
+
+Several field types look up a data source by a well-known name at render time. When your form uses one of these field types, the consuming application must register a data source under the corresponding name before creating the form:
+
+| Name              | Used by                                                | Purpose                                                              |
+| ----------------- | ------------------------------------------------------ | -------------------------------------------------------------------- |
+| `location`        | `encounterLocation` questions                          | Searching and resolving locations                                     |
+| `provider`        | `encounterProvider` questions                          | Searching and resolving providers                                     |
+| `drug`            | `drug` rendering                                       | Searching and resolving drugs                                         |
+| `problem`         | `problem` rendering                                    | Searching and resolving problems/diagnoses concepts                   |
+| `personAttribute` | `personAttribute` rendering                            | Searching and resolving person attribute values (e.g. locations)      |
+| `conceptAnswers`  | `select-concept-answers` rendering (default)           | Fetching the answers of the concept named in `dataSourceOptions`      |
+| `diagnoses`       | `diagnosis` rendering (default)                        | Searching diagnosis concepts, optionally filtered by concept class    |
+| `file`            | `file` rendering                                       | Uploading and fetching file attachments                               |
+| `rawPrevEnc`      | [Historical expressions](/docs/historical-expressions) | The previous encounter(s), exposed to expressions as `HD` (`prevEnc`) |
+| `rawPrevObs`      | Historical expressions (optional)                      | Previous observations, exposed as `prevObs`                           |
+
+Notes:
+
+- For `select-concept-answers` and `diagnosis` questions, you can point at a differently named data source via `questionOptions.dataSource`.
+- `remote-select` questions carry their data source name in the schema itself — either `questionOptions.dataSource` (with `questionOptions.dataSourceOptions`) or the O3-style `questionOptions.datasource` object with `name` and `config` properties.
+- Every registered data source is also exposed to [JavaScript expressions](/docs/expression-helpers) by name, alongside the form's helper functions.
+
+The Form Engine's [demo app](https://github.com/openmrs/openmrs-ngx-formentry/blob/main/src/app/app.component.ts) registers mock implementations of all of these names and is a good starting point for wiring up your own.

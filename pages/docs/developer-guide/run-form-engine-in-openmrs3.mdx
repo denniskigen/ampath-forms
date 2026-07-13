@@ -2,122 +2,65 @@ import { Callout } from 'nextra-theme-docs'
 
 # Running the Form Engine against an OpenMRS 3.x frontend
 
-Presently, [OpenMRS 3.x](https://dev3.openmrs.org/openmrs) (O3) ships with a [custom version](https://github.com/ampath/ngx-openmrs-formentry) of the Form Engine.
-
-This version leverages the [Carbon design system](https://carbondesignsystem.com/) to get its look and feel to match that of O3.
+[OpenMRS 3.x](https://dev3.openmrs.org/openmrs/spa) (O3) ships with the Angular Form Engine from the [openmrs-ngx-formentry](https://github.com/openmrs/openmrs-ngx-formentry) repository, published to npm as [`@openmrs/ngx-formentry`](https://www.npmjs.com/package/@openmrs/ngx-formentry). It leverages the [Carbon design system](https://carbondesignsystem.com/) to match the look and feel of O3.
 
 <Callout emoji="ℹ️" type="info">
-  You can track the progress of _carbonizing_ the Form Engine via the
-  [3.0.0.carbonize](https://github.com/ampath/ngx-openmrs-formentry/tree/3.0.0-carbonize)
-  branch. Alternatively, you could follow the OpenMRS
-  [fork](https://github.com/openmrs/openmrs-ngx-formentry) of the Form Engine.
+  O3 has two form engines: this Angular-based engine, consumed via the
+  [esm-form-entry-app](https://github.com/openmrs/openmrs-esm-patient-chart/tree/main/packages/esm-form-entry-app)
+  package in the Patient Chart, and the
+  [React Form Engine](https://github.com/openmrs/openmrs-form-engine-lib).
+  This guide covers the Angular engine.
 </Callout>
 
-If you wish to modify the Form Engine and test it within O3 (or any other O3-based frontends), follow the steps outlined below:
+If you wish to modify the Form Engine and test it within O3, follow the steps outlined below.
 
 ## Prerequisites
 
-You need to have [yarn](https://yarnpkg.com) installed on your system. You can check for whether yarn is installed by running:
-
-```sh
-  yarn -v
-```
-
-If this doesn't return a version number, you likely don't have it installed. To install it on your system, run:
-
-```sh
-npm install -g yarn
-```
-
-Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs-esm-patient-chart) repository expects you to have `Node.js v16.x.x` or higher installed on your system.
+- Node.js `^20.19.0 || ^22.12.0 || >=24.0.0` (the range Angular 20 supports).
+- Yarn 4, provisioned via [Corepack](https://yarnpkg.com/corepack): run `corepack enable` once and the `packageManager` field in each repository takes care of the rest. Recent Node.js releases no longer bundle Corepack, so install it first with `npm install -g corepack` if the command is missing.
+- Local clones of [openmrs-ngx-formentry](https://github.com/openmrs/openmrs-ngx-formentry) and [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs-esm-patient-chart).
 
 ## Steps
 
-- Fork and clone the [AMPATH formentry](https://github.com/ampath/ngx-openmrs-formentry) repository.
-- `cd` into your clone and checkout the `3.0.0-carbonize` branch.
-- Install dependencies by running:
+- In your `openmrs-ngx-formentry` clone, install dependencies and make your changes:
 
   ```sh
-  npm install
+  yarn install --immutable
   ```
 
-- Make changes to the library.
-
-- Create a production build of the library by running:
+- Create a production build of the library:
 
   ```sh
-  npm run build:lib
+  yarn build:lib
   ```
 
-  Note the full path to the `dist/ngx-formentry` directory created in this step. It will be needed further ahead.
-
-- Next, open your local `openmrs-esm-patient-chart` clone. Install dependencies using:
+  This produces a `dist/ngx-formentry` directory. Yarn requires a lockfile in the folder you link, so create an empty one:
 
   ```sh
-  yarn
+  touch dist/ngx-formentry/yarn.lock
   ```
 
-- We'll then install the `dist/ngx-formentry` directory from the previous step inside of `packages/esm-form-entry-app`. To do so, run:
+- Next, link the built library into the Patient Chart's form entry package. Yarn's `link` command accepts a path directly:
 
   ```sh
-  cd packages/esm-form-entry-app
-  yarn add ...
-
-  # where ... is the path to your dist/ngx-formentry directory from the previous step. It could look like: /Users/johndoe/code/ampath/ngx-openmrs-formentry/dist/ngx-formentry.
-  ```
-
-- If you are using yarn 3, run :
-
-  ```sh
-  cd packages/esm-form-entry-app
-  yarn add esm-form-entry-app@file:...
-
-  # where ... is the path to your dist/ngx-formentry directory from the previous step. It could look like: /Users/johndoe/code/ampath/ngx-openmrs-formentry/dist/ngx-formentry.
+  cd ~/openmrs-esm-patient-chart/packages/esm-form-entry-app
+  yarn link /path/to/openmrs-ngx-formentry/dist/ngx-formentry
   ```
 
   <Callout emoji="ℹ️" type="info">
     If you're using Windows, you might need to wrap your path in double quotes.
   </Callout>
 
-  It is very important that this step works correctly to establish the link between the formentry library and the frontend.
-
-- Next, `cd` into the form-entry package in your local patient chart copy:
+- Fire up a dev server from the Patient Chart repository root:
 
   ```sh
-    cd packages/esm-form-entry-app
+  cd ../..
+  yarn start --sources packages/esm-form-entry-app
   ```
 
-  And then spin up our local of formentry by running:
+  This runs the [openmrs develop](https://o3-docs.openmrs.org/en-US/docs/frontend-modules/development) tooling, which serves the form entry app and automatically overrides its import map entry against the dev3 community server.
 
-  ```sh
-    yarn serve
-  ```
-
-  This command should fire up a dev server on port 4200.
-
-- Next, log into your 3.x frontend (could be `AMPATH 3.x`, `KenyaEMR 3.x`, or a community server like `dev3`) in your browser.
-
-- Make sure that import-map overrides are enabled. If they are, you should see a small grey box at the bottom right hand corner of your screen. If you don't see the overrides icon:
-
-  - Open your browser devtools console and run:
-
-    ```sh
-    localStorage.setItem('openmrs:devtools', true);
-    ```
-
-  - Reload your browser window for the changes to take effect.
-
-- Next, click the box icon to launch the devtools overrides panel. From the search box, find the import map entry for `@openmrs/esm-form-entry`. Click on the item in the list - this should launch a modal where you can type in your override URL. Type in:
-
-  ```
-  http://localhost:4200/openmrs-esm-form-entry-app.js
-  ```
-
-  Reload your browser window for the changes to take effect.
-
-- Congratulations! You should now be running the local version of formentry in your application. To test your changes anew, rebuild the library again by running `npm run build:lib` in your local formentry clone. The frontend should pick up the changes automatically.
-
-- To test, search for a patient and open their chart. Find the forms widget and launch a clinical form in the workspace. Any changes made to the formentry app should propagate into the form displayed in the workspace.
+- To test, search for a patient and open their chart. Find the forms widget and launch a clinical form in the workspace. Rebuild the library (`yarn build:lib`) after each change to the engine to propagate it into the running app.
 
   <Callout emoji="ℹ️" type="info">
     Note that O3 caches the forms you've opened in your browser's
@@ -127,37 +70,26 @@ Additionally, the [openmrs-esm-patient-chart](https://github.com/openmrs/openmrs
     reload to fetch it anew.
   </Callout>
 
-- To propagate your changes to your server, you'd need to test them and once satisfied that they're working as they should, package them in a pull request and get them merged to the formentry repository. You'd then need to deploy those changes to your server.
+- Once you're satisfied with your changes, package them in a pull request against the [formentry repository](https://github.com/openmrs/openmrs-ngx-formentry).
 
-- Profit!
+## Running against an arbitrary O3 server
 
-## Troubleshooting
+If you want to test against a server other than dev3, serve the form entry app directly and override the import map by hand:
 
-### I get an `Invalid webpack configuration` error when I run `yarn serve`
+- Run `yarn serve` inside `packages/esm-form-entry-app`. This fires up a dev server on port 4200.
 
-- If you're using Windows, you may see the following error when you run `yarn serve` in the `esm-form-entry` directory:
+- Log into your O3 frontend in the browser and enable the devtools overrides panel. If you don't see the small grey box at the bottom right hand corner of your screen, open your browser devtools console and run:
 
-  ```
-  An unhandled exception occurred: Invalid configuration object. Webpack has been initialised using a configuration object that does not match the API schema.
-
-  configuration.entry['main'] should not contain the item 'C:\Workspace\example\project-example\node_modules\webpack-dev-server\client\index.js?http://0.0.0.0:0&sockPath=/sockjs-node' twice.
-  -> A non-empty array of non-empty strings
+  ```js
+  localStorage.setItem('openmrs:devtools', true);
   ```
 
-  This is a known issue with [single-spa-angular](https://github.com/single-spa/single-spa-angular/issues/328). To work around this, you can modify the `yarn serve` script entry in the `package.json` file in the `esm-form-entry` package as follows:
+  Then reload your browser window.
 
-  ```json
-  "serve": "ng serve --port 4200 --live-reload false",
+- Click the box icon to launch the devtools overrides panel. Find the import map entry for `@openmrs/esm-form-entry-app` and set the override URL to:
+
+  ```
+  http://localhost:4200/openmrs-esm-form-entry-app.js
   ```
 
-### I don't see my changes propagated in my SPA environment
-
-- Make sure you have saved your changes in the formentry library and run:
-
-  ```sh
-  npm run build:lib
-  ```
-
-  To ensure you have the very latest changes in the patient chart, make sure to rerun `yarn add {path-to-dist/ngx-formentry}` in your `esm-form-entry` package directory.
-
-- If you still don't see your changes, make sure you're overriding the `esm-form-entry-app` in the import map overrides panel.
+  Reload your browser window for the changes to take effect.
