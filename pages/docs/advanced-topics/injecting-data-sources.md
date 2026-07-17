@@ -2,9 +2,54 @@
 
 Data sources are a way to inject data into your application. This is useful for injecting data that is not available at build time, such as data from an API. The `DataSources` service allows you to register, access, and remove data sources in your application.
 
+## Built-in endpoint data source
+
+The Form Engine includes an `endpoint` data source for [`remote-select`](/docs/field-types-reference#remote-select) questions. It lets a form schema populate a searchable dropdown from a browser-accessible HTTP GET endpoint without requiring the consuming application to implement and register a data source.
+
+```json
+{
+  "label": "Doctor",
+  "id": "doctor",
+  "type": "obs",
+  "questionOptions": {
+    "concept": "<concept-uuid>",
+    "rendering": "remote-select",
+    "datasource": {
+      "name": "endpoint",
+      "config": {
+        "endpointUrl": "/ws/rest/v1/provider",
+        "labelKey": "display",
+        "valueKey": "uuid",
+        "searchParam": "q",
+        "limit": 20
+      }
+    }
+  }
+}
+```
+
+Typing a search term sends `GET /ws/rest/v1/provider?q={term}&limit=20`. The initial request omits `q` but still includes `limit=20`. When editing a saved form, the data source URL-encodes the stored provider UUID and requests `GET /ws/rest/v1/provider/{value}` so the dropdown can display its label.
+
+Search responses can be a JSON array or an array under the configured `resultsKey`. A saved-value response can be a single item, a JSON array, or an array under `resultsKey`. For array responses, the first item is used. A failed search or saved-value request displays an error that is distinct from a successful search with no matches.
+
+These configuration properties are available:
+
+| Property             | Default                 | Description                                                                  |
+| -------------------- | ----------------------- | ---------------------------------------------------------------------------- |
+| `endpointUrl`        | Required                | Endpoint queried for options                                                 |
+| `labelKey`           | `display`               | Item property displayed as the option label                                  |
+| `valueKey`           | `uuid`                  | Item property stored as the selected value                                   |
+| `searchParam`        | `q`                     | Query parameter containing the typed search term                             |
+| `resultsKey`         | `results`               | Response property containing the item array                                  |
+| `limit`              | `20`                    | Page size sent with every search request                                     |
+| `limitParam`         | `limit`                 | Query parameter containing the page size                                     |
+| `resolveUrlTemplate` | `{endpointUrl}/{value}` | URL used to resolve a saved value. The `{value}` placeholder is URL-encoded. |
+
+Use a relative `endpointUrl` when possible so the schema remains portable between environments. The consuming application must provide Angular's `HttpClient` for the built-in source to be registered. Without it, the rest of the Form Engine continues to work, but an `endpoint` dropdown has no options. An application can override the built-in behavior by registering its own data source under the name `endpoint`.
+
 ## Registering a data source
 
-To register a data source, you first need to import the `DataSources` service into your component. Then, you can use the `registerDataSource` method to register a data source. The `registerDataSource` method takes three arguments: the unique name of the data source (the `key` parameter), the data source object itself, and an optional `unWrap` boolean (defaults to `false`).
+For use cases that require custom behavior, import the `DataSources` service into your component and use its `registerDataSource` method. The method takes three arguments: the unique name of the data source (the `key` parameter), the data source object itself, and an optional `unWrap` boolean (defaults to `false`).
 
 ```ts
 import { DataSources } from '@openmrs/ngx-formentry';
@@ -126,8 +171,8 @@ Overall, these methods provide a way to retrieve and search for location data fr
 
 Several field types look up a data source by a well-known name at render time. When your form uses one of these field types, the consuming application must register a data source under the corresponding name before creating the form:
 
-| Name              | Used by                                                | Purpose                                                              |
-| ----------------- | ------------------------------------------------------ | -------------------------------------------------------------------- |
+| Name              | Used by                                                | Purpose                                                               |
+| ----------------- | ------------------------------------------------------ | --------------------------------------------------------------------- |
 | `location`        | `encounterLocation` questions                          | Searching and resolving locations                                     |
 | `provider`        | `encounterProvider` questions                          | Searching and resolving providers                                     |
 | `drug`            | `drug` rendering                                       | Searching and resolving drugs                                         |
@@ -143,6 +188,7 @@ Notes:
 
 - For `select-concept-answers` and `diagnosis` questions, you can point at a differently named data source via `questionOptions.dataSource`.
 - `remote-select` questions carry their data source name in the schema itself — either `questionOptions.dataSource` (with `questionOptions.dataSourceOptions`) or the O3-style `questionOptions.datasource` object with `name` and `config` properties.
+- The built-in [`endpoint` data source](#built-in-endpoint-data-source) does not require host application registration when Angular's `HttpClient` is available.
 - Every registered data source is also exposed to [JavaScript expressions](/docs/expression-helpers) by name, alongside the form's helper functions.
 
 The Form Engine's [demo app](https://github.com/openmrs/openmrs-ngx-formentry/blob/main/src/app/app.component.ts) registers mock implementations of all of these names and is a good starting point for wiring up your own.

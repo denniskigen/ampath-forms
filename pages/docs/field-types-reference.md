@@ -581,20 +581,24 @@ Renders a dropdown whose options are fetched at runtime from a data source (name
 
 ## remote-select
 
-Renders a searchable dropdown backed by a named data source registered by the consuming application. The data source is named either via `questionOptions.dataSource` (with options in `questionOptions.dataSourceOptions`) or via the O3-style `questionOptions.datasource` object with `name` and `config` properties. See [data source names the engine expects](/docs/advanced-topics/injecting-data-sources#data-source-names-the-engine-expects).
+Renders a searchable dropdown backed by a named data source. The data source is named either via `questionOptions.dataSource` (with options in `questionOptions.dataSourceOptions`) or via the O3-style `questionOptions.datasource` object with `name` and `config` properties. The Form Engine's built-in [`endpoint` data source](/docs/advanced-topics/injecting-data-sources#built-in-endpoint-data-source) can query an HTTP endpoint without host application registration. Other data sources must be registered by the consuming application.
 
 ```json
 {
-  "id": "admitToLocation",
+  "id": "doctor",
   "type": "obs",
-  "label": "Admit to location",
+  "label": "Doctor",
   "questionOptions": {
     "rendering": "remote-select",
-    "concept": "CIEL:169403",
+    "concept": "<concept-uuid>",
     "datasource": {
-      "name": "location_datasource",
+      "name": "endpoint",
       "config": {
-        "tag": "Admission Location"
+        "endpointUrl": "/ws/rest/v1/provider",
+        "labelKey": "display",
+        "valueKey": "uuid",
+        "searchParam": "q",
+        "limit": 20
       }
     }
   }
