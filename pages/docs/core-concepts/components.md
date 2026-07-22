@@ -1,5 +1,7 @@
 # Components
 
+> **Angular Form Engine scope.** The component schema behavior on this page describes `@openmrs/ngx-formentry`. References to builder screens describe the archived AMPATH builder and are retained only for legacy context. See [About this documentation](/docs/about-this-documentation).
+
 There may be situations where you might want to separate commonly-used form logic into disparate reusable bits. In such cases, you might want to structure that logic as a component form. Components can therefore be thought of as reusable forms that carry domain-specific information. Imagine a situation where you're creating a bunch of forms for use in a Point of Care setting. You might find that multiple forms might need to have sections for collecting pre-clinic Review information. This pre-clinic Review information could include details such as:
 
 - A patient's current HIV status

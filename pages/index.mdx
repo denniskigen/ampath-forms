@@ -10,19 +10,14 @@ import Image from 'next/image'
   </div>
 </h1>
 
-AMPATH Forms is a tool that helps you build and render OpenMRS form schemas. Conceptually, AMPATH Forms refers to a combination of two things - a [form builder](https://github.com/ampath/ngx-openmrs-formbuilder) and a [form engine](https://github.com/openmrs/openmrs-ngx-formentry). The form builder enables users to build form schemas of arbitrary complexity. These schemas can be built interactively or by writing JSON code inside the embedded code editor. These schemas then get built and compiled by the form engine. The output of this process is a visual representation of the schema that users can interact with to enter data, test validations and more. These visual representations are an accurate mapping of how the related forms would appear in your frontend. Users can then save their forms to a server, making them available for use in a frontend for data entry.
+This site documents [`@openmrs/ngx-formentry`](https://github.com/openmrs/openmrs-ngx-formentry), the optional **Angular Form Engine** for OpenMRS 3 (O3). It also retains clearly labelled documentation for the archived [AMPATH Form Builder](https://github.com/ampath/ngx-openmrs-formbuilder) for teams maintaining an existing deployment.
 
-<div className="py-20 lg:-mx-16">
-  <Image
-    src="/screens/screen.webp"
-    alt="App screenshot"
-    height="1071"
-    width="2016"
-  />
-</div>
+The OpenMRS Reference Application uses the **React Form Engine** by default, and its built-in O3 Form Builder creates and previews forms with that React engine. It does not preview Angular Form Engine behavior. There is currently no supported visual builder for the Angular engine. Although both engines consume the shared [O3 form schema](https://github.com/openmrs/openmrs-contrib-json-schemas/blob/main/form.schema.json), schema conformance does not guarantee that every field or feature behaves the same in both engines.
+
+If you use the default Reference Application workflow, start with the [canonical O3 Forms guide](https://o3-docs.openmrs.org/en-US/docs/forms-in-o3/). If your distribution explicitly includes the Angular engine, read [About this documentation](/docs/about-this-documentation) before using the reference pages on this site.
 
 <div className="mt-16 mb-20 text-center">
-  [Start building](/docs/quickstart) · [Form builder on
-  GitHub](https://github.com/ampath/ngx-openmrs-formbuilder) · [Form engine on GitHub](https://github.com/openmrs/openmrs-ngx-formentry)
+  [Choose your form engine](/docs/about-this-documentation) · [Angular Form Engine
+  quickstart](/docs/quickstart) · [Angular engine on GitHub](https://github.com/openmrs/openmrs-ngx-formentry)
 
 </div>

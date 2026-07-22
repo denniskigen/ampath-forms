@@ -1,8 +1,10 @@
 # Expression Helpers
 
-AMPATH Forms provide expression helpers that are useful for computing common domain-specific calculations.
+> **Angular Form Engine scope.** This page documents expression helpers in `@openmrs/ngx-formentry`. Equivalent expressions may behave differently in the React Form Engine. See [About this documentation](/docs/about-this-documentation).
 
-Here's a link to the expression helpers [implementation](https://github.com/AMPATH/ngx-openmrs-formentry/blob/2763b0062c386906ae94e312df961508069cdfec/projects/ngx-formentry/src/form-entry/helpers/js-expression-helper.ts). You can add your own custom expression helpers to this file to make them available in the Form Builder.
+The Angular Form Engine provides expression helpers that are useful for computing common domain-specific calculations.
+
+Here's a link to the expression helpers [implementation](https://github.com/AMPATH/ngx-openmrs-formentry/blob/2763b0062c386906ae94e312df961508069cdfec/projects/ngx-formentry/src/form-entry/helpers/js-expression-helper.ts). You can extend the Angular Form Engine with custom helpers for your consuming application.
 
 Below is a reference of the functions currently available.
 

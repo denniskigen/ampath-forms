@@ -1,5 +1,7 @@
 # Historical Expressions
 
+> **Angular Form Engine scope.** This page documents historical expressions in `@openmrs/ngx-formentry`. Equivalent schema fields may behave differently in the React Form Engine. See [About this documentation](/docs/about-this-documentation).
+
 A historical expression is a JavaScript expression that can be evaluated to determine the value of a form field. The expression can reference historical encounter and observation data, as well as additional scope values. Historical expressions are optionally available for all form fields. They are useful for helping to determine the value of a form field based on historical data from a past encounter. If a historical value is available, a button gets shown next to the form labelled `Use value`. Clicking this button sets the value of the form field to the historical value.
 
 Historical expressions are defined in the form schema as part of a [question definition](/docs/core-concepts/questions#defining-a-question) object.

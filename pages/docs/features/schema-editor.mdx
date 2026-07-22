@@ -1,5 +1,7 @@
 # Schema Editor
 
+> **Archived AMPATH Form Builder documentation.** This page describes the legacy `ampath/ngx-openmrs-formbuilder` interface retained for existing deployments. Its validation and preview do not establish compatibility with the current Angular Form Engine. The built-in O3 Form Builder targets React. See [About this documentation](/docs/about-this-documentation).
+
 The Schema Editor embeds a [code editor](https://ace.c9.io/) which is configured to accept JSON code. Upon clicking the `Render Form` button, your JSON code will get validated and rendered into a form in the Form Viewer tab. If your code is invalid, and error message will be displayed above the editor.
 
 ![Schema editor](/screens/editor-only.webp)
@@ -30,5 +32,5 @@ You can access the Schema editor by:
 - The `Publish form` button. Allows you to publish your form schema.
 - The `Schema editor tab` renders a JSON-based representation of your form schema in an embedded code editor.
 - The `Form Viewer` tab renders the visual representation of your form schema once it gets compiled by the form engine.
-- The `Render form` button. Clicking this button enables the form engine to compile your form schema. This step ensures that your form schema is valid and free of errors.
+- The `Render form` button. Clicking this button validates the schema for this archived builder's bundled preview. It does not validate behavior in the current Angular or React Form Engine.
 - The `build timestamp` at the bottom right of the page shows information the current build version.

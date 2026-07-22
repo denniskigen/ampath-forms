@@ -1,6 +1,6 @@
 {
-  "contributing-guide": "Contributing Guide",
-  "deploy-form-builder": "Deploy the Form Builder on your server",
-  "extending-the-form-engine": "Extending the Form Engine",
-  "run-form-engine-in-openmrs3": "Running the Form Engine against an OpenMRS 3.x frontend"
+  "extending-the-form-engine": "Extend the Angular Form Engine",
+  "run-form-engine-in-openmrs3": "Run the Angular Form Engine in O3",
+  "contributing-guide": "Archived: contribute to the builder",
+  "deploy-form-builder": "Archived: deploy the builder"
 }

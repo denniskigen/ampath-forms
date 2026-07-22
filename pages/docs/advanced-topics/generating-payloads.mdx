@@ -2,6 +2,8 @@ import { Callout } from 'nextra-theme-docs'
 
 # Populating Forms and Generating Payloads
 
+> **Angular Form Engine scope.** This page documents population and payload behavior in `@openmrs/ngx-formentry`. The React Form Engine may produce or consume data differently. See [About this documentation](/docs/about-this-documentation).
+
 The Form Engine converts between REST payloads and form values through a set of **value adapters**. They work in both directions: `populateForm` writes values from an existing encounter into the form's controls, and `generateFormPayload` reads the form back out into a payload you can POST to the OpenMRS REST API.
 
 All adapters are provided by `FormEntryModule`, so you can inject them directly:
