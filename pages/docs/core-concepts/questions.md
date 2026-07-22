@@ -1,5 +1,7 @@
 # Questions
 
+> **Angular Form Engine scope.** This page documents `@openmrs/ngx-formentry`. Schema conformance does not guarantee behavior in the React Form Engine. See [About this documentation](/docs/about-this-documentation).
+
 A question is a field in a Form. It consists of a label, an associated input, and a set of answers.
 
 Below is an example of a question that seeks to establish the patient's `Current HIV status`:

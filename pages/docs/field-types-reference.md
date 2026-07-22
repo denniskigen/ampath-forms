@@ -1,6 +1,8 @@
 # Field Types Reference
 
-AMPATH Forms support multiple field types. The most commonly used fields include `text`, `textarea`, `number`, `date` and `select`.
+> **Angular Form Engine scope.** This page documents field renderers in `@openmrs/ngx-formentry`. A field accepted by the shared schema is not necessarily implemented identically in the React Form Engine. See [About this documentation](/docs/about-this-documentation).
+
+The Angular Form Engine supports multiple field types. The most commonly used fields include `text`, `textarea`, `number`, `date` and `select`.
 
 Field types are defined in the `questionOptions` definition of a question using the following syntax:
 

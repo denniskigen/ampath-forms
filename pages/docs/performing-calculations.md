@@ -1,5 +1,7 @@
 # Performing Calculations
 
+> **Angular Form Engine scope.** This page documents calculations in `@openmrs/ngx-formentry`. Equivalent schema fields may behave differently in the React Form Engine. See [About this documentation](/docs/about-this-documentation).
+
 You can obtain derived numerical values in your form inputs through the use of `calculateExpression`s. `calculateExpression`s are used in form inputs of type [number](/docs/field-types-reference#number). You can extend your input's `questionOptions` definition to include a `calculate` property in which you would nest your `calculateExpression` definition.
 
 The following is an example of a `calculateExpression`:

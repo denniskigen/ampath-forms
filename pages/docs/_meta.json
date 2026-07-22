@@ -1,15 +1,24 @@
 {
-  "quickstart": "Quickstart",
-  "getting-started": "Getting Started",
-  "core-concepts": "Core Concepts",
-  "features": "Features",
-  "referencing-components": "Referencing Components",
+  "about-this-documentation": "Which form engine?",
+  "quickstart": "Angular Form Engine quickstart",
+  "angular-engine": {
+    "type": "separator",
+    "title": "Angular Form Engine"
+  },
+  "core-concepts": "Angular schema concepts",
   "conditional-rendering": "Hiding Fields",
   "performing-calculations": "Performing Calculations",
   "historical-expressions": "Historical Expressions",
   "field-types-reference": "Field Types Reference",
   "expression-helpers": "Expression Helpers",
   "validation": "Validation",
-  "advanced-topics": "Advanced Topics",
-  "developer-guide": "Developer Guide"
+  "advanced-topics": "Advanced Angular topics",
+  "developer-guide": "Development and integration",
+  "legacy-builder": {
+    "type": "separator",
+    "title": "Archived AMPATH Form Builder"
+  },
+  "getting-started": "Legacy builder workflows",
+  "features": "Legacy builder interface",
+  "referencing-components": "Legacy builder components"
 }

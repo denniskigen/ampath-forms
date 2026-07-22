@@ -1,0 +1,91 @@
+# About this documentation
+
+This site is an implementation-specific reference for [`@openmrs/ngx-formentry`](https://github.com/openmrs/openmrs-ngx-formentry), the optional Angular Form Engine used by O3 distributions that explicitly include `@openmrs/esm-form-entry-app`.
+
+## Which workflow should I use?
+
+<div className="hidden md:block">
+
+| Your environment | Form renderer | Authoring workflow | Documentation |
+| --- | --- | --- | --- |
+| OpenMRS Reference Application | React Form Engine | Built-in O3 Form Builder, including React preview | [Canonical O3 Forms guide](https://o3-docs.openmrs.org/en-US/docs/forms-in-o3/) |
+| Distribution with `@openmrs/esm-form-entry-app` | Angular Form Engine | Edit JSON and test in that Angular-enabled distribution; there is no supported current visual builder | This site's Angular Form Engine reference |
+| Existing deployment of `ampath/ngx-openmrs-formbuilder` | Legacy builder and its bundled preview | Legacy workflow retained for maintenance only | Pages labelled **Archived AMPATH Form Builder** |
+
+</div>
+
+<div className="grid gap-4 md:hidden">
+  <section className="min-w-0 rounded-lg border border-gray-200 p-4 dark:border-gray-800">
+    <h3 className="mt-0 text-base font-semibold">OpenMRS Reference Application</h3>
+    <dl className="mb-0 grid gap-3 break-words">
+      <div>
+        <dt className="font-semibold">Your environment</dt>
+        <dd className="mt-1">OpenMRS Reference Application</dd>
+      </div>
+      <div>
+        <dt className="font-semibold">Form renderer</dt>
+        <dd className="mt-1">React Form Engine</dd>
+      </div>
+      <div>
+        <dt className="font-semibold">Authoring workflow</dt>
+        <dd className="mt-1">Built-in O3 Form Builder, including React preview</dd>
+      </div>
+      <div>
+        <dt className="font-semibold">Documentation</dt>
+        <dd className="mt-1">[Canonical O3 Forms guide](https://o3-docs.openmrs.org/en-US/docs/forms-in-o3/)</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section className="min-w-0 rounded-lg border border-gray-200 p-4 dark:border-gray-800">
+    <h3 className="mt-0 text-base font-semibold">Distribution with `@openmrs/esm-form-entry-app`</h3>
+    <dl className="mb-0 grid gap-3 break-words">
+      <div>
+        <dt className="font-semibold">Your environment</dt>
+        <dd className="mt-1">Distribution with `@openmrs/esm-form-entry-app`</dd>
+      </div>
+      <div>
+        <dt className="font-semibold">Form renderer</dt>
+        <dd className="mt-1">Angular Form Engine</dd>
+      </div>
+      <div>
+        <dt className="font-semibold">Authoring workflow</dt>
+        <dd className="mt-1">Edit JSON and test in that Angular-enabled distribution; there is no supported current visual builder</dd>
+      </div>
+      <div>
+        <dt className="font-semibold">Documentation</dt>
+        <dd className="mt-1">This site's Angular Form Engine reference</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section className="min-w-0 rounded-lg border border-gray-200 p-4 dark:border-gray-800">
+    <h3 className="mt-0 text-base font-semibold">Existing deployment of `ampath/ngx-openmrs-formbuilder`</h3>
+    <dl className="mb-0 grid gap-3 break-words">
+      <div>
+        <dt className="font-semibold">Your environment</dt>
+        <dd className="mt-1">Existing deployment of `ampath/ngx-openmrs-formbuilder`</dd>
+      </div>
+      <div>
+        <dt className="font-semibold">Form renderer</dt>
+        <dd className="mt-1">Legacy builder and its bundled preview</dd>
+      </div>
+      <div>
+        <dt className="font-semibold">Authoring workflow</dt>
+        <dd className="mt-1">Legacy workflow retained for maintenance only</dd>
+      </div>
+      <div>
+        <dt className="font-semibold">Documentation</dt>
+        <dd className="mt-1">Pages labelled **Archived AMPATH Form Builder**</dd>
+      </div>
+    </dl>
+  </section>
+</div>
+
+The O3 Form Builder that ships with the Reference Application targets and previews the React Form Engine. Its preview does not validate Angular runtime behavior. The archived AMPATH builder also does not target the current Angular engine and must not be treated as its supported visual builder.
+
+## Shared schema, different implementations
+
+Both engines consume forms based on the [standard O3 form schema](https://github.com/openmrs/openmrs-contrib-json-schemas/blob/main/form.schema.json). Conformance to that schema establishes a shared document structure, but it does not guarantee that every field type, expression, validation rule, data source, or payload behavior has parity across React and Angular.
+
+Use the canonical O3 guide for the default React workflow. Use these pages only for Angular behavior, and verify each form in the engine that will render it in production.

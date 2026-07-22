@@ -1,5 +1,7 @@
 # Data sources
 
+> **Angular Form Engine scope.** This page documents data sources in `@openmrs/ngx-formentry`. Equivalent schema fields may behave differently in the React Form Engine. See [About this documentation](/docs/about-this-documentation).
+
 Data sources are a way to inject data into your application. This is useful for injecting data that is not available at build time, such as data from an API. The `DataSources` service allows you to register, access, and remove data sources in your application.
 
 ## Built-in endpoint data source

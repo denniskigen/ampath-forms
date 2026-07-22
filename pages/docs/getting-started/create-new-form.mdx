@@ -3,27 +3,22 @@ import Link from 'next/link'
 
 # Creating a new form
 
+> **Archived AMPATH Form Builder documentation.** This page describes the legacy `ampath/ngx-openmrs-formbuilder` workflow retained for existing deployments. It is not a supported builder or preview for the current Angular Form Engine. The built-in O3 Form Builder targets React. See [About this documentation](/docs/about-this-documentation).
+
 ## Quickstart
 
 Let's take you from zero to published in just a few minutes.
 
-Visit the Form Builder [website](https://formbuilder.o3.openmrs.org/) and sign in with the following credentials:
-
-- OpenMRS Server URL: `https://dev3.openmrs.org/openmrs`
-- Username: `admin`
-- Password: `Admin123`
+Open your maintained Form Builder deployment and sign in with an account issued by that server's administrator. This site no longer publishes a shared demo account. The server owner should rotate any account that was previously shared here.
 
 ![Login page](/screens/login.webp)
 
 <Callout type="warning" emoji="⚠️">
-  If you experience problems logging in, it could be due to CORS. As the Form
-  Builder frontend runs on a different server than the backend, we rely on
-  [CORS](https://geekflare.com/cors-basics/) to handle communication between
-  these two origins. You may need to configure your server or install an
-  extension in your browser that bypasses CORS checks to log in successfully.
+  If the frontend and backend use different origins, configure allowed origins
+  on the server or reverse proxy as part of your deployment. Do not disable or
+  bypass browser CORS protections. See the archived [deployment
+  guide](/docs/developer-guide/deploy-form-builder) for the legacy builder setup.
 </Callout>
-
-![Login CORS error](/screens/cors-error.webp)
 
 ## Create a New Form
 
