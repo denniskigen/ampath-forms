@@ -4,7 +4,7 @@
 
 The Angular Form Engine provides expression helpers that are useful for computing common domain-specific calculations.
 
-Here's a link to the expression helpers [implementation](https://github.com/AMPATH/ngx-openmrs-formentry/blob/2763b0062c386906ae94e312df961508069cdfec/projects/ngx-formentry/src/form-entry/helpers/js-expression-helper.ts). You can extend the Angular Form Engine with custom helpers for your consuming application.
+Here's a link to the expression helpers [implementation](https://github.com/openmrs/openmrs-ngx-formentry/blob/main/projects/ngx-formentry/src/form-entry/helpers/js-expression-helper.ts). You can extend the Angular Form Engine with custom helpers for your consuming application.
 
 Below is a reference of the functions currently available.
 

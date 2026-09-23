@@ -596,7 +596,7 @@ Renders a searchable dropdown backed by a named data source. The data source is 
     "datasource": {
       "name": "endpoint",
       "config": {
-        "endpointUrl": "/ws/rest/v1/provider",
+        "endpointUrl": "/openmrs/ws/rest/v1/provider",
         "labelKey": "display",
         "valueKey": "uuid",
         "searchParam": "q",

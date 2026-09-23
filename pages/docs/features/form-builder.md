@@ -8,7 +8,7 @@ When you open a maintained deployment of the legacy Form Builder, you'll see thi
 
 ![Login page](/screens/login.webp)
 
-Choose `https://dev3.openmrs.org/openmrs` in the **OpenMRS Server URL** field and then enter your login credentials to sign in.
+Enter the URL of your OpenMRS server in the **OpenMRS Server URL** field and then enter your login credentials to sign in.
 
 Once signed in, you should see this landing page.
 

@@ -19,7 +19,7 @@ The Form Engine includes an `endpoint` data source for [`remote-select`](/docs/f
     "datasource": {
       "name": "endpoint",
       "config": {
-        "endpointUrl": "/ws/rest/v1/provider",
+        "endpointUrl": "/openmrs/ws/rest/v1/provider",
         "labelKey": "display",
         "valueKey": "uuid",
         "searchParam": "q",
@@ -30,7 +30,7 @@ The Form Engine includes an `endpoint` data source for [`remote-select`](/docs/f
 }
 ```
 
-Typing a search term sends `GET /ws/rest/v1/provider?q={term}&limit=20`. The initial request omits `q` but still includes `limit=20`. When editing a saved form, the data source URL-encodes the stored provider UUID and requests `GET /ws/rest/v1/provider/{value}` so the dropdown can display its label.
+Typing a search term sends `GET /openmrs/ws/rest/v1/provider?q={term}&limit=20`. The initial request omits `q` but still includes `limit=20`. When editing a saved form, the data source URL-encodes the stored provider UUID and requests `GET /openmrs/ws/rest/v1/provider/{value}` so the dropdown can display its label.
 
 Search responses can be a JSON array or an array under the configured `resultsKey`. A saved-value response can be a single item, a JSON array, or an array under `resultsKey`. For array responses, the first item is used. A failed search or saved-value request displays an error that is distinct from a successful search with no matches.
 
@@ -47,7 +47,7 @@ These configuration properties are available:
 | `limitParam`         | `limit`                 | Query parameter containing the page size                                     |
 | `resolveUrlTemplate` | `{endpointUrl}/{value}` | URL used to resolve a saved value. The `{value}` placeholder is URL-encoded. |
 
-Use a relative `endpointUrl` when possible so the schema remains portable between environments. The consuming application must provide Angular's `HttpClient` for the built-in source to be registered. Without it, the rest of the Form Engine continues to work, but an `endpoint` dropdown has no options. An application can override the built-in behavior by registering its own data source under the name `endpoint`.
+The `endpointUrl` is requested as written, without adding the OpenMRS context path. In a standard O3 deployment, include `/openmrs` in the path (for example, `/openmrs/ws/rest/v1/provider`). Omit the host so the schema remains portable between environments. The consuming application must provide Angular's `HttpClient` for the built-in source to be registered. Without it, the rest of the Form Engine continues to work, but an `endpoint` dropdown has no options. An application can override the built-in behavior by registering its own data source under the name `endpoint`.
 
 ## Registering a data source
 
