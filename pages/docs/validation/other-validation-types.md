@@ -1,5 +1,7 @@
 # Other Validation Types
 
+> **Angular Form Engine scope.** This page documents validation in `@openmrs/ngx-formentry`. Equivalent schema fields may behave differently in the React Form Engine. See [About this documentation](/docs/about-this-documentation).
+
 Beyond [date-based validation](/docs/validation/date-based-validation) and [expression-based validation](/docs/validation/js-expression-based-validation), the Form Engine supports the following validator types.
 
 ## conditionalAnswered

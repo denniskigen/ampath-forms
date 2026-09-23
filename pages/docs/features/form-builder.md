@@ -1,12 +1,14 @@
 # Form Builder
 
-The Form Builder provides an easy to use UI with which we can create forms of arbitrary complexity.
+> **Archived AMPATH Form Builder documentation.** This page describes the legacy `ampath/ngx-openmrs-formbuilder` interface retained for existing deployments. It is not a supported builder or preview for the current Angular Form Engine. The built-in O3 Form Builder targets React. See [About this documentation](/docs/about-this-documentation).
 
-When you first visit the Form Builder [website](https://openmrs-spa.org/formbuilder/#/login), you'll see this login screen:
+The Form Builder provides a user interface for editing schemas in an existing legacy deployment.
+
+When you open a maintained deployment of the legacy Form Builder, you'll see this login screen:
 
 ![Login page](/screens/login.webp)
 
-Choose `https://dev3.openmrs.org/openmrs` in the **OpenMRS Server URL** field and then enter your login credentials to sign in.
+Enter the URL of your OpenMRS server in the **OpenMRS Server URL** field and then enter your login credentials to sign in.
 
 Once signed in, you should see this landing page.
 

@@ -2,6 +2,8 @@ import { Callout } from 'nextra-theme-docs'
 
 # Rendering Fields Conditionally
 
+> **Angular Form Engine scope.** This page documents conditional rendering in `@openmrs/ngx-formentry`. Equivalent schema fields may behave differently in the React Form Engine. See [About this documentation](/docs/about-this-documentation).
+
 You can render Form fields conditionally by defining a `hideWhenExpression` inside the `hide` property of your question definitions.
 
 A `hideWhenExpression` is a JavaScript expression that returns a boolean value (`true` or `false`). [Logical operators](https://javascript.info/logical-operators) are used to construct these expressions. Additionally, you can incorporate injected data sources and expression helper functions into your expression definitions.
@@ -17,11 +19,11 @@ To write a `hideWhenExpression`, include a code block like this within the `ques
 }
 ```
 
-In the example above, the logic provided instructs the Form Builder to hide (not render) the question with the `onArt` id if the value of its backing concept does not match the supplied value.
+In the example above, the logic instructs the Angular Form Engine to hide (not render) the question with the `onArt` id if the value of its backing concept does not match the supplied value.
 
 <Callout emoji="ℹ️" type="info">
   Note that at the moment it is only possible to render <b>questions</b>{' '}
-  conditionally. AMPATH Forms does not <em>explicitly</em> support hiding
+  conditionally. The Angular Form Engine does not <em>explicitly</em> support hiding
   sections or pages.
 </Callout>
 

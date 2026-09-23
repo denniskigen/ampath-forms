@@ -1,5 +1,7 @@
 # Sections
 
+> **Angular Form Engine scope.** This page documents `@openmrs/ngx-formentry`. Schema conformance does not guarantee behavior in the React Form Engine. See [About this documentation](/docs/about-this-documentation).
+
 A section is an element of a form schema that groups together related questions.
 
 It consists of a label, an `isExpanded` boolean property, and a set of questions. Sections get rendered in 'collapsed mode' by default. Set `isExpanded` to `true` in the section definition if you want section rendered in 'expanded mode'.

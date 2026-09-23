@@ -1,9 +1,14 @@
-import { QuickStartArea } from '../../components/quickstart'
+# Angular Form Engine quickstart
 
-# AMPATH Forms Quickstart
+This site is the reference for [`@openmrs/ngx-formentry`](https://github.com/openmrs/openmrs-ngx-formentry), the optional Angular Form Engine. Use it only when your O3 distribution explicitly includes `@openmrs/esm-form-entry-app`.
 
-AMPATH Forms is a batteries-included solution for creating, testing and validating OpenMRS form schemas.
+The OpenMRS Reference Application uses the React Form Engine by default. Its built-in O3 Form Builder creates and previews forms with React, not Angular. For that workflow, use the [canonical O3 Forms guide](https://o3-docs.openmrs.org/en-US/docs/forms-in-o3/).
 
-AMPATH Forms is designed to be usable by both developers and non-developers, so users should expect to be productive with it from the get go.
+There is currently no supported visual builder for the Angular engine. Author Angular-targeted schemas as JSON, validate them against the [standard O3 form schema](https://github.com/openmrs/openmrs-contrib-json-schemas/blob/main/form.schema.json), and test them in an O3 distribution configured with the Angular engine. Schema conformance alone does not guarantee feature parity with the React engine.
 
-<QuickStartArea />
+- [Understand which engine this site covers](/docs/about-this-documentation)
+- [Run the Angular Form Engine in O3](/docs/developer-guide/run-form-engine-in-openmrs3)
+- [Review the Angular field types](/docs/field-types-reference)
+- [Extend the Angular Form Engine](/docs/developer-guide/extending-the-form-engine)
+
+The pages under **Archived AMPATH Form Builder** are retained only for teams maintaining the legacy builder. That builder is not a supported authoring or preview tool for the current Angular Form Engine.

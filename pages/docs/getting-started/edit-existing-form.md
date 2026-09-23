@@ -1,5 +1,7 @@
 # Editing an existing form
 
+> **Archived AMPATH Form Builder documentation.** This page describes the legacy `ampath/ngx-openmrs-formbuilder` workflow retained for existing deployments. It is not a supported builder or preview for the current Angular Form Engine. The built-in O3 Form Builder targets React. See [About this documentation](/docs/about-this-documentation).
+
 Let's see how we can edit existing forms using the Form Builder.
 
 ## Find your Form

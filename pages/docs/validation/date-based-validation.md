@@ -1,5 +1,7 @@
 # Validating Dates
 
+> **Angular Form Engine scope.** This page documents date validation in `@openmrs/ngx-formentry`. Equivalent schema fields may behave differently in the React Form Engine. See [About this documentation](/docs/about-this-documentation).
+
 This type of validation enforces certain conditions for [date](/docs/field-types-reference#date) inputs. You can use date validation to guarantee that a date input only allows:
 
 - Past or present dates
