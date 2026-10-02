@@ -22,9 +22,21 @@ To write a `hideWhenExpression`, include a code block like this within the `ques
 In the example above, the logic instructs the Angular Form Engine to hide (not render) the question with the `onArt` id if the value of its backing concept does not match the supplied value.
 
 <Callout emoji="ℹ️" type="info">
-  Note that at the moment it is only possible to render <b>questions</b>{' '}
-  conditionally. The Angular Form Engine does not <em>explicitly</em> support hiding
-  sections or pages.
+  You can only add a `hide` property to <b>questions</b>, including `obsGroup`
+  questions. Sections and pages don't support it. However, the engine stops
+  rendering a section once every question in it is hidden, including the section
+  header. To hide a set of questions together, put them in their own section and
+  give each question the same `hideWhenExpression`.
+</Callout>
+
+<Callout emoji="⚠️" type="warning">
+  Don't use the word `return` anywhere in an expression. The engine only adds its
+  own `return` in front of an expression that doesn't already contain the word.
+  An expression like `list.some(function (o) { return o.value === 'x' })`
+  evaluates to `undefined`, so the question never hides. Use an arrow function
+  instead, such as `list.some((o) => o.value === 'x')`. Note that errors thrown
+  inside an expression are also swallowed, so a broken expression leaves the
+  question visible without logging anything.
 </Callout>
 
 ## More examples
@@ -65,3 +77,72 @@ Read more about this in the [data sources](/docs/advanced-topics/injecting-data-
 ```
 
 In this example, the question being validated gets hidden if the patient's age is greater than or equal to 18. For this expression to work, you would need to plug in a patient object that exposes an age value. Read more about this in the [data sources](/docs/advanced-topics/injecting-data-sources/) guide.
+
+## Hiding fields based on a previous observation
+
+In O3, you can hide questions based on a value recorded in an earlier encounter. For example, a single form for all patients can show HIV care questions only to patients whose last recorded HIV status is positive, without asking for the HIV status during the visit.
+
+This uses [`useMostRecentValue`](/docs/core-concepts/questions#defining-a-question). When the form loads, O3's form entry app fetches the patient's most recent observation for the concept of every question marked with `useMostRecentValue`, from any encounter. It registers the results as the `rawPrevObs` data source, which hide expressions can read by name. `rawPrevObs` has the following shape:
+
+```json
+{
+  "obs": [
+    {
+      "concept": { "uuid": "159576AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" },
+      "value": { "uuid": "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" }
+    }
+  ]
+}
+```
+
+Coded values come through as `{ "uuid": "..." }`, and numeric and text values come through as plain values. Observations with other value types, such as dates, are left out.
+
+First, add a hidden helper question for the concept you want to look up. Its only job is to get the concept fetched. Because it's always hidden, it never gets a value and doesn't save an observation.
+
+```json
+{
+  "label": "Last recorded HIV status",
+  "id": "lastHivStatus",
+  "type": "obs",
+  "questionOptions": {
+    "rendering": "select",
+    "concept": "159576AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "useMostRecentValue": true,
+    "answers": [
+      {
+        "concept": "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "label": "Positive"
+      },
+      {
+        "concept": "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "label": "Negative"
+      },
+      {
+        "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "label": "Unknown"
+      }
+    ]
+  },
+  "hide": {
+    "hideWhenExpression": "true"
+  }
+}
+```
+
+Then add a `hideWhenExpression` like this one to each question you want to show only to HIV positive patients:
+
+```json
+{
+  "hide": {
+    "hideWhenExpression": "!(rawPrevObs && rawPrevObs.obs.some((o) => o.concept.uuid === '159576AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && o.value && o.value.uuid === '703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'))"
+  }
+}
+```
+
+Keep the following in mind:
+
+- Keep the `rawPrevObs &&` check. When the patient has no matching observations, `rawPrevObs` is `undefined`.
+- Put the helper question at the top level of a section. The form entry app doesn't look for `useMostRecentValue` on questions nested in an `obsGroup` unless the group has the flag too.
+- Use an arrow function, as shown above. An expression that contains the word `return` never hides the question.
+- Only the most recent value is considered. If the status changes during the current visit, the expression won't pick it up unless it also checks the relevant question on the form.
+- If you put the questions in their own section, the whole section disappears when all of them are hidden.

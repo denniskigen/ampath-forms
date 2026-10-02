@@ -184,7 +184,7 @@ Several field types look up a data source by a well-known name at render time. W
 | `diagnoses`       | `diagnosis` rendering (default)                        | Searching diagnosis concepts, optionally filtered by concept class    |
 | `file`            | `file` rendering                                       | Uploading and fetching file attachments                               |
 | `rawPrevEnc`      | [Historical expressions](/docs/historical-expressions) | The previous encounter(s), exposed to expressions as `HD` (`prevEnc`) |
-| `rawPrevObs`      | Historical expressions (optional)                      | Previous observations, exposed as `prevObs`                           |
+| `rawPrevObs`      | Historical and hide expressions (optional)             | The patient's most recent observations for questions marked [`useMostRecentValue`](/docs/core-concepts/questions#defining-a-question), exposed to historical expressions as `prevObs` |
 
 Notes:
 
