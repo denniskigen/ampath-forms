@@ -90,6 +90,40 @@ Here's a reference of the various properties you can specify in a question defin
     }
     ```
 
+  - `useMostRecentValue`: Set this to `true` (or `"true"`) to fetch the patient's most recent observation for the question's concept when the form loads. The lookup isn't limited to the previous encounter, so it picks up a value recorded in any encounter type. This is handled by O3's [esm-form-entry-app](https://github.com/openmrs/openmrs-esm-patient-chart/tree/main/packages/esm-form-entry-app), which registers the results as the `rawPrevObs` data source. It doesn't prefill the question. Instead, you read the value from an expression. See [Hiding fields based on a previous observation](/docs/conditional-rendering#hiding-fields-based-on-a-previous-observation) for an example.
+
+    The form entry app only looks for this flag on questions at the top level of a section, or on questions nested in an `obsGroup` that also has the flag.
+
+    ```json
+    {
+      "label": "Last recorded HIV status",
+      "id": "lastHivStatus",
+      "type": "obs",
+      "questionOptions": {
+        "rendering": "select",
+        "concept": "159576AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "useMostRecentValue": true,
+        "answers": [
+          {
+            "concept": "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "label": "Positive"
+          },
+          {
+            "concept": "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "label": "Negative"
+          },
+          {
+            "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "label": "Unknown"
+          }
+        ]
+      },
+      "hide": {
+        "hideWhenExpression": "true"
+      }
+    }
+    ```
+
 - `shownDateOptions` - A property that determines whether a date field should be shown or hidden based on the value of another date field. This property receives an object with the following properties:
 
   ```json
