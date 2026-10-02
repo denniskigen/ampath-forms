@@ -39,7 +39,7 @@ Below is an example of a question that seeks to establish the patient's `Current
 
 ## Defining a `question`
 
-Here's a reference of the various properties you can specify in a question definition:
+Here's a reference of the various properties you can specify in a question definition. Property names are case-sensitive, and the engine ignores properties it doesn't recognise without a warning, so a misspelled property such as `readonly` or `allowFutureDate` has no effect:
 
 - `label`: The actual content of the question. This label is what gets rendered as the question label.
 - `id`: An ID unique to that question. Used when validating the field input. It's recommended to use camel-case for your ID names.
@@ -124,7 +124,32 @@ Here's a reference of the various properties you can specify in a question defin
     }
     ```
 
-- `shownDateOptions` - A property that determines whether a date field should be shown or hidden based on the value of another date field. This property receives an object with the following properties:
+- `showDate`: Set this to `true` (or `"true"`) inside `questionOptions` to add a date field after the question, labelled "Date of" followed by the question's label. The date entered there is saved as the observation's own date (`obsDatetime`) instead of the encounter date. Use `shownDateOptions` to configure the date field.
+
+  ```json
+  {
+    "label": "Sputum gene xpert MTB:",
+    "id": "sputumgene_test",
+    "type": "obs",
+    "questionOptions": {
+      "rendering": "select",
+      "concept": "741517cf-8bac-4755-b289-8dd2a2df7962",
+      "answers": [
+        {
+          "concept": "a896f3a6-1350-11df-a1f1-0026b9348838",
+          "label": "Positive"
+        },
+        {
+          "concept": "a896d2cc-1350-11df-a1f1-0026b9348838",
+          "label": "Negative"
+        }
+      ],
+      "showDate": "true"
+    }
+  }
+  ```
+
+- `shownDateOptions` - Used together with `showDate`. Sets the `validators` and `hide` logic for the date field that `showDate` adds. Without `showDate`, it has no effect. This property receives an object with the following properties:
 
   ```json
   {
@@ -184,6 +209,21 @@ Here's a reference of the various properties you can specify in a question defin
     // concept does not match the supplied value
   }
   ```
+
+- `alert`: Shows a warning message below the question when `alertWhenExpression` evaluates to `true`. The expression is re-evaluated when the question's value changes and when any question it references changes. It doesn't stop the form from being submitted.
+
+  ```json
+  {
+    "alert": {
+      "alertWhenExpression": "!isEmpty(myValue) && myValue === 'a899b35c-1350-11df-a1f1-0026b9348838'",
+      "message": "Please remember to fill the referral and linkage form after saving this form"
+    }
+  }
+  ```
+
+- `readOnly`: Set this to `true` on a `text` or `textarea` question to make the input read-only. For `radio` questions, set it inside `questionOptions` instead. The property name is case-sensitive, so `readonly` has no effect.
+
+- `datePickerFormat`: For `date` questions, sets what the picker lets you choose. Use `calendar` (the default) for a date, `both` for a date and time, or `timer` for a time only.
 
 - `questionInfo`: You can specify helper text for the question here. When specified, a question mark icon gets displayed to the right of the question label. When you hover over it, the information you entered gets displayed as a tooltip. This is useful for providing additional context to the user about a question.
 

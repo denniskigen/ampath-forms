@@ -53,7 +53,7 @@ We see that the validator optionally has a property named `allowFutureDates` and
 
 ![Date based validation example](/screens/date-based-validation.gif)
 
-You can override this behaviour and permit setting dates in the future by setting `allowFutureDates` to true in your validator definition:
+You can override this behaviour and permit setting dates in the future by setting `allowFutureDates` to the string `"true"` in your validator definition. The engine ignores any other value, including the boolean `true` and misspellings such as `allowFutureDate`:
 
 ```json
 {
