@@ -6,6 +6,24 @@ The Angular Form Engine provides expression helpers that are useful for computin
 
 Here's a link to the expression helpers [implementation](https://github.com/openmrs/openmrs-ngx-formentry/blob/main/projects/ngx-formentry/src/form-entry/helpers/js-expression-helper.ts). You can extend the Angular Form Engine with custom helpers for your consuming application.
 
+## How expressions are evaluated
+
+The engine evaluates every expression in the schema the same way, including `hideWhenExpression`, `disableWhenExpression`, `calculateExpression`, `failsWhenExpression`, `alertWhenExpression` and `historicalExpression`. An expression can use:
+
+- the ids of other questions in the form, which hold those questions' current values
+- `myValue`, which holds the current question's value
+- the helper functions on this page
+- every registered [data source](/docs/advanced-topics/injecting-data-sources), by name. In O3, this includes patient properties such as `sex` and `age`, `visitTypeUuid` for the UUID of the current visit's type, and [`rawPrevObs`](/docs/conditional-rendering#hiding-fields-based-on-a-previous-observation).
+
+Keep the following in mind:
+
+- **Errors are swallowed.** If an expression throws, the engine treats the result as `false` and logs nothing. A hide expression stops hiding, a validator stops failing, and a calculated question gets the value `false`.
+- **Referencing an id that isn't in the form throws.** This usually happens after copying a question from another form, or after renaming the question an expression depends on. Check every id in an expression against the ids in the current form.
+- **Don't use the word `return`.** The engine only adds its own `return` in front of an expression that doesn't already contain the word. So `list.some(function (o) { return o.value === 'x' })` evaluates to `undefined`. Use an arrow function with an expression body instead, such as `list.some((o) => o.value === 'x')`.
+- **`visitType` isn't available in O3.** `visitType.uuid` throws. Use `visitTypeUuid` instead.
+
+## Helper reference
+
 Below is a reference of the functions currently available.
 
 ## arrayContains

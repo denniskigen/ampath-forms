@@ -38,9 +38,9 @@ The example below is from a form where a hospitalization diagnosis should only b
 
 ## Numeric constraints via questionOptions
 
-For `number` and `decimal` renderings, the engine also derives validators from `questionOptions` — no `validators` array needed:
+For `number`, `numeric` and `decimal` renderings, the engine also derives validators from `questionOptions`, so you don't need a `validators` array:
 
-- `min` and `max`: bounds for the value. The engine registers these validators only when **both** are present.
+- `min` and `max`: bounds for the value. The engine registers these validators only when **both** are present. If you set only one, for example `min` without `max`, neither bound is checked.
 - `minLength` and `maxLength`: bounds on the length of the entered value.
 - `disallowDecimals`: when `true`, accepts unsigned whole digits only — any other character fails validation, including a decimal point but also a minus sign on a negative integer. The error message is the `disallowDecimals` translation key, so provide a translation for it or users see the raw key.
 

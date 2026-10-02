@@ -63,6 +63,30 @@ Below is a GIF showing this in practice:
 
 ![Using historical values](/screens/use-historical-value.gif)
 
+## Prefilling the historical value
+
+By default, the historical value is only offered through the `Use value` button. You can prefill the question with it instead, using one of these properties alongside `historicalExpression`:
+
+- `historicalPrepopulateCondition`: An expression that decides whether to prefill. The historical value is available to it as `histValue`, an object with `value` and `valueDate` properties. When the expression returns a truthy value, the question is prefilled.
+- `historicalPrepopulate`: Set this to `true` to always prefill. Add `allowedHistoricalValueAgeInDays` to only prefill values recorded within that many days. It must be a number, such as `90`, not a string. Otherwise it's ignored and the value is always prefilled.
+
+If both are set, only `historicalPrepopulateCondition` is used. Neither has an effect when the historical expression doesn't return a value.
+
+```json
+{
+  "label": "Height (cm)",
+  "id": "height",
+  "historicalExpression": "HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838')",
+  "historicalPrepopulateCondition": "!isEmpty(histValue.value)",
+  "questionOptions": {
+    "rendering": "number",
+    "concept": "a8a6619c-1350-11df-a1f1-0026b9348838"
+  },
+  "type": "obs",
+  "validators": []
+}
+```
+
 Here's a [snippet](https://github.com/openmrs/openmrs-esm-patient-chart/blob/9100fdc918386e926ddf98ca2e8791bbf0b294ec/packages/esm-form-entry-app/src/app/form-creation/form-creation.service.ts#L99-L220) from O3's [esm-form-entry-app](https://github.com/openmrs/openmrs-esm-patient-chart/tree/main/packages/esm-form-entry-app) which shows how the encounter data source gets wired up:
 
 ```ts

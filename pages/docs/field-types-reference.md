@@ -14,6 +14,8 @@ Field types are defined in the `questionOptions` definition of a question using 
 }
 ```
 
+Renderings are case-sensitive. If the engine doesn't recognise a rendering, it renders a plain text input and only logs a warning to the browser console. So a typo such as `Text`, or a rendering from another engine such as `datetime` or `time`, doesn't raise an error. To capture a time, use the [date](#date) rendering with `datePickerFormat`.
+
 ## text
 
 Renders a text input.
@@ -153,7 +155,9 @@ The code for this is as follows:
 
 ## date
 
-Renders a date input. When clicked, the input reveals a date picker with the current date as the default value. You can optionally choose to show a dropdown with a list of weeks in addition to the date picker. When specified, choosing a week from the weeks list will result in the datepicker adjusting to show the first date of that week as its default value.
+Renders a date input. When clicked, the input reveals a date picker with the current date as the default value. You can optionally choose to show a dropdown with a list of weeks in addition to the date picker, by setting `weeksList` in `questionOptions` (`showWeeks` has no effect). When specified, choosing a week from the weeks list will result in the datepicker adjusting to show the first date of that week as its default value.
+
+To capture a time as well as a date, set `datePickerFormat` on the question to `both`. For a time only, use `timer`. The default, `calendar`, picks a date only.
 
 Below is an example of a date field where you can specify the patient's return to clinic date.
 
@@ -321,6 +325,8 @@ The code for this is as follows:
 ## ui-select-extended
 
 Renders a dropdown list with superpowers. You can hook this input up to a `DataSource` which will configure it behave like a search input with typeahead capabilities.
+
+The question's `type` decides what the dropdown searches. `ui-select-extended` works with `encounterLocation`, `encounterProvider` and `personAttribute` questions. With any other type, including `obs`, the engine falls back to a plain text input.
 
 Below is an example of a ui-select-extended field hooked up to a resource that provides location data. The user can search for a location from the provided list by typing a few characters to filter the list.
 
@@ -564,7 +570,7 @@ Related dropdown variants that share the [select](#select) question model but re
 
 ## numeric and decimal
 
-Variants of the [number](#number) input. All three render through the same number input and support a `placeholder` in `questionOptions`, but they are not fully interchangeable: the engine derives the `min`/`max`, length, and `disallowDecimals` [constraints](/docs/validation/other-validation-types) from `questionOptions` only for the `number` and `decimal` renderings — a question using `numeric` does not get those validators. Use the `disallowDecimals` constraint when decimals should be rejected.
+Variants of the [number](#number) input. All three render through the same number input, support a `placeholder` in `questionOptions`, and get the `min`/`max`, length, and `disallowDecimals` [constraints](/docs/validation/other-validation-types) from `questionOptions`. Use the `disallowDecimals` constraint when decimals should be rejected. There's no `decimal` validator type, so a `{ "type": "decimal" }` entry in `validators` has no effect.
 
 ## select-concept-answers
 
@@ -653,4 +659,4 @@ Renders a button that launches an O3 workspace — for example, the drug order w
 
 ## field-set
 
-Behaves like [group](#group), but renders its child questions inside a lightweight bordered container instead of a section-style group.
+The engine uses `field-set` internally to render questions that have [`showDate`](/docs/core-concepts/questions#defining-a-question) set. Don't use it as a rendering in your own schemas. The engine skips `field-set` questions, along with their child questions, without rendering them.

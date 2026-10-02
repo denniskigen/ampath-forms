@@ -30,14 +30,30 @@ In the example above, the logic instructs the Angular Form Engine to hide (not r
 </Callout>
 
 <Callout emoji="⚠️" type="warning">
-  Don't use the word `return` anywhere in an expression. The engine only adds its
-  own `return` in front of an expression that doesn't already contain the word.
-  An expression like `list.some(function (o) { return o.value === 'x' })`
-  evaluates to `undefined`, so the question never hides. Use an arrow function
-  instead, such as `list.some((o) => o.value === 'x')`. Note that errors thrown
-  inside an expression are also swallowed, so a broken expression leaves the
-  question visible without logging anything.
+  Don't use the word `return` anywhere in an expression, and check that every id
+  it references exists in the form. Either mistake leaves the question visible
+  without an error. See [How expressions are
+  evaluated](/docs/expression-helpers#how-expressions-are-evaluated).
 </Callout>
+
+## What happens to a hidden question
+
+When a question gets hidden, the engine clears its value and disables it. Anything the user entered in it is lost, even if the question becomes visible again.
+
+## Using the `field` and `value` shorthand
+
+Instead of an expression, you can give `hide` a `field` and a list of `value`s. The question is hidden unless the question with the id in `field` has one of the listed values:
+
+```json
+{
+  "hide": {
+    "field": "onArt",
+    "value": ["a899b35c-1350-11df-a1f1-0026b9348838"]
+  }
+}
+```
+
+This is the same as `"hideWhenExpression": "!arrayContains(['a899b35c-1350-11df-a1f1-0026b9348838'], onArt)"`. `value` must be an array. If it isn't, the question never hides.
 
 ## More examples
 
